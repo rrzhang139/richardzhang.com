@@ -1,4 +1,9 @@
-html,
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap");
+
+/* html,
 body {
   padding: 0;
   margin: 0;
@@ -13,4 +18,4 @@ a {
 
 * {
   box-sizing: border-box;
-}
+} */
