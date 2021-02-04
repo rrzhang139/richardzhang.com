@@ -74,6 +74,7 @@ const projects = () => {
             <br />
             Only selected projects. Have a bit more on{" "}
             <a
+              target="_blank"
               href="https://github.com/cantoramann"
               className="text-blue-400 underline"
             >
