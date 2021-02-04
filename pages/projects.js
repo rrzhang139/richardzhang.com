@@ -6,37 +6,37 @@ const data = [
   {
     title: "EthSign Demo Presentation",
     type: "Web",
-    video: "ethsign.mp4",
+    video: "https://www.youtube.com/embed/euTB_YxgDHQ",
     description:
       "This video is an excerpt from an investment presentation, taken in June 2020. Participants are my co-founders Potter, Xin, and Jack.",
   },
   {
     title: "CS@USC Trivia Web App",
     type: "Web",
-    video: "303project.mp4",
+    video: "https://www.youtube.com/embed/0e6cmd5ixo4",
     description:
       "This is a final project written in PHP, vanilla JS and MySQL for Full-Stack Web Deveopment class. CS @ USC is a platform where students and prospective students can post questions about the faculty and classes. Every member can take random quizzes about classes.",
   },
   {
     title: "Pacman",
     type: "Game",
-    video: "pacman.mp4",
+    video: "https://www.youtube.com/embed/Q3JROCcxbDg",
     description:
       "An intensive lab for game development course ITP 380. First time implementing an AI-based decision making algorithm - naturally a simple one, with Euclidean heuristic.",
   },
   {
     title: "Space Tunnel",
     type: "Game",
-    video: "lab7.mp4",
+    video: "https://www.youtube.com/embed/WnApex72WQI",
     description:
       "The first three dimensional game I implemented as a part of my class ITP 380.",
   },
   {
     title: "Computer Vision Test Video",
     type: "Computer Vision",
-    video: "auv.mp4",
+    video: "https://www.youtube.com/embed/GGGy8LqsVnE",
     description:
-      "A regular test phase for our USC AUV robot close before the annual RoboSub tournament.",
+      "A regular test phase for our USC AUV robot Turtle close before the annual RoboSub tournament.",
   },
 ];
 const projects = () => {
@@ -113,8 +113,9 @@ const projects = () => {
                 </p>
               </div>
             </li> */}
-            {data.map((project) => (
+            {data.map((project, index) => (
               <Project
+                key={index}
                 title={project.title}
                 type={project.type}
                 url={project.video}

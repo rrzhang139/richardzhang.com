@@ -4,7 +4,9 @@ const ProjectCard = (props) => {
   return (
     <li className="mx-8 mb-6 w-96">
       <div className="border w-full	p-3 font-yusei flex flex-col">
-        <h2 className="underline ml-3 text-lg">{props.title}</h2>
+        <h2 className="underline ml-3 text-xl text-gray-700 font-montserrat">
+          {props.title}
+        </h2>
         <h3 className="text-sm border w-max	p-1 flex flex-row self-end mb-4 mr-5 mt-4">
           <span>
             <img
@@ -17,9 +19,16 @@ const ProjectCard = (props) => {
           </span>
           {props.type}
         </h3>
-        <video width="320" height="240" controls className="m-auto mb-7">
-          <source src={`/assets/videos/${props.url}`} type="video/mp4" />
-        </video>
+        <iframe
+          width="100%"
+          height="240"
+          src={props.url}
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          className="mx-auto mb-4"
+        ></iframe>
+
         <p className="font-sans text-center px-2 mb-5 font-light">
           {props.description}
         </p>

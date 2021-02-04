@@ -22,6 +22,7 @@ module.exports = {
     extend: {
       fontFamily: {
         yusei: ["Yusei Magic", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
       },
     },
   },
