@@ -25,7 +25,7 @@ const ExperienceCard = ({ exp }) => {
                     href={`${url.includes(".com") ? "" : "mailto:"}${url}`}
                     target="_blank"
                   >
-                    {note.split("&")[0]}
+                    {note.split("*")[0]}
                   </a>
                 </p>
               );
