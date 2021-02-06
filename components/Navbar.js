@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="m-auto w-auto sm:w-max p-4 font-yusei border-black border-b-8 border-opacity-10 mb-10">
       <Link href="/">
         <a>
-          <h1 className="text-4xl text-center mb-5">Can Toraman</h1>
+          <h1 className="text-4xl text-center mb-5">Can Toraman!</h1>
         </a>
       </Link>
 
