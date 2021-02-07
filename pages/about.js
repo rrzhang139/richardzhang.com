@@ -29,7 +29,7 @@ const data = [
     position: "Computer Vision Lead",
     timeline: "Sep 2020 - present",
     description:
-      "USC AUV is a completely student-led club where students build a robot to complete certain tasks underwater. ",
+      "USC AUV is a completely student-led club where students build a robot to complete certain tasks underwater. The club participates to the annual RoboSub competition, backed by the greatest companies in the industry such as Lockheed Martin, Northrop Grumman etc.",
     topNotes: [],
     bottomNotes: [],
   },
