@@ -51,6 +51,16 @@ const about = () => {
           <h1 className="underline text-2xl pb-4 font-bold">About</h1>
           <ul className="font-light">
             <li>Istanbul | Los Angeles</li>
+            <li>
+              Computer Science Student,{" "}
+              <a
+                href="https://www.usc.edu/"
+                style={{ color: "#990000" }}
+                className="text-opacity-100 tracking-wide	"
+              >
+                USC'23
+              </a>
+            </li>
             <li>Web Programming | Web Architecture & Microsystems</li>
             <li>
               Junior at University of Southern California | Currently in gap
