@@ -64,8 +64,8 @@ const about = () => {
             </li>
             <li>Web Programming | Web Architecture & Microsystems</li>
             <li>
-              Junior at University of Southern California | Currently in gap
-              semester
+              Junior at University of Southern California | Currently taking a
+              gap semester
             </li>
           </ul>
         </div>
