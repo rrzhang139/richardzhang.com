@@ -18,7 +18,7 @@ const ExperienceCard = ({ exp }) => {
         <div className="bottom-notes text-sm text-blue-400">
           {exp.bottomNotes &&
             exp.bottomNotes.map((note) => {
-              const url = `${note.split("&")[1]}`;
+              const url = `${note.split("*")[1]}`;
               return (
                 <p>
                   <a

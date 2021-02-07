@@ -17,7 +17,7 @@ const data = [
     position: "Co-founder",
     timeline: "Jan 2021 - present",
     description:
-      "Getir is an instant delivery application currently operating in Turkey and United Kingdom. The company delivers products from ranging categories such as groceries, water, patisserie, deserts, dairy etc. It's considered to become one of the first unicorn startups founded in Turkey.",
+      "Coconvos is a platform to help college applicants better identify their fit colleges, with the help of college students and behavioral data processing.",
     topNotes: ["Launching in May 2021!"],
     bottomNotes: [
       "We're hiring for data science & backend dev!*toraman@usc.edu",
