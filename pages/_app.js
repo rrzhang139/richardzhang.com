@@ -6,6 +6,10 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>Can Toraman</title>
+        <link
+          rel="shortcut icon"
+          href="https://img.icons8.com/color/48/000000/gandalf.png"
+        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta charSet="utf-8" />
         <meta
