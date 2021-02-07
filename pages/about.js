@@ -58,26 +58,7 @@ const about = () => {
             </li>
           </ul>
         </div>
-        <div className="m-auto max-w-screen-lg pb-14">
-          <h1 className="underline text-2xl pb-4 font-bold">Skills</h1>
-          <ul className="font-light">
-            <li>
-              <span className="font-semibold">Tools: </span> Git | Docker
-            </li>
-            <li>
-              {" "}
-              <span className="font-semibold">Languages: </span> C++ | Java |
-              Node.js | Pyhton | HTML & CSS | SQL
-            </li>
-            <li>
-              <span className="font-semibold">Web Frameworks: </span> React.js,
-            </li>
-            <li>
-              Junior at University of Southern California | Currently in gap
-              semester
-            </li>
-          </ul>
-        </div>
+
         <div className="m-auto max-w-screen-lg	pb-14">
           <h1 className="underline text-2xl pb-4 font-bold">Experience</h1>
           {data.map((exp, index) => {
