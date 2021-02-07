@@ -42,11 +42,10 @@ const Intro = () => {
           </Link>
         </li>
         <li className="mx-4 xs:w-1/3 md:w-auto">
-          <Link href="/resume">
-            <a>
-              Resume <span>&rarr;</span>
-            </a>
-          </Link>
+          <a href="/assets/Resume.pdf" download="Can Toraman Resume.pdf">
+            Resume
+            <span>&rarr;</span>
+          </a>
         </li>
         <li className="mx-4 xs:w-1/3 md:w-auto">
           <Link href="/articles">
