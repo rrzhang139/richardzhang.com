@@ -57,6 +57,7 @@ const about = () => {
                 href="https://www.usc.edu/"
                 style={{ color: "#990000" }}
                 className="text-opacity-100 tracking-wide	"
+                target="_blank"
               >
                 USC'23
               </a>
