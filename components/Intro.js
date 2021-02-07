@@ -78,7 +78,7 @@ const Intro = () => {
         </li>
         <li className="mx-2 flex flex-row content-center">
           <a
-            href="mailto:webmaster@example.com"
+            href="mailto:toraman@usc.edu"
             className="italic tracking-wide text-xl text-blue-400"
           >
             toraman@usc.edu
