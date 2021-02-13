@@ -3,7 +3,7 @@ import ExperienceCard from "../components/ExperienceCard";
 
 const data = [
   {
-    title: "Getir Yemek",
+    title: "GetirYemek",
     position: "Backend Developer",
     timeline: "Feb 2021 - projected Aug 2021",
     description:
@@ -60,7 +60,7 @@ const about = () => {
                 target="_blank"
               >
                 USC'23
-              </a>
+              </a>{" "}
               | Currently taking a gap semester
             </li>
             <li>
