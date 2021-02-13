@@ -59,16 +59,12 @@ const about = () => {
                 className="text-opacity-100 tracking-wide	"
                 target="_blank"
               >
-                USC'23
+                USC'23 | Currently taking a gap semester
               </a>
             </li>
             <li>
               Interested in Algorithmic Programming | System Architecture &
               Microsystem Management
-            </li>
-            <li>
-              Junior at University of Southern California | Currently taking a
-              gap semester
             </li>
           </ul>
         </div>
