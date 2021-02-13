@@ -62,7 +62,10 @@ const about = () => {
                 USC'23
               </a>
             </li>
-            <li>Web Programming | Web Architecture & Microsystems</li>
+            <li>
+              Interested in Algorithmic Programming | System Architecture &
+              Microsystem Management
+            </li>
             <li>
               Junior at University of Southern California | Currently taking a
               gap semester
