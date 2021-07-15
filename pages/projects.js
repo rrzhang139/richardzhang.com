@@ -8,7 +8,7 @@ const data = [
     type: "Web",
     video: "https://www.youtube.com/embed/euTB_YxgDHQ",
     description:
-      "This video is an excerpt from an investment presentation, taken in June 2020. Participants are my co-founders Potter, Xin, and Jack.",
+      "This video is an excerpt from an investment presentation, taken in June 2020. Participants are my co-founding partners Potter, Xin, and Jack.",
   },
   {
     title: "CS@USC Trivia Web App",
