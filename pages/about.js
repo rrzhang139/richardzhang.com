@@ -17,8 +17,8 @@ const data = [
     position: "Co-founder & Technical Lead",
     timeline: "Jan 2021 - present",
     description:
-      "Coconvos is a platform to help college applicants better identify their fit colleges, with the help of college students and behavioral data processing.",
-    topNotes: ["Launching in May 2021!"],
+      "Peero is a platform to help college applicants better identify their fit colleges, with the help of college students and behavioral data processing.",
+    topNotes: ["Launching in the end of 2021!"],
     bottomNotes: [
       "We're hiring for data science & backend dev!*toraman@usc.edu",
       "Interested as an investor?*sivasligil@uchicago.edu",
