@@ -3,18 +3,18 @@ import ExperienceCard from "../components/ExperienceCard";
 
 const data = [
   {
-    title: "GetirYemek",
+    title: "GetirFood",
     position: "Backend Developer",
-    timeline: "Feb 2021 - projected Aug 2021",
+    timeline: "Feb 2021 - Jul 2021",
     description:
-      "Getir is an instant delivery application currently operating in Turkey and United Kingdom. The company delivers products from ranging categories such as groceries, water, patisserie, deserts, dairy etc. Getir Yemek is one of four branches of Getir that delivers a wide range of menus from restaurants. Getir is considered to become one of the first unicorn startups founded in Turkey.",
+      "Getir is a Turkey-based instant delivery application currently operating in various countries. The company delivers products from ranging categories such as groceries, water, patisserie, deserts, dairy etc. GetirFood is a major branch of Getir that delivers a wide range of menus from restaurants.",
     url: "https://getir.com/en/",
     topNotes: [],
     bottomNotes: ["Visit website*https://getir.com/en/"],
   },
   {
-    title: "Coconvos",
-    position: "Co-founder",
+    title: "Peero",
+    position: "Co-founder & Technical Lead",
     timeline: "Jan 2021 - present",
     description:
       "Coconvos is a platform to help college applicants better identify their fit colleges, with the help of college students and behavioral data processing.",
@@ -38,9 +38,9 @@ const data = [
     position: "Co-founder & Frontend developer",
     timeline: "Feb 2020 - July 2020",
     description:
-      "EthSign is a startup founded in University of Southern California, in order to make official document signin process completely decentralized. The project could not be launched to the market thought it was completed. I will always believe it carries great potential for the blockchain indsutry.",
+      "EthSign is a startup founded in University of Southern California, in order to make official document signing process completely decentralized. With its first investment round, it has become a multimillion dollar company.",
     topNotes: [],
-    bottomNotes: ["Interested as an investor?*toraman@usc.edu"],
+    bottomNotes: []
   },
 ];
 const about = () => {
