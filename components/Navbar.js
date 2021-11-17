@@ -26,7 +26,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li className='mx-4 xs:w-1/3 md:w-auto'>
-          <a href='/assets/Can-Toraman-Resume.pdf' download='Can Resume.pdf'>
+          <a href='/assets/CanToramanResume.pdf' download='Can_Toraman_SWE_Intern_Resume.pdf'>
             Resume
             <span>&rarr;</span>
           </a>
