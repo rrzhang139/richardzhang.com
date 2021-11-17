@@ -26,7 +26,10 @@ const Navbar = () => {
           </Link>
         </li>
         <li className='mx-4 xs:w-1/3 md:w-auto'>
-          <a href='/assets/CanToramanResume.pdf' download='Can_Toraman_SWE_Intern_Resume.pdf'>
+          <a
+            href='/assets/Can_Toraman_SWE_Intern_Resume.pdf'
+            download='Can_Toraman_SWE_Intern_Resume.pdf'
+          >
             Resume
             <span>&rarr;</span>
           </a>

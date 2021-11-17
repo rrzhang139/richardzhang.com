@@ -18,7 +18,7 @@ const data = [
     timeline: "Jan 2021 - present",
     description:
       "Peero is a platform to help college applicants better identify their fit colleges, with the help of college students and behavioral data processing.",
-    topNotes: ["Launching in the end of 2021!"],
+    topNotes: ["Launching in December 2021!"],
     bottomNotes: [
       "We're hiring for data science & backend dev!*toraman@usc.edu",
       "Interested as an investor?*sivasligil@uchicago.edu",
@@ -40,28 +40,27 @@ const data = [
     description:
       "EthSign is a startup founded in University of Southern California, in order to make official document signing process completely decentralized. With its first investment round, it has become a multimillion dollar company.",
     topNotes: [],
-    bottomNotes: []
+    bottomNotes: [],
   },
 ];
 const about = () => {
   return (
-    <div className="box-border p-5">
+    <div className='box-border p-5'>
       <Layout>
-        <div className="m-auto max-w-screen-lg pb-14">
-          <h1 className="underline text-2xl pb-4 font-bold">About</h1>
-          <ul className="font-light">
+        <div className='m-auto max-w-screen-lg pb-14'>
+          <h1 className='underline text-2xl pb-4 font-bold'>About</h1>
+          <ul className='font-light'>
             <li>Istanbul | Los Angeles</li>
             <li>
               Computer Science Student,{" "}
               <a
-                href="https://www.usc.edu/"
+                href='https://www.usc.edu/'
                 style={{ color: "#990000" }}
-                className="text-opacity-100 tracking-wide	"
-                target="_blank"
+                className='text-opacity-100 tracking-wide	'
+                target='_blank'
               >
                 USC'23
-              </a>{" "}
-              | Currently taking a gap semester
+              </a>
             </li>
             <li>
               Interested in Algorithmic Programming | System Architecture &
@@ -70,8 +69,8 @@ const about = () => {
           </ul>
         </div>
 
-        <div className="m-auto max-w-screen-lg	pb-14">
-          <h1 className="underline text-2xl pb-4 font-bold">Experience</h1>
+        <div className='m-auto max-w-screen-lg	pb-14'>
+          <h1 className='underline text-2xl pb-4 font-bold'>Experience</h1>
           {data.map((exp, index) => {
             return <ExperienceCard key={index} exp={exp} />;
           })}
