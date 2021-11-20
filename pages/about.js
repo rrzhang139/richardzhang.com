@@ -9,8 +9,7 @@ const data = [
     description:
       "Peero is a platform to help college applicants better identify their fit colleges, with the help of college students and behavioral data processing.",
     website: "https://peero.io",
-    image:
-      "https://media-exp1.licdn.com/dms/image/C4D0BAQHF1Tp5we4OYQ/company-logo_200_200/0/1621797494431?e=1645660800&v=beta&t=pcMzEJS_OXRSRim2ciQyCKYRS3DNzlnpAyjz-l2RvhQ",
+    image: "/assets/peero.png",
   },
   {
     title: "USC Autunomous Underwater Vehicle",
