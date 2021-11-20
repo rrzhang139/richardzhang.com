@@ -3,74 +3,72 @@ import ExperienceCard from "../components/ExperienceCard";
 
 const data = [
   {
-    title: "GetirFood",
-    position: "Backend Developer",
-    timeline: "Feb 2021 - Jul 2021",
-    description:
-      "Getir is a Turkey-based instant delivery application currently operating in various countries. The company delivers products from ranging categories such as groceries, water, patisserie, deserts, dairy etc. GetirFood is a major branch of Getir that delivers a wide range of menus from restaurants.",
-    url: "https://getir.com/en/",
-    topNotes: [],
-    bottomNotes: ["Visit website*https://getir.com/en/"],
-  },
-  {
     title: "Peero",
     position: "Co-founder & Technical Lead",
-    timeline: "Jan 2021 - present",
+    timeline: "jan 2021 - present",
     description:
       "Peero is a platform to help college applicants better identify their fit colleges, with the help of college students and behavioral data processing.",
-    topNotes: ["Launching in December 2021!"],
-    bottomNotes: [
-      "We're hiring for data science & backend dev!*toraman@usc.edu",
-      "Interested as an investor?*sivasligil@uchicago.edu",
-    ],
+    website: "https://peero.io",
+    image:
+      "https://media-exp1.licdn.com/dms/image/C4D0BAQHF1Tp5we4OYQ/company-logo_200_200/0/1621797494431?e=1645660800&v=beta&t=pcMzEJS_OXRSRim2ciQyCKYRS3DNzlnpAyjz-l2RvhQ",
   },
   {
     title: "USC Autunomous Underwater Vehicle",
     position: "Computer Vision Lead",
-    timeline: "Sep 2020 - present",
+    timeline: "sep 2019 - present",
     description:
       "USC AUV is a completely student-led club where students build a robot to complete certain tasks underwater. The club participates to the annual RoboSub competition, backed by the greatest companies in the industry such as Lockheed Martin, Northrop Grumman etc.",
-    topNotes: [],
-    bottomNotes: [],
+    website: "https://uscauv.com",
+    image:
+      "https://uscauv.com/wp-content/uploads/2019/08/cropped-Logo-Cardinal-Small-1.png",
+  },
+  {
+    title: "Getir",
+    position: "Full-time Backend Developer",
+    timeline: "feb 2021 - jul 2021",
+    description:
+      "Getir is a Turkey-based instant delivery application currently operating in various countries. The company delivers products from ranging categories such as groceries, water, patisserie, deserts, dairy etc. GetirFood is a major branch of Getir that delivers a wide range of menus from restaurants.",
+    website: "https://getir.com/en/",
+    image: "/assets/getir.png",
   },
   {
     title: "EthSign",
     position: "Co-founder & Frontend developer",
-    timeline: "Feb 2020 - July 2020",
+    timeline: "feb 2020 - july 2020",
     description:
-      "EthSign is a startup founded in University of Southern California, in order to make official document signing process completely decentralized. With its first investment round, it has become a multimillion dollar company.",
-    topNotes: [],
-    bottomNotes: [],
+      "Initially founded by five USC students, EthSign is on a mission to move the document signing process completely decentralized.",
+    website: "https://ethsign.xyz",
+    image: "https://ethsign.xyz/static/media/logo.9d572c56.svg",
   },
 ];
 const about = () => {
   return (
-    <div className='box-border p-5'>
+    <div className='box-border p-5' style={{ fontFamily: "Noto Serif JP" }}>
       <Layout>
         <div className='m-auto max-w-screen-lg pb-14'>
-          <h1 className='underline text-2xl pb-4 font-bold'>About</h1>
-          <ul className='font-light'>
+          <h1 className='text-2xl pb-4 font-bold tracking-wide'>About</h1>
+          <ul className='font-light text-sm'>
             <li>Istanbul | Los Angeles</li>
             <li>
-              Computer Science Student,{" "}
+              Computer science student,{" "}
               <a
                 href='https://www.usc.edu/'
                 style={{ color: "#990000" }}
                 className='text-opacity-100 tracking-wide	'
                 target='_blank'
               >
-                USC'23
+                <span className='tracking-wider'>usc' 23</span>
               </a>
             </li>
             <li>
-              Interested in Algorithmic Programming | System Architecture &
-              Microsystem Management
+              Interested in backend development | software systems architecture
+              | autonomous systems
             </li>
           </ul>
         </div>
 
         <div className='m-auto max-w-screen-lg	pb-14'>
-          <h1 className='underline text-2xl pb-4 font-bold'>Experience</h1>
+          <h1 className='text-2xl pb-4 font-bold tracking-wide'>Work</h1>
           {data.map((exp, index) => {
             return <ExperienceCard key={index} exp={exp} />;
           })}

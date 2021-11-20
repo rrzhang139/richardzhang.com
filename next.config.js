@@ -1,13 +1,3 @@
-module.exports = {
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      issuer: {
-        test: /\.(js|ts)x?$/,
-      },
-      use: ["@svgr/webpack"],
-    });
+const withMDX = require("@next/mdx")();
 
-    return config;
-  },
-};
+module.exports = withMDX();
