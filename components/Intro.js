@@ -8,7 +8,7 @@ const Intro = () => {
       style={{ fontFamily: "Lato" }}
     >
       <h1
-        className='text-8xl tracking-wider text-center'
+        className='text-7xl sm:text-8xl tracking-wider text-center'
         style={{ fontFamily: "Noto Serif JP" }}
       >
         can toraman
@@ -32,7 +32,7 @@ const Intro = () => {
       <ul className='pt-14 flex xs:flex-wrap xs:justify-center xs:text-center font-semibold'>
         <li className='mx-4 xs:w-1/3 xs:py-3 md:py-0 md:w-auto'>
           <Link href='/about'>
-            <a className='flex'>
+            <a className='flex justify-center'>
               <p>about</p>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -53,7 +53,7 @@ const Intro = () => {
         </li>
         <li className='mx-4 xs:w-1/3 xs:py-3 md:py-0 md:w-auto'>
           <Link href='/projects'>
-            <a className='flex'>
+            <a className='flex justify-center'>
               <p>projects</p>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -76,7 +76,7 @@ const Intro = () => {
           <a
             href='/assets/Can_Toraman_SWE_Intern_Resume.pdf'
             download='Can_Toraman_SWE_Intern_Resume.pdf'
-            className='flex'
+            className='flex justify-center'
           >
             <p>resume</p>
             <svg
@@ -97,7 +97,7 @@ const Intro = () => {
         </li>
         <li className='mx-4 xs:w-1/3 md:w-auto'>
           <Link href='/articles'>
-            <a className='flex'>
+            <a className='flex justify-center'>
               <p>articles</p>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
