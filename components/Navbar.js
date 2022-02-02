@@ -3,13 +3,10 @@ import Link from "next/link";
 const Navbar = () => {
   const svgSize = 35;
   return (
-    <nav
-      className='m-auto w-auto sm:w-max p-4 mb-10'
-      style={{ fontFamily: "Lato" }}
-    >
+    <nav className='m-auto w-auto sm:w-max p-4 mb-10'>
       <Link href='/'>
         <a>
-          <h1 className='text-2xl text-center mb-5'>homepage</h1>
+          <h1 className='text-2xl text-center mb-5'>cantoraman</h1>
         </a>
       </Link>
 
@@ -80,9 +77,9 @@ const Navbar = () => {
           </a>
         </li>
         <li className='mx-4 xs:w-1/3 md:w-auto'>
-          <Link href='/articles'>
+          <Link href='/blog'>
             <a className='flex justify-center'>
-              <p>articles</p>
+              <p>blog</p>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 className='pl-1 h-6 w-5'

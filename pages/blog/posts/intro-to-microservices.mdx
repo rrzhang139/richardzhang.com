@@ -1,0 +1,35 @@
+import BlogLayout from "../../../components/Blog/BlogLayout";
+
+export const meta = {
+  title: "Introduction to Microservices",
+  author: "Can Toraman",
+  date: "February 2, 2022",
+};
+
+Imagine you are chatting with your friends in a dinner table. Some of you talk, and some of you listen. Then, some others start talking, and the rest listens. There is always a commnunal action being taken, even though not everyone is doing the same thing. Welcome to microservice dynamics.
+
+Professional codebases have multiple tasks to deal with: user registration, managing push notifications, running time-based services, displaying activity data, and so on. Many of these tasks depend on different functions, business logic, and possibly different third party services. This is why combining many tasks in a single codebase can get messy quickly.
+
+In simple projects, you deal with these tasks by writing a function for each of them.
+
+```
+const userRegistration = (user) => {
+  // do something with user
+};
+
+const sendPushNotification(users, message) => {
+  // do something with users and message
+};
+```
+
+<div></div>
+
+In more complex business logics, however, this is not enough. In scaled projects, you will see that each task needs many functions and edge cases. This is where microservices come in.
+
+Imagine an entire backend application only dedicated to a single task.
+
+Luckily, it is possible to avoid this.
+
+export default ({ children }) => (
+  <BlogLayout meta={meta}>{children}</BlogLayout>
+);

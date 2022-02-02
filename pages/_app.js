@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "../styles/fonts.css";
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
@@ -7,22 +8,24 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Can Toraman</title>
         <link
-          rel="shortcut icon"
-          href="https://img.icons8.com/color/48/000000/gandalf.png"
+          rel='shortcut icon'
+          href='https://img.icons8.com/color/48/000000/gandalf.png'
         />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta charSet="utf-8" />
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+        <meta charSet='utf-8' />
         <meta
-          name="description"
-          content="Can Toraman, computer science student @ University of Southern California. Intrested in education technologies, AI for autonomy, creative web development."
+          name='description'
+          content='Can Toraman, computer science student @ University of Southern California. Welcome!'
         ></meta>
         <meta
-          property="og:description"
-          content="Can Toraman, computer science student @ University of Southern California. Intrested in education technologies, AI for autonomy, creative web development."
-          key="ogdesc"
+          property='og:description'
+          content='Can Toraman, computer science student @ University of Southern California. Welcome!'
+          key='ogdesc'
         />
       </Head>
-      <Component {...pageProps} />;
+      <div style={{ fontFamily: "Lato" }}>
+        <Component {...pageProps} />
+      </div>
     </>
   );
 }

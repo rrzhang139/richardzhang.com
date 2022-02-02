@@ -1,0 +1,21 @@
+export const meta = {
+  title: "Next.js | Tailwind CSS | MDX Blog Starter Template",
+  author: "Can Toraman",
+  date: "February 2, 2022",
+};
+
+This page is intended for users who know React.js and have a basic understanding of Markdown.
+
+Here, we will go through my new blog template for Next.js with Tailwind CSS and MDX.
+
+```
+npx create-next-mdx-blog
+```
+
+Currently in progress.
+
+import BlogLayout from "../../../components/Blog/BlogLayout";
+export default ({ children }) => (
+
+<BlogLayout meta={meta}>{children}</BlogLayout>
+);
