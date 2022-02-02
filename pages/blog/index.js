@@ -13,7 +13,7 @@ export async function getStaticProps() {
       image: "https://www.mindfusion.eu/screenshots/gallery5_net_pro.jpg",
       imageAlt: "Next.js MDX Tailwind CSS blog was never this easy.",
       intro:
-        "Next.js | Tailwind CSS | MDX Blog starter template, simplified for you!",
+        "Introducting the most intuitive Next.js | Tailwind CSS | MDX Blog starter template.",
       path: "/blog/posts/nextjs-tailwind-css-mdx-blog-starter-template",
     },
   ];
@@ -50,18 +50,18 @@ export default function Blog({ data }) {
             <div className='grid gap-x-8 gap-y-12 sm:gap-y-16 md:grid-cols-2 lg:grid-cols-3'>
               {posts.map((post, index) => (
                 <div className='relative' key={index}>
-                  <a
-                    href='#_'
-                    className='block overflow-hidden group rounded-xl'
-                  >
-                    <Image
-                      src='/assets/test.png'
-                      alt='Picture of the author'
-                      width={500}
-                      height={500}
-                      className='object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-105'
-                    />
-                  </a>
+                  <Link href={post.path}>
+                    <a className='block overflow-hidden group rounded-xl'>
+                      <Image
+                        src='/assets/test.png'
+                        alt='Picture of the author'
+                        width={500}
+                        height={500}
+                        className='object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-105'
+                      />
+                    </a>
+                  </Link>
+
                   <div className='relative mt-5'>
                     <p
                       className='uppercase text-xs mb-2.5 bg-purple-400 text-white px-1 font-extrabold'
@@ -78,9 +78,11 @@ export default function Blog({ data }) {
                     </Link>
 
                     <p className='mb-4 text-gray-700'>{post.intro}</p>
-                    <a href='#_' className='underline'>
-                      Read More
-                    </a>
+                    <Link href={post.path}>
+                      <a href='#_' className='underline'>
+                        Read More
+                      </a>
+                    </Link>
                   </div>
                 </div>
               ))}
