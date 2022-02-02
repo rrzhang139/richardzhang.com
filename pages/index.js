@@ -8,8 +8,11 @@ export default function Home() {
     <div>
       <div className='h-screen flex flex-col justify-center font-light'>
         <nav className='m-auto h-screen flex flex-col justify-center'>
-          <h1 className='text-7xl sm:text-9xl tracking-wider text-center'>
-            can toraman
+          <h1
+            className='text-7xl sm:text-9xl tracking-wider text-center'
+            style={{ fontFamily: "Caveat" }}
+          >
+            Can Toraman
           </h1>
           <div className='text-center pt-2'>
             <p className='text-center pt-7 pb-4 text-4xl'>
