@@ -71,7 +71,7 @@ export default function Blog({ data }) {
                     </p>
                     <Link href={post.path}>
                       <a className='block mb-3 hover:underline'>
-                        <h2 className='text-2xl font-bold leading-8 text-black transition-colors duration-200 hover:text-deep-purple-accent-700 truncate'>
+                        <h2 className='text-2xl font-bold leading-8 text-black transition-colors duration-200 hover:text-deep-purple-accent-700 lg:line-clamp-2'>
                           {post.title}
                         </h2>
                       </a>
