@@ -17,7 +17,7 @@ const data = [
     timeline: "Sep 2019 - present",
     description:
       "USC AUV is a completely student-led club where students build a robot to complete certain tasks underwater. The club participates to the annual RoboSub competition, backed by the greatest companies in the industry such as Lockheed Martin, Northrop Grumman etc.",
-    website: "https://uscauv.com",
+    website: "https://www.linkedin.com/company/usc-auv/",
     image: "/assets/uscauv.png",
   },
   // {
