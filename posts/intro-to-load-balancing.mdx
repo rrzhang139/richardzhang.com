@@ -1,0 +1,64 @@
+---
+title: Introduction to Load Balancing
+date: "March 3, 2022"
+description: How does load balancing work, and what is the intuition behind it?
+thumbnailUrl: "/introduction-to-load-balancers.jpg"
+---
+
+## Introduction
+
+You are the best programmer in the world, and you built an amazing web-application. It gives all visitors their family tree since the beginning of humanity. Now, you want to serve it on the web so that other people can visit your webpage.
+
+Wait a minute! Many people wonder their family trees, so millions of people visited your website only in an hour! Your cloud computer went down!
+
+Well, this is usual. Even though cloud providers are secure and maintainable, what happened was your fault. You did not deploy your application to the right computer. You need to handle incoming requests nicely. There are different approaches to the concept.
+
+1. Launch only a single computer, but make sure it is very capable so that it can handle millions of requests in an hour easily. Not preferred, but it is possible.
+2. Launch multiple computers, and none need to be extraordinarily powerful. Assign one computer to each instant request.
+
+## Load Balancing
+
+Assume we sticked to the second approach. Here, it is important to have a reliable policy to assign an incoming request to a computer. One solution is assigning one computer to each country.
+
+There are different load balancing algorithms. Backend developers and software architects need to have a solid foundation of these algorithms. A very trivial example is in the below code.
+
+<SyntaxHighlighter language='javascript'>
+  {`
+    function assignRequest(request) {
+      const country = getCountry(request);
+      if (country === 'United States of America') {
+        assignRequest('United States Instance');
+      } else if (country === 'United Kingdom') {
+        assignRequest('United Kingdom Instance');
+      } 
+      else if...
+    }
+  `}
+</SyntaxHighlighter>
+
+Here, we are assigning requests to a computer based on the country of the request. But, this is not a very good algorithm. It is not very scalable. If there are millions of requests coming from the US but only few hundreds from Italy, then there is a huge difference of request load between the computer assigned to the US and to Italy.
+
+There are known load balancing algorithms. You most likely won't need to implement your own, but you may need to know these algorithms and their limitations. If you stick to a policy where all requests from a user falls into the same computer, it may be helpful to cache the user's data into that computer. If you cache your beloved user Alice's data into computer A, but then assign her later request ti computer B... In the above example, if you change country then your cache will not be reachable anymore. If we are to send Alice's requests always to the same computer, then we can have a look at the below algorithm.
+
+<SyntaxHighlighter language='javascript'>
+  {`
+    function assignRequest(request) {
+      const code = request.user.assignmentCode
+      if (code.endsWith('A')) {
+        assignRequest('A Instance');
+      } else if (code.endsWith('B')) {
+        assignRequest('B Instance');
+      } 
+      else if...
+    }
+`}
+
+</SyntaxHighlighter>
+
+Unique code is a code that is generated when the user first creates account. It needs to be immutable.
+
+Creating an optimal load balancing algorithm is heavily dependent on your user base, peak activity times, and other factors. So, it may not be the best idea to implement one.
+
+## Open Source Load Balancers
+
+**Do you need to write your own load balancer?** No, you don't. There already are highly popular, trusted ones, such as NGINX. You can create an NGINX server and use it as a load balancer. Check it out https://www.nginx.com/.

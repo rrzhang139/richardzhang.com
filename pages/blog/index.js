@@ -1,95 +1,171 @@
-import { useEffect, useState } from "react";
-import Layout from "../../components/Layout";
-import { SearchIcon } from "@heroicons/react/solid";
-import Image from "next/image";
+const projects = [
+  {
+    name: "Study On USC",
+    type: "Individual",
+    desc: "Building USC's premier application for students to create study groups for their classes.",
+    launchDate: "Mar 5, 2022",
+    stack: [
+      {
+        name: "Node.js",
+        src: "/assets/js.gif",
+      },
+      {
+        name: "Svelte",
+        src: "/assets/svelte.png",
+      },
+    ],
+  },
+  {
+    name: "Pacman",
+    desc: "You know what it is!",
+    date: "October 2020",
+    stack: [
+      {
+        name: "C++",
+        src: "/assets/cpp.png",
+      },
+    ],
+  },
+];
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import Link from "next/link";
+import Image from "next/image";
+import { SearchIcon } from "@heroicons/react/solid";
+import { useState, useEffect } from "react";
 
-export async function getStaticProps() {
-  const data = [
-    {
-      title: "Next.js | TailwindCSS | MDX Blog Starter Template",
-      author: "Can Toraman",
-      date: "February 2nd 2022",
-      image: "https://www.mindfusion.eu/screenshots/gallery5_net_pro.jpg",
-      imageAlt: "Next.js MDX Tailwind CSS blog was never this easy.",
-      intro:
-        "Introducting the most intuitive Next.js | Tailwind CSS | MDX Blog starter template.",
-      path: "/blog/posts/nextjs-tailwind-css-mdx-blog-starter-template",
-    },
-  ];
-  return {
-    props: {
-      data,
-    },
-  };
-}
-
-export default function Blog({ data }) {
-  const [posts, setPosts] = useState([]);
+const Home = ({ posts }) => {
+  const [searchedPosts, setSearchedPosts] = useState([]);
   useEffect(() => {
-    setPosts(data);
-  }, [data]);
+    setSearchedPosts(posts);
+  }, []);
+
+  const onSearch = (e) => {
+    const { value } = e.target;
+    if (value.trim() === "") {
+      setSearchedPosts(posts);
+    } else {
+      setSearchedPosts(
+        posts.filter(
+          (post) =>
+            post.frontMatter.title
+              .toLowerCase()
+              .includes(value.toLowerCase()) ||
+            post.frontMatter.description
+              .toLowerCase()
+              .includes(value.toLowerCase())
+        )
+      );
+    }
+  };
   return (
-    <div className='box-border p-5'>
-      <Layout>
-        <div className='mx-auto w-96 mt-1 relative rounded-md shadow-sm'>
-          <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-            <SearchIcon className='h-5 w-5 text-gray-400' aria-hidden='true' />
-          </div>
-          <input
-            type='text'
-            name='text'
-            id='text'
-            className='focus:ring-purple-400 focus:border-purple-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md'
-            placeholder='Oh! Not working yet!'
-            autoComplete='off'
-          />
-        </div>
-        <section className='bg-white'>
-          <div className='px-8 py-10 mx-auto lg:max-w-screen-xl sm:max-w-xl md:max-w-full sm:px-12 md:px-16 lg:py-20 sm:py-16'>
-            <div className='grid gap-x-8 gap-y-12 sm:gap-y-16 md:grid-cols-2 lg:grid-cols-3'>
-              {posts.map((post, index) => (
-                <div className='relative' key={index}>
-                  <Link href={post.path}>
-                    <a className='block overflow-hidden group rounded-xl'>
-                      <Image
-                        src='/assets/test.png'
-                        alt='Picture of the author'
-                        width={500}
-                        height={500}
-                        className='object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-105'
-                      />
-                    </a>
-                  </Link>
-
-                  <div className='relative mt-5'>
-                    <p
-                      className='uppercase text-xs mb-2.5 bg-purple-400 text-white px-1 font-extrabold'
-                      style={{ width: "fit-content" }}
-                    >
-                      {post.date}
-                    </p>
-                    <Link href={post.path}>
-                      <a className='block mb-3 hover:underline'>
-                        <h2 className='text-2xl font-bold leading-8 text-black transition-colors duration-200 hover:text-deep-purple-accent-700 lg:line-clamp-2'>
-                          {post.title}
-                        </h2>
-                      </a>
-                    </Link>
-
-                    <p className='mb-4 text-gray-700'>{post.intro}</p>
-                    <Link href={post.path}>
-                      <a href='#_' className='underline'>
-                        Read More
-                      </a>
-                    </Link>
-                  </div>
-                </div>
-              ))}
+    <>
+      <section className='mt-16 px-4 md:px-0 max-w-2xl mx-auto mb-10'>
+        <div className='flex justify-between'>
+          <h2
+            className='text-5xl font-semibold'
+            style={{
+              fontFamily: "Redressed, cursive",
+            }}
+          >
+            Blog Posts
+          </h2>
+          <div>
+            <div className='relative rounded-md shadow-sm'>
+              <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+                <SearchIcon
+                  className='h-5 w-5 text-gray-400'
+                  aria-hidden='true'
+                />
+              </div>
+              <input
+                type='email'
+                name='email'
+                id='email'
+                className='focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md'
+                placeholder='Search Posts'
+                autoComplete='off'
+                onChange={onSearch}
+              />
             </div>
           </div>
-        </section>
-      </Layout>
-    </div>
+        </div>
+      </section>
+      <div className='mt-20 px-4 md:px-0 max-w-2xl mx-auto mb-10'>
+        <ul className='mt-10'>
+          {searchedPosts.map((post, index) => (
+            <li className='my-4 hover:cursor-pointer'>
+              <Link href={"/blog/" + post.slug} passHref key={index}>
+                <div className='flex px-2 py-4 bg-slate-50 rounded-lg'>
+                  <img
+                    src={post.frontMatter.thumbnailUrl}
+                    className='h-14 w-14 md:h-20 md:w-20 rounded-full'
+                  />
+                  <div className='ml-6 self-center'>
+                    <h2 className='text-lg'>{post.frontMatter.title}</h2>
+                    <p className='text-sm text-gray-600'>
+                      {post.frontMatter.description}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
-}
+};
+
+export const getStaticProps = async () => {
+  const files = fs.readdirSync(path.join("posts"));
+
+  const posts = files.map((filename) => {
+    const markdownWithMeta = fs.readFileSync(
+      path.join("posts", filename),
+      "utf-8"
+    );
+    const { data: frontMatter } = matter(markdownWithMeta);
+
+    return {
+      frontMatter,
+      slug: filename.split(".")[0],
+    };
+  });
+
+  return {
+    props: {
+      posts,
+    },
+  };
+};
+
+export default Home;
+/*
+<ul className='py-10'>
+  {projects.map((p) => (
+    <li className='py-6'>
+      <h3 className='text-lg'>{p.name}</h3>
+      <div className='mt-1 text-sm'>
+        <p className=''>{p.desc}</p>
+        {p.launchDate && (
+          <p className='mt-1 text-indigo-600 text-xs'>
+            Launching on {p.launchDate}
+          </p>
+        )}
+        {/* {p.date && <p className='text-indigo-600'>{p.date}</p>} */
+//     </div>
+//     <ul className='mt-5 flex'>
+//       {p.stack.map((s) => (
+//         <li className='mr-4'>
+//           <img src={s.src} className='mx-auto w-8 h-8' />
+//           <p className='pt-1 text-black text-xs w-full text-center'>
+//             {s.name}
+//           </p>
+//         </li>
+//       ))}
+//     </ul>
+//   </li>
+// ))}
+// </ul>;/*
