@@ -62,7 +62,7 @@ const Home = ({ posts }) => {
   return (
     <>
       <section className='mt-16 px-4 md:px-0 max-w-2xl mx-auto mb-10'>
-        <div className='flex justify-between'>
+        <div className='md:flex md:justify-between'>
           <h2
             className='text-5xl font-semibold'
             style={{
@@ -71,7 +71,7 @@ const Home = ({ posts }) => {
           >
             Blog Posts
           </h2>
-          <div>
+          <div className='mt-6 md:mt-0'>
             <div className='relative rounded-md shadow-sm'>
               <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
                 <SearchIcon

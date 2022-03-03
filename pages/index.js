@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className='mt-32 px-4 md:px-0 max-w-2xl mx-auto mb-10'>
+    <div className='mt-16 md:mt-32 px-4 md:px-0 max-w-2xl mx-auto mb-10'>
       <h3
         className='text-8xl font-semibold'
         style={{
@@ -44,7 +44,7 @@ export default function Home() {
 
           <p className='underline hover:cursor-pointer'>
             <a
-              href='/assets/Can-Toraman-SWE-Intern-Resume.pdf'
+              href='/assets/Can_Toraman_SWE_Intern_Resume.pdf'
               download='Can_Toraman_SWE_Intern_Resume.pdf'
             >
               Download Resume
