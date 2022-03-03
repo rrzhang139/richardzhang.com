@@ -44,7 +44,7 @@ export default function Home() {
 
           <p className='underline hover:cursor-pointer'>
             <a
-              href='/assets/Can_Toraman_SWE_Intern_Resume.pdf'
+              href='/assets/Can-Toraman-SWE-Intern-Resume.pdf'
               download='Can_Toraman_SWE_Intern_Resume.pdf'
             >
               Download Resume
