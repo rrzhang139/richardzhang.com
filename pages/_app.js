@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import "../styles/fonts.css";
 import Head from "next/head";
+import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -23,9 +24,9 @@ function MyApp({ Component, pageProps }) {
           key='ogdesc'
         />
       </Head>
-      <div style={{ fontFamily: "Lato" }}>
+      <Layout>
         <Component {...pageProps} />
-      </div>
+      </Layout>
     </>
   );
 }
