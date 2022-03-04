@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className='mt-16 md:mt-32 px-4 md:px-0 max-w-2xl mx-auto mb-10'>
+    <div className='mt-16 md:mt-32 px-4 md:px-0 max-w-2xl mx-auto md:mb-10'>
       <h3
-        className='text-8xl font-semibold'
+        className='text-5xl md:text-8xl font-semibold'
         style={{
           fontFamily: "Redressed, cursive",
         }}
@@ -51,12 +51,12 @@ export default function Home() {
             </a>
           </p>
         </div>
-        <div id='social' className='py-4 flex text-base'>
+        <div id='social' className='py-4 flex flex-col sm:flex-row text-base'>
           <a
             href='https://www.linkedin.com/in/cantoraman/'
             target='_blank'
             rel='noopener noreferrer'
-            className='px-2 py-1 border mr-3'
+            className='px-2 py-1 mb-2 sm:mb-0 border-b sm:border mr-3'
           >
             Linkedin
           </a>
@@ -64,7 +64,7 @@ export default function Home() {
             href='https://github.com/cantoramann'
             target='_blank'
             rel='noopener noreferrer'
-            className='px-2 py-1 border mr-3'
+            className='px-2 py-1 mb-2 sm:mb-0 border-b sm:border mr-3'
           >
             GitHub
           </a>
@@ -72,7 +72,7 @@ export default function Home() {
             href='https://twitter.com/cantoramann'
             target='_blank'
             rel='noopener noreferrer'
-            className='px-2 py-1 border mr-3'
+            className='px-2 py-1 mb-2 sm:mb-0 border-b sm:border mr-3'
           >
             Twitter
           </a>
@@ -80,7 +80,7 @@ export default function Home() {
             href='https://superpeer.com/cantoramann'
             target='_blank'
             rel='noopener noreferrer'
-            className='px-2 py-1 border mr-3'
+            className='px-2 py-1 mb-2 sm:mb-0 border-b sm:border mr-3'
           >
             Superpeer
           </a>

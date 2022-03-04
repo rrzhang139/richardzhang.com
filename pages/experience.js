@@ -188,7 +188,7 @@ export default function Home() {
 
                 <ul className='mt-4 flex flex-wrap'>
                   {exp.stack.map((s) => (
-                    <li className='mx-2'>
+                    <li className='mb-3 md:my-0 mx-2'>
                       <img src={s.src} className='mx-auto w-6 h-6' />
                       <p className='pt-1 text-black text-xs w-full text-center'>
                         {s.name}
