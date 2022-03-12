@@ -37,23 +37,23 @@ const Projects = () => {
             <h3 className='text-lg self-center'>{p.name}</h3>
             <div className='mt-1 text-sm'>
               <p className=''>{p.desc}</p>
-              <div className='mt-4'>
+              <div className='mt-1'>
                 {!p.launched ? (
-                  <p className='text-indigo-600 text-sm'>
+                  <p className='text-indigo-600 text-xs'>
                     Launching on {p.launchDate}
                   </p>
                 ) : (
-                  <p className='text-indigo-600 text-sm self-center'>
-                    {p.launchDate}
+                  <p className='text-indigo-600 text-xs self-center'>
+                    Launched on {p.launchDate}
                   </p>
                 )}
                 {p.website && (
-                  <p className='mt-1'>
+                  <p className='mt-1 text-xs'>
                     <a
                       href={p.website}
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='text-indigo-600'
+                      className='text-blue-600'
                     >
                       Website
                     </a>
