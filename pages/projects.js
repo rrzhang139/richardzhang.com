@@ -1,8 +1,12 @@
+import { GlobeAltIcon } from "@heroicons/react/solid";
+
 const projects = [
   {
     name: "Study On USC",
-    desc: "Building USC's premier application for students to create study groups for their classes.",
+    desc: "USC's premier application for students to create study groups for their classes.",
     launchDate: "Mar 6, 2022",
+    launched: true,
+    website: "https://studyonusc.com/",
     stack: [
       {
         name: "Node.js",
@@ -29,15 +33,34 @@ const Projects = () => {
       </h2>
       <ul className='py-10'>
         {projects.map((p) => (
-          <li className='py-6'>
-            <h3 className='text-lg'>{p.name}</h3>
+          <li className='py-6 max-w-lg'>
+            <h3 className='text-lg self-center'>{p.name}</h3>
             <div className='mt-1 text-sm'>
               <p className=''>{p.desc}</p>
-              {p.launchDate && (
-                <p className='mt-1 text-indigo-600 text-xs'>
-                  Launching on {p.launchDate}
-                </p>
-              )}
+              <div className='mt-1'>
+                {!p.launched ? (
+                  <p className='text-indigo-600 text-xs'>
+                    Launching on {p.launchDate}
+                  </p>
+                ) : (
+                  <p className='text-indigo-600 text-xs self-center'>
+                    Launched on {p.launchDate}
+                  </p>
+                )}
+                {p.website && (
+                  <p className='mt-1 text-xs'>
+                    <a
+                      href={p.website}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='text-blue-600'
+                    >
+                      Website
+                    </a>
+                  </p>
+                )}
+              </div>
+
               {/* {p.date && <p className='text-indigo-600'>{p.date}</p>} */}
             </div>
             <ul className='mt-5 flex'>
