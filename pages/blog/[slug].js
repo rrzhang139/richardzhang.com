@@ -27,7 +27,7 @@ const PostPage = ({ frontMatter: { title, date, description }, mdxSource }) => {
         </div>
       </div>
       {/* blog content section */}
-      <div className='px-4 max-w-2xl lg:max-w-4xl mx-auto md:px-0 my-12 md:my-28 lg:my-32'>
+      <div className='px-4 max-w-2xl mx-auto md:px-0 my-12 md:my-28 lg:my-32'>
         <article className='prose md:my-40 md:px-8 lg:px-0 max-w-5xl'>
           <MDXRemote {...mdxSource} components={components} />
         </article>
