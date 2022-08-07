@@ -3,6 +3,7 @@ import * as dayjs from "dayjs";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { getRaindrops } from "../lib/raindrops";
+import { calculateTimePassed } from "../lib/time";
 
 const Bookmarks = ({ bookmarks: bookmarkData }) => {
   const [bookmarks, setBookmarks] = useState([]);
@@ -59,7 +60,12 @@ const Bookmarks = ({ bookmarks: bookmarkData }) => {
                 {bookmark.shortUrl}
               </a>
               <span>&#8226;</span>
-              <span>2 days ago</span>
+              <span>
+                {calculateTimePassed(
+                  new Date().getTime(),
+                  new Date(bookmark.created).getTime()
+                )}
+              </span>
             </div>
           </li>
         ))}
@@ -68,7 +74,7 @@ const Bookmarks = ({ bookmarks: bookmarkData }) => {
   );
 };
 
-export const getStaticProps = async ({ req, res }) => {
+export const getStaticProps = async () => {
   let bookmarks;
   try {
     bookmarks = await getRaindrops();
@@ -87,7 +93,7 @@ export const getStaticProps = async ({ req, res }) => {
 
   return {
     props: { bookmarks },
-    revalidate: ms("1h") / 1000,
+    revalidate: 3600,
   };
 };
 
