@@ -1,9 +1,15 @@
 import LandingContainer from "../components/Containers/LandingContainer";
 import * as dayjs from "dayjs";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { getRaindrops } from "../lib/raindrops";
 
-const Bookmarks = ({ bookmarks }) => {
+const Bookmarks = ({ bookmarks: bookmarkData }) => {
+  const [bookmarks, setBookmarks] = useState([]);
+  useEffect(() => {
+    setBookmarks(bookmarkData);
+  }, [bookmarkData]);
+
   return (
     <LandingContainer classnames="mt-12">
       <div>
@@ -62,7 +68,12 @@ const Bookmarks = ({ bookmarks }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({ req, res }) => {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
+
   let bookmarks;
   try {
     bookmarks = await getRaindrops();
