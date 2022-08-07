@@ -7,7 +7,7 @@ export default function Home() {
     <div>
       <Head></Head>
       <LandingContainer classnames="mt-10">
-        <h2 className="text-left text-4xl">Hey, this is Can.</h2>
+        <h2 className="text-4xl text-left">Hey, this is Can.</h2>
         <p className="text-lg">
           I write server-side code and design software systems.
         </p>
@@ -33,7 +33,7 @@ export default function Home() {
           >
             EthSign
           </a>
-          . Later, I worked on the backend of delivery zones at{" "}
+          . Later, I worked full-time on the backend of delivery zones at{" "}
           <a
             href="https://www.getir.com"
             target="_blank"
