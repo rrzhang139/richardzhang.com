@@ -6,11 +6,29 @@ import matter from "gray-matter";
 import ExternalLink from "../../components/Posts/ExternalLink";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import Quote from "../../components/Posts/Quote";
+import PostMeta from "../../components/Posts/PostMeta";
 
 const components = {
   ExternalLink,
   SyntaxHighlighter,
+  PostMeta,
   Quote,
+};
+
+const proseClasses = () => {
+  // py-12 prose-lg text-justify prose-p:leading-loose prose-h2:mt-24 prose-h2:border-b prose-h2:border-white prose-h1:text-5xl lg:prose-h1:leading-normal prose-a:text-blue-400 prose-headings:text-left md:py-20
+  return [
+    "prose prose-xl my-20",
+    "prose-h2:mt-24 prose-h2:border-b prose-h2:border-gray-400",
+    "prose-ul:list-disc	prose-ol:list-decimal",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ].join(" ");
 };
 
 const PostPage = ({ mdxSource }) => {
@@ -18,7 +36,7 @@ const PostPage = ({ mdxSource }) => {
     <section className="space-y-10">
       <section className="max-w-xl px-12 mx-auto lg:px-0">
         <article
-          className="py-12 prose-lg text-justify prose-p:leading-loose prose-h2:mt-24 prose-h2:border-b prose-h2:border-white prose-h1:text-3xl lg:prose-h1:leading-normal prose-a:text-blue-400 prose-headings:text-left md:py-20"
+          className={proseClasses()}
           style={{
             fontFamily: "Nanum Myeongjo, serif",
           }}
