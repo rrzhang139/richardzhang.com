@@ -42,7 +42,7 @@ const Bookmarks = ({ bookmarks: bookmarkData }) => {
                   {bookmark.title}
                 </a>
               </h3>
-              {/* <ul className="flex text-xs self-center space-x-1">
+              {/* <ul className="flex self-center space-x-1 text-xs">
                 {bookmark.tags.map((tag, index) => (
                   <li className="tag" key={index}>
                     {tag}
@@ -93,7 +93,7 @@ export const getStaticProps = async () => {
 
   return {
     props: { bookmarks },
-    revalidate: 3600,
+    revalidate: 300,
   };
 };
 
