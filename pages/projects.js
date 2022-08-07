@@ -1,81 +1,66 @@
-import { GlobeAltIcon } from "@heroicons/react/solid";
+import Link from "next/link";
+import Nav from "../components/Nav";
 
 const projects = [
   {
-    name: "Study On USC",
-    desc: "USC's premier application for students to create study groups for their classes.",
-    launchDate: "Mar 6, 2022",
-    launched: true,
-    website: "https://studyonusc.com/",
+    title: "Study On USC!",
     stack: [
-      {
-        name: "Node.js",
-        src: "/assets/js.gif",
-      },
-      {
-        name: "Svelte",
-        src: "/assets/svelte.png",
-      },
+      "Node.js",
+      "MongoDB",
+      "SvelteKit",
+      "Vercel",
     ],
+    desc: "USC's app to inform classmates about the upcoming study sessions.",
+    github: "Please contact",
+    demo: "https://www.studyonusc.com",
   },
 ];
 
 const Projects = () => {
   return (
-    <section className='mt-16 px-4 md:px-0 max-w-2xl mx-auto mb-10'>
-      <h2
-        className='text-5xl font-semibold'
-        style={{
-          fontFamily: "Redressed, cursive",
-        }}
-      >
-        Projects
-      </h2>
-      <ul className='py-10'>
-        {projects.map((p) => (
-          <li className='py-6 max-w-lg'>
-            <h3 className='text-lg self-center'>{p.name}</h3>
-            <div className='mt-1 text-sm'>
-              <p className=''>{p.desc}</p>
-              <div className='mt-1'>
-                {!p.launched ? (
-                  <p className='text-indigo-600 text-xs'>
-                    Launching on {p.launchDate}
+    <section className="space-y-32">
+      <Nav />
+      <div className="max-w-5xl mx-auto">
+        <ul className="space-y-14">
+          {projects.map((project, index) => (
+            <li key={index}>
+              <div className="px-4 mx-auto xl:mx-0 w-fit max-w-2xl space-y-5">
+                <div className="space-y-3 border-l pl-5">
+                  <h2 className="text-lg">
+                    {project.title}
+                  </h2>
+                  <p className="text-sm">
+                    {project.desc}
                   </p>
-                ) : (
-                  <p className='text-indigo-600 text-xs self-center'>
-                    Launched on {p.launchDate}
-                  </p>
-                )}
-                {p.website && (
-                  <p className='mt-1 text-xs'>
+                  <ul className="text-xs self-center justify-start flex flex-wrap gap-2">
+                    {project.stack.map((tech) => (
+                      <li className="">{tech}</li>
+                    ))}
+                  </ul>
+                  <p className="flex space-x-4 text-sm">
                     <a
-                      href={p.website}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className='text-blue-600'
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener"
+                      className="text-yellow-400 border-yellow-400"
+                    >
+                      GitHub
+                    </a>
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener"
+                      className="text-yellow-400 border-yellow-400"
                     >
                       Website
                     </a>
                   </p>
-                )}
+                </div>
               </div>
-
-              {/* {p.date && <p className='text-indigo-600'>{p.date}</p>} */}
-            </div>
-            <ul className='mt-5 flex'>
-              {p.stack.map((s) => (
-                <li className='mr-4'>
-                  <img src={s.src} className='mx-auto w-8 h-8' />
-                  <p className='pt-1 text-black text-xs w-full text-center'>
-                    {s.name}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 };

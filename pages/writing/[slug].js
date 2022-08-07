@@ -3,35 +3,35 @@ import { MDXRemote } from "next-mdx-remote";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import ExternalLink from "../../components/Posts/ExternalLink";
 import SyntaxHighlighter from "react-syntax-highlighter";
+import Nav from "../../components/Nav";
+import Quote from "../../components/Posts/Quote";
+// import { Button } from "../../components";
 
-import { Button } from "../../components";
-
-const components = { Button, SyntaxHighlighter };
+const components = {
+  ExternalLink,
+  SyntaxHighlighter,
+  Quote,
+};
 
 const PostPage = ({ frontMatter: { title, date, description }, mdxSource }) => {
   return (
-    <section>
+    <section className="space-y-10">
       {/* header section */}
-      <div className='md:border-b border-stone-300'>
-        <div className='px-4 max-w-2xl mx-auto md:px-0'>
-          <div className='margin comes here... for_<sm: my-12 for_medium: md:my-28 for_large: lg:my-32'>
-            <h1 className='global: text-stone-700 font-serif for_<sm: text-4xl for_medium: md:text-5xl for_large: lg:text-7xl lg:leading-snug '>
-              {title}
-            </h1>
-            <h5 className='text-stone-500  text-sm for large: my-2'>{date}</h5>
-            <h4 className='text-stone-500 font-bold for large: my-2'>
-              {description}
-            </h4>
-          </div>
-        </div>
-      </div>
-      {/* blog content section */}
-      <div className='px-4 max-w-2xl mx-auto md:px-0 my-12 md:my-28 lg:my-32'>
-        <article className='prose md:my-40 md:px-8 lg:px-0 max-w-5xl'>
+      <section className="max-w-2xl px-12 lg:px-0 mx-auto">
+        {/* <div className="max-w-5xl mx-auto lg:max-w-3xl xl:mx-0"> */}
+        {/* blog content section */}
+        <article
+          className="prose-p:leading-loose prose-lg prose-h2:mt-24 prose-h2:border-b prose-h2:border-white prose-h1:text-3xl lg:prose-h1:text-4xl lg:prose-h1:leading-normal prose-a:text-blue-400 prose-headings:text-left py-12 md:py-20  max-w-5xl text-justify"
+          style={{
+            fontFamily: "Nanum Myeongjo, serif",
+          }}
+        >
           <MDXRemote {...mdxSource} components={components} />
         </article>
-      </div>
+        {/* </div> */}
+      </section>
     </section>
   );
 };
