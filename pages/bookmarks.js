@@ -68,12 +68,7 @@ const Bookmarks = ({ bookmarks: bookmarkData }) => {
   );
 };
 
-export const getServerSideProps = async ({ req, res }) => {
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=10, stale-while-revalidate=59"
-  );
-
+export const getStaticProps = async ({ req, res }) => {
   let bookmarks;
   try {
     bookmarks = await getRaindrops();
@@ -86,13 +81,13 @@ export const getServerSideProps = async ({ req, res }) => {
         tags: bookmark.tags,
       };
     });
-    console.log(bookmarks);
   } catch (e) {
     bookmarks = [];
   }
 
   return {
     props: { bookmarks },
+    revalidate: ms("1h") / 1000,
   };
 };
 
