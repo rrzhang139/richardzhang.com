@@ -5,9 +5,7 @@ import path from "path";
 import matter from "gray-matter";
 import ExternalLink from "../../components/Posts/ExternalLink";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import Nav from "../../components/Nav";
 import Quote from "../../components/Posts/Quote";
-// import { Button } from "../../components";
 
 const components = {
   ExternalLink,
@@ -15,15 +13,12 @@ const components = {
   Quote,
 };
 
-const PostPage = ({ frontMatter: { title, date, description }, mdxSource }) => {
+const PostPage = ({ mdxSource }) => {
   return (
     <section className="space-y-10">
-      {/* header section */}
-      <section className="max-w-2xl px-12 lg:px-0 mx-auto">
-        {/* <div className="max-w-5xl mx-auto lg:max-w-3xl xl:mx-0"> */}
-        {/* blog content section */}
+      <section className="max-w-xl px-12 mx-auto lg:px-0">
         <article
-          className="prose-p:leading-loose prose-lg prose-h2:mt-24 prose-h2:border-b prose-h2:border-white prose-h1:text-3xl lg:prose-h1:text-4xl lg:prose-h1:leading-normal prose-a:text-blue-400 prose-headings:text-left py-12 md:py-20  max-w-5xl text-justify"
+          className="py-12 prose-lg text-justify prose-p:leading-loose prose-h2:mt-24 prose-h2:border-b prose-h2:border-white prose-h1:text-3xl lg:prose-h1:leading-normal prose-a:text-blue-400 prose-headings:text-left md:py-20"
           style={{
             fontFamily: "Nanum Myeongjo, serif",
           }}

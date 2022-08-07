@@ -16,15 +16,15 @@ const Home = ({ posts }) => {
       </div>
       <ul className="space-y-10">
         {posts.map((post, index) => (
-          <li key={index} className="block border-l pl-2 border-gray-300">
-            <div className="space-y-3 max-w-xl">
+          <li key={index} className="block pl-2 border-l border-gray-300">
+            <div className="max-w-xl space-y-3">
               <div>
                 <h3 className="text-base">{post.frontMatter.title}</h3>
               </div>
               <p className="max-w-xl text-sm">{post.frontMatter.description}</p>
               <div>
                 <Link href={`writing/${post.frontMatter.slug}`}>
-                  <span className="hover:cursor-pointer text-xs border-b">
+                  <span className="text-xs border-b hover:cursor-pointer">
                     Read more...
                   </span>
                 </Link>

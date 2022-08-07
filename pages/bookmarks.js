@@ -24,7 +24,7 @@ const Bookmarks = ({ bookmarks: bookmarkData }) => {
             target="_blank"
             className="text-blue-400"
           >
-            Adem Ilter's website
+            Adem Ilter's bookmarks
           </a>
           .
         </p>

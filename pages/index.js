@@ -73,10 +73,6 @@ export default function Home() {
           </a>
         </div>
       </LandingContainer>
-      {/* <LandingContainer classnames="py-5">
-        I am a conservative learner, so I mostly read textbooks about software.
-        I like running performance tests on software systems.
-      </LandingContainer> */}
     </div>
   );
 }
