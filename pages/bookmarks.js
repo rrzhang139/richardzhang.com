@@ -12,7 +12,7 @@ const Bookmarks = ({ bookmarks: bookmarkData }) => {
   }, [bookmarkData]);
 
   return (
-    <LandingContainer classnames="mt-12">
+    <LandingContainer classnames="mt-12 space-y-16">
       <div>
         <h1 className="text-2xl">Bookmarks</h1>
         <p className="mt-4 italic">
@@ -82,7 +82,7 @@ export const getStaticProps = async () => {
       return {
         title: bookmark.title,
         created: bookmark.created,
-        shortUrl: bookmark.link.split("/")[2],
+        shortUrl: bookmark.link.split("/")[2].replace("www.", ""),
         completeUrl: bookmark.link,
         tags: bookmark.tags,
       };

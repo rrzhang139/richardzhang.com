@@ -7,7 +7,7 @@ import LandingContainer from "../../components/Containers/LandingContainer";
 
 const Home = ({ posts }) => {
   return (
-    <LandingContainer classnames="mt-12 space-y-24">
+    <LandingContainer classnames="mt-12 space-y-16">
       <div>
         <h1 className="text-2xl">Writing</h1>
         <p className="mt-4 italic">
@@ -19,7 +19,7 @@ const Home = ({ posts }) => {
           <li key={index} className="block pl-2 border-l border-gray-300">
             <div className="max-w-xl space-y-3">
               <div>
-                <h3 className="text-base">{post.frontMatter.title}</h3>
+                <h3 className="text-lg">{post.frontMatter.title}</h3>
               </div>
               <p className="max-w-xl text-sm">{post.frontMatter.description}</p>
               <div>
