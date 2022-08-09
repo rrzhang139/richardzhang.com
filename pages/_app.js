@@ -16,16 +16,16 @@ function MyApp({ Component, pageProps }) {
         <meta charSet="utf-8" />
         <meta
           name="description"
-          content="Can Toraman, computer science student @ University of Southern California. Welcome!"
+          content="I write server-side code and design software systems. Welcome to my website!"
         ></meta>
         <meta
           property="og:description"
-          content="Can Toraman, computer science student @ University of Southern California. Welcome!"
+          content="I write server-side code and design software systems. Welcome to my website!"
           key="ogdesc"
         />
       </Head>
       <div
-        className="min-h-screen text-black"
+        className="min-h-screen pb-8 text-black"
         style={{
           fontFamily: "Nanum Gothic, sans-serif",
         }}
