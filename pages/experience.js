@@ -5,7 +5,7 @@ const experience = [
   {
     org: "USC AUV",
     web: "https://www.linkedin.com/company/usc-auv/",
-    src: "https://media-exp1.licdn.com/dms/image/C4E0BAQHFziXi3gf1BA/company-logo_200_200/0/1521603361817?e=1653523200&v=beta&t=nHAL-G_qXCF1cCIGtJbVmF_AXMCevlqPRQwwo7tEoa8",
+    src: "/assets/uscauv.png",
     role: "Software Advisor",
     date: "Feb 2022 - present",
     desc: [
@@ -36,7 +36,7 @@ const experience = [
   {
     org: "Peero",
     web: "https://www.peero.io/",
-    src: "https://media-exp1.licdn.com/dms/image/C4D0BAQHF1Tp5we4OYQ/company-logo_200_200/0/1621797494431?e=1654128000&v=beta&t=gNmg1IkvRgOz4enSqrn9H7UngU3Ztfh1CQdPkrjNa74",
+    src: "/assets/peero.png",
     role: "Co-founder & Tech Lead",
     date: "Jan 2021 - Feb 2022",
     desc: [
@@ -80,7 +80,7 @@ const experience = [
   {
     org: "Getir",
     web: "https://getir.com",
-    src: "https://media-exp1.licdn.com/dms/image/C560BAQHOzB7jmyl6hg/company-logo_200_200/0/1538662168360?e=1654128000&v=beta&t=BYWsZoJ9EwK9JmQ3RA1SZ9eZY5SwJ4EmhxYo_xMfv84",
+    src: "/assets/getir.png",
     role: "Backend Developer",
     date: "Feb 2021 - Jul 2021",
     desc: [
@@ -110,7 +110,7 @@ const experience = [
   {
     org: "EthSign",
     web: "https://ethsign.xyz/",
-    src: "https://media-exp1.licdn.com/dms/image/C560BAQHsl303X6S2Qg/company-logo_200_200/0/1634384650769?e=1654128000&v=beta&t=u6vfyaxbkYl1ILgZpG41On5K3SwLfiePiCSjGalFc_o",
+    src: "/assets/ethsign.png",
     role: "Initiating Member & Software Developer",
     date: "Feb 2020 - Jul 2020",
     desc: [
@@ -144,9 +144,9 @@ const experience = [
 
 export default function Home() {
   return (
-    <section className='mt-16 px-4 md:px-0 max-w-2xl mx-auto mb-10'>
+    <section className="mt-16 px-4 md:px-0 max-w-2xl mx-auto mb-10">
       <h2
-        className='text-5xl font-semibold'
+        className="text-5xl font-semibold"
         style={{
           fontFamily: "Redressed, cursive",
         }}
@@ -154,43 +154,54 @@ export default function Home() {
         Experience
       </h2>
 
-      <div className='py-10'>
+      <div className="py-10">
         <ul>
           {experience.map((exp) => {
             return (
-              <li className='py-10'>
-                <div className='flex'>
+              <li className="py-10">
+                <div className="flex">
                   <img
-                    className='w-24 h-24 rounded-full self-center'
+                    className="w-24 h-24 rounded-full self-center"
                     src={exp.src}
                   />
-                  <div className='w-full ml-3 self-center'>
-                    <h4 className='font-semibold text-lg'>{exp.org}</h4>
-                    <h5 className='text-sm'>{exp.role}</h5>
-                    <h5 className='text-xs pt-1'>{exp.date}</h5>
-                    <div className='flex'>
+                  <div className="w-full ml-3 self-center">
+                    <h4 className="font-semibold text-lg">
+                      {exp.org}
+                    </h4>
+                    <h5 className="text-sm">
+                      {exp.role}
+                    </h5>
+                    <h5 className="text-xs pt-1">
+                      {exp.date}
+                    </h5>
+                    <div className="flex">
                       <a
                         href={exp.web}
-                        target='_blank'
-                        rel='noopener noreferrer'
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <img
-                          src='/assets/web.png'
-                          className='w-10 h-10 rounded-full'
+                          src="/assets/web.png"
+                          className="w-10 h-10 rounded-full"
                         />
                       </a>
                     </div>
                   </div>
                 </div>
                 {exp.desc.map(({ task }) => (
-                  <p className='mt-5 text-sm'>{task}</p>
+                  <p className="mt-5 text-sm">
+                    {task}
+                  </p>
                 ))}
 
-                <ul className='mt-4 flex flex-wrap'>
+                <ul className="mt-4 flex flex-wrap">
                   {exp.stack.map((s) => (
-                    <li className='mb-3 md:my-0 mx-2'>
-                      <img src={s.src} className='mx-auto w-6 h-6' />
-                      <p className='pt-1 text-black text-xs w-full text-center'>
+                    <li className="mb-3 md:my-0 mx-2">
+                      <img
+                        src={s.src}
+                        className="mx-auto w-6 h-6"
+                      />
+                      <p className="pt-1 text-black text-xs w-full text-center">
                         {s.name}
                       </p>
                     </li>
