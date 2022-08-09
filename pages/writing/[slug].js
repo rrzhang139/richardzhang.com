@@ -18,7 +18,7 @@ const components = {
 const proseClasses = () => {
   // py-12 prose-lg text-justify prose-p:leading-loose prose-h2:mt-24 prose-h2:border-b prose-h2:border-white prose-h1:text-5xl lg:prose-h1:leading-normal prose-a:text-blue-400 prose-headings:text-left md:py-20
   return [
-    "prose prose-xl my-20",
+    "prose prose-p:text-justify md:prose-lg lg:prose-xl my-20",
     "prose-h2:mt-24 prose-h2:border-b prose-h2:border-gray-400",
     "prose-ul:list-disc	prose-ol:list-decimal",
     "",
