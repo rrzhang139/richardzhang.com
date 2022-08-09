@@ -1,22 +1,7 @@
 import LandingContainer from "../../components/Containers/LandingContainer";
 import Link from "next/link";
 
-const projects = [
-  {
-    title: "Study group app for USC students",
-    description: "USC's premier study group management app for its students.",
-    url: "https://www.studyonusc.com",
-    slug: "study-on-usc",
-  },
-  {
-    title: "Study group app for USC students",
-    description: "USC's premier study group management app for its students.",
-    url: "https://www.studyonusc.com",
-    slug: "study-on-usc",
-  },
-];
-
-const Projects = () => {
+const Projects = ({ projects }) => {
   return (
     <LandingContainer classnames="mt-12 space-y-16">
       <div>
@@ -52,6 +37,25 @@ const Projects = () => {
       </ul>
     </LandingContainer>
   );
+};
+
+export const getServerSideProps = async () => {
+  const projects = [
+    {
+      title: "Study group app for USC students",
+      description: "USC's premier study group management app for its students.",
+      url: "https://www.studyonusc.com",
+      slug: "study-on-usc",
+    },
+    {
+      title: "Study group app for USC students",
+      description: "USC's premier study group management app for its students.",
+      url: "https://www.studyonusc.com",
+      slug: "study-on-usc",
+    },
+  ];
+
+  return { props: { projects } };
 };
 
 export default Projects;
