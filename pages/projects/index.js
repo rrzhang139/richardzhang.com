@@ -39,7 +39,7 @@ const Projects = ({ projects }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const projects = [
     {
       title: "Study group app for USC students",
