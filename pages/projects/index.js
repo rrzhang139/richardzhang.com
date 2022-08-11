@@ -47,12 +47,6 @@ export const getServerSideProps = async () => {
       url: "https://www.studyonusc.com",
       slug: "study-on-usc",
     },
-    {
-      title: "Study group app for USC students",
-      description: "USC's premier study group management app for its students.",
-      url: "https://www.studyonusc.com",
-      slug: "study-on-usc",
-    },
   ];
 
   return { props: { projects } };
