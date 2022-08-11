@@ -16,7 +16,7 @@ const Nav = () => {
           fontFamily: "Source Serif Pro, serif",
         }}
       >
-        <Link href="/">
+        <Link href="/" passHref>
           <h4
             className={`text-sm hover:cursor-pointer ${
               path === "" && "border-b border-black"
@@ -26,7 +26,7 @@ const Nav = () => {
             home
           </h4>
         </Link>
-        <Link href="/projects">
+        <Link href="/projects" passHref>
           <h4
             className={`text-sm hover:cursor-pointer ${
               path === "projects" && "border-b border-black"
@@ -36,7 +36,7 @@ const Nav = () => {
             projects
           </h4>
         </Link>
-        <Link href="/writing">
+        <Link href="/writing" passHref>
           <h4
             className={`text-sm hover:cursor-pointer ${
               path === "writing" && "border-b border-black"
@@ -46,7 +46,7 @@ const Nav = () => {
             writing
           </h4>
         </Link>
-        <Link href="/bookmarks">
+        <Link href="/bookmarks" passHref>
           <h4
             className={`text-sm hover:cursor-pointer ${
               path === "bookmarks" && "border-b border-black"

@@ -16,7 +16,7 @@ export default function Home() {
           <a
             href="https://www.cs.usc.edu"
             target="_blank"
-            rel="noopener"
+            rel="noreferrer"
             className="text-blue-400 text-decoration-line"
           >
             University of Southern California
@@ -28,7 +28,7 @@ export default function Home() {
           <a
             href="https://www.ethsign.xyz"
             target="_blank"
-            rel="noopener"
+            rel="noreferrer"
             className="text-blue-400"
           >
             EthSign
@@ -37,7 +37,7 @@ export default function Home() {
           <a
             href="https://www.getir.com"
             target="_blank"
-            rel="noopener"
+            rel="noreferrer"
             className="text-blue-400"
           >
             Getir
@@ -49,7 +49,7 @@ export default function Home() {
         <div className="flex flex-wrap space-x-3 text-blue-400">
           <a
             className="hover:cursor-pointer"
-            rel="noopener noreferrer"
+            rel="noreferrer"
             target="_blank"
             href="https://twitter.com/cantoramann"
           >
@@ -57,7 +57,7 @@ export default function Home() {
           </a>
           <a
             className="hover:cursor-pointer"
-            rel="noopener noreferrer"
+            rel="noreferrer"
             target="_blank"
             href="https://github.com/cantoramann"
           >
@@ -65,7 +65,7 @@ export default function Home() {
           </a>
           <a
             className="hover:cursor-pointer"
-            rel="noopener noreferrer"
+            rel="noreferrer"
             target="_blank"
             href="https://www.linkedin.com/in/cantoraman/"
           >

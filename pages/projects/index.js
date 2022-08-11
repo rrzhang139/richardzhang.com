@@ -25,7 +25,7 @@ const Projects = ({ projects }) => {
                 </a>
               </p>
               <p>
-                <Link href={`/projects/${project.slug}`}>
+                <Link href={`/projects/${project.slug}`} passHref>
                   <span className="text-xs hover:cursor-pointer">
                     Read details...
                   </span>
