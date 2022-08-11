@@ -1,7 +1,5 @@
 import LandingContainer from "../components/Containers/LandingContainer";
-import * as dayjs from "dayjs";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { getRaindrops } from "../lib/raindrops";
 import { calculateTimePassed } from "../lib/time";
 
@@ -20,11 +18,11 @@ const Bookmarks = ({ bookmarks: bookmarkData }) => {
           insighftul. Inspired by{" "}
           <a
             href="https://ademilter.com/bookmarks"
-            rel="noopener noreferrer"
+            rel="noreferrer"
             target="_blank"
             className="text-blue-400"
           >
-            Adem Ilter's bookmarks
+            Adem Ilter&apos;s bookmarks
           </a>
           .
         </p>
@@ -37,7 +35,7 @@ const Bookmarks = ({ bookmarks: bookmarkData }) => {
                 <a
                   href={`${bookmark.completeUrl}`}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noreferrer"
                 >
                   {bookmark.title}
                 </a>
@@ -55,7 +53,7 @@ const Bookmarks = ({ bookmarks: bookmarkData }) => {
               <a
                 href={`${bookmark.completeUrl}`}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
               >
                 {bookmark.shortUrl}
               </a>

@@ -21,13 +21,6 @@ const proseClasses = () => {
     "prose prose-p:text-justify md:prose-lg lg:prose-xl my-20",
     "prose-h2:mt-24 prose-h2:border-b prose-h2:border-gray-400",
     "prose-ul:list-disc	prose-ol:list-decimal",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
   ].join(" ");
 };
 

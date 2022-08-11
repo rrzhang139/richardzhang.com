@@ -23,7 +23,7 @@ const Home = ({ posts }) => {
               </div>
               <p className="max-w-xl text-sm">{post.frontMatter.description}</p>
               <div>
-                <Link href={`writing/${post.frontMatter.slug}`}>
+                <Link href={`writing/${post.frontMatter.slug}`} passHref>
                   <span className="text-xs border-b hover:cursor-pointer">
                     Read more...
                   </span>

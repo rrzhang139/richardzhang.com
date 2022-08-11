@@ -5,7 +5,7 @@ const ServerError = () => {
   return (
     <LandingContainer classnames="text-center mt-40 space-y-2">
       <p>Oops, maybe someting went wrong?</p>
-      <Link href="/">
+      <Link href="/" passHref>
         <p>
           <span className="text-blue-400 hover:cursor-pointer">
             Take me back to homepage
