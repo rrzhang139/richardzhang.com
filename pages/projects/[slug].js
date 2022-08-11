@@ -7,7 +7,17 @@ const ProjectDetails = ({ project }) => {
       <LandingContainer classnames="mt-12 space-y-12">
         <div>
           <h1 className="text-2xl">{project.title}</h1>
-          <p className="mt-4 italic">{project.description}</p>
+          <p className="mt-2 ">{project.description}</p>
+          <p className="mt-2">
+            <a
+              className="text-sm text-blue-500"
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit page
+            </a>
+          </p>
         </div>
 
         <div>
@@ -60,6 +70,7 @@ const getStaticProps = async ({ params: { slug } }) => {
     "study-on-usc": {
       title: "Study on USC",
       description: "Study group app for USC students.",
+      url: "https://www.studyonusc.com/",
       why: [
         "I implemented Study on USC for USC students to create study groups for their classes.",
         "Many classes were hybrid during the pandemic and it was harder to meet friends from the same class and study together.",
