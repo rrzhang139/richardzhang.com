@@ -15,7 +15,7 @@ const ProjectDetails = ({ project }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Visit page
+              Visit application
             </a>
           </p>
         </div>
@@ -23,7 +23,7 @@ const ProjectDetails = ({ project }) => {
         <div>
           <div>
             <h3 className="mb-3 text-lg">Why?</h3>
-            <p className="text-base text-justify">{project.why}</p>
+            <p className="text-sm text-justify">{project.why}</p>
           </div>
         </div>
         <div>
