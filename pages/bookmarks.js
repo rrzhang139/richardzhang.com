@@ -91,7 +91,7 @@ export const getStaticProps = async () => {
 
   return {
     props: { bookmarks },
-    revalidate: 300,
+    revalidate: 900,
   };
 };
 

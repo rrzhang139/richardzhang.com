@@ -49,7 +49,7 @@ export const getServerSideProps = async () => {
     },
   ];
 
-  return { props: { projects } };
+  return { props: { projects }, revalidate: 900 };
 };
 
 export default Projects;
