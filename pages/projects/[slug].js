@@ -92,6 +92,7 @@ const getStaticProps = async ({ params: { slug } }) => {
   return {
     // Passed to the page component as props
     props: { project: projectDetails[slug] },
+    revalidate: 900,
   };
 };
 
