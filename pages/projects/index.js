@@ -20,7 +20,9 @@ const Projects = ({ projects }) => {
               <p>
                 <a href={project.url} target="_blank" rel="noopener noreferrer">
                   <span className="text-xs hover:cursor-pointer">
-                    {project.url.split("www.")[1].split(".com")[0] + ".com"}
+                    {project.url.includes("www")
+                      ? project.url.split("www.")[1].split(".com")[0] + ".com"
+                      : project.url.split("https://")[1].split(".com")[0]}
                   </span>
                 </a>
               </p>
@@ -50,7 +52,7 @@ export const getStaticProps = async () => {
     {
       title: "Lyrics based password generator",
       description: "Use long but easy to remember passwords",
-      url: "https://www.lyrics-password-generator.vercel.app/",
+      url: "https://lyrics-password-generator.vercel.app/",
       slug: "lyrics-password-generator",
     },
   ];

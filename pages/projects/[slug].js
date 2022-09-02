@@ -59,7 +59,10 @@ const ProjectDetails = ({ project }) => {
 
 const getStaticPaths = async () => {
   return {
-    paths: [{ params: { slug: "study-on-usc" } }],
+    paths: [
+      { params: { slug: "study-on-usc" } },
+      { params: { slug: "lyrics-password-generator" } },
+    ],
     fallback: false, // can also be true or 'blocking'
   };
 };
@@ -92,7 +95,7 @@ const getStaticProps = async ({ params: { slug } }) => {
       title: "Lyrics Password Generator",
       description:
         "Password generator that uses lyrics from your favorite songs.",
-      url: "https://www.lyrics-password-generator.vercel.app/",
+      url: "https://lyrics-password-generator.vercel.app/",
       why: [
         "Many websites require you to use strong passwords with special characters, numbers, and uppercase letters.",
         "However, longer passwords are generally more effective.",
