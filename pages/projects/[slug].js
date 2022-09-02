@@ -92,7 +92,7 @@ const getStaticProps = async ({ params: { slug } }) => {
       title: "Lyrics Password Generator",
       description:
         "Password generator that uses lyrics from your favorite songs.",
-      url: "https://lyrics-password-generator.vercel.app/",
+      url: "https://www.lyrics-password-generator.vercel.app/",
       why: [
         "Many websites require you to use strong passwords with special characters, numbers, and uppercase letters.",
         "However, longer passwords are generally more effective.",

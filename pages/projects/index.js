@@ -50,7 +50,7 @@ export const getStaticProps = async () => {
     {
       title: "Lyrics based password generator",
       description: "Use long but easy to remember passwords",
-      url: "https://lyrics-password-generator.vercel.app/",
+      url: "https://www.lyrics-password-generator.vercel.app/",
       slug: "lyrics-password-generator",
     },
   ];
