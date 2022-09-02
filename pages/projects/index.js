@@ -47,6 +47,12 @@ export const getStaticProps = async () => {
       url: "https://www.studyonusc.com",
       slug: "study-on-usc",
     },
+    {
+      title: "Lyrics based password generator",
+      description: "Use long but easy to remember passwords",
+      url: "https://www.lyrics-password-generator.vercel.app/",
+      slug: "lyrics-password-generator",
+    },
   ];
 
   return { props: { projects }, revalidate: 900 };

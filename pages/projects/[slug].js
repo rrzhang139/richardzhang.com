@@ -88,6 +88,25 @@ const getStaticProps = async ({ params: { slug } }) => {
         "Custom token-based authentication. No JWT tokens were used for enhanced server-side security.",
       ],
     },
+    "lyrics-password-generator": {
+      title: "Lyrics Password Generator",
+      description:
+        "Password generator that uses lyrics from your favorite songs.",
+      url: "https://www.lyrics-password-generator.vercel.app/",
+      why: [
+        "Many websites require you to use strong passwords with special characters, numbers, and uppercase letters.",
+        "However, longer passwords are generally more effective.",
+        "Therefore, I created a password generator that uses lyrics from your favorite songs.",
+      ].join(" "),
+      flow: [
+        "Users enter their favorite song and artist.",
+        "The app then fetches the lyrics from the third party API.",
+        "Server then filters for the lines with greater than 19 characters and returns a random one.",
+        "User can copy the password to their clipboard.",
+      ],
+      stack: ["Node.js", "Next.js", "Vercel", "RapidAPI"],
+      techFeatures: ["Nothing special here. Just a simple password generator."],
+    },
   };
   return {
     // Passed to the page component as props
