@@ -6,7 +6,7 @@ import Nav from "../components/Nav";
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      {/* <Head>
+      <Head>
         <title>Can Toraman</title>
         <link
           rel="shortcut icon"
@@ -16,14 +16,14 @@ function MyApp({ Component, pageProps }) {
         <meta charSet="utf-8" />
         <meta
           name="description"
-          content="I write server-side code and design software systems. Welcome to my website!"
+          content="I write server-side code and design software systems."
         ></meta>
         <meta
           property="og:description"
-          content="I write server-side code and design software systems. Welcome to my website!"
+          content="I write server-side code and design software systems."
           key="ogdesc"
         />
-      </Head> */}
+      </Head>
       <div
         className="min-h-screen pb-8 text-black"
         style={{

@@ -5,18 +5,6 @@ import Head from "next/head";
 const Projects = ({ projects }) => {
   return (
     <>
-      <Head>
-        <title>Can Toraman</title>
-        <link
-          rel="shortcut icon"
-          href="https://img.icons8.com/color/48/000000/gandalf.png"
-        />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta charSet="utf-8" />
-        <meta name="description" content="test content"></meta>
-        <meta property="og:description" content="test content" key="ogdesc" />
-      </Head>
-
       <LandingContainer classnames="mt-12 space-y-16">
         <div>
           <h1 className="text-2xl">Projects</h1>
