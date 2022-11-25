@@ -1,43 +1,62 @@
 import LandingContainer from "../../components/Containers/LandingContainer";
 import Link from "next/link";
+import Head from "next/head";
 
 const Projects = ({ projects }) => {
   return (
-    <LandingContainer classnames="mt-12 space-y-16">
-      <div>
-        <h1 className="text-2xl">Projects</h1>
-        <p className="mt-4 italic">
-          My production projects. These are not open source.
-        </p>
-      </div>
-      <ul className="space-y-12">
-        {projects.map((project, index) => (
-          <li key={index} className="block border-gray-300">
-            <div className="max-w-xl space-y-1">
-              <div>
-                <h3 className="text-base">{project.title}</h3>
+    <>
+      <Head>
+        <title>Can Toraman</title>
+        <link
+          rel="shortcut icon"
+          href="https://img.icons8.com/color/48/000000/gandalf.png"
+        />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charSet="utf-8" />
+        <meta name="description" content="test content"></meta>
+        <meta property="og:description" content="test content" key="ogdesc" />
+      </Head>
+
+      <LandingContainer classnames="mt-12 space-y-16">
+        <div>
+          <h1 className="text-2xl">Projects</h1>
+          <p className="mt-4 italic">
+            My production projects. These are not open source.
+          </p>
+        </div>
+        <ul className="space-y-12">
+          {projects.map((project, index) => (
+            <li key={index} className="block border-gray-300">
+              <div className="max-w-xl space-y-1">
+                <div>
+                  <h3 className="text-base">{project.title}</h3>
+                </div>
+                <p>
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="text-xs hover:cursor-pointer">
+                      {project.url.includes("www")
+                        ? project.url.split("www.")[1].split(".com")[0] + ".com"
+                        : project.url.split("https://")[1].split(".com")[0]}
+                    </span>
+                  </a>
+                </p>
+                <p>
+                  <Link href={`/projects/${project.slug}`} passHref>
+                    <span className="text-xs hover:cursor-pointer">
+                      Read details...
+                    </span>
+                  </Link>
+                </p>
               </div>
-              <p>
-                <a href={project.url} target="_blank" rel="noopener noreferrer">
-                  <span className="text-xs hover:cursor-pointer">
-                    {project.url.includes("www")
-                      ? project.url.split("www.")[1].split(".com")[0] + ".com"
-                      : project.url.split("https://")[1].split(".com")[0]}
-                  </span>
-                </a>
-              </p>
-              <p>
-                <Link href={`/projects/${project.slug}`} passHref>
-                  <span className="text-xs hover:cursor-pointer">
-                    Read details...
-                  </span>
-                </Link>
-              </p>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </LandingContainer>
+            </li>
+          ))}
+        </ul>
+      </LandingContainer>
+    </>
   );
 };
 
