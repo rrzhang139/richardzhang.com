@@ -6,7 +6,7 @@ import Nav from "../components/Nav";
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Can Toraman</title>
         <link
           rel="shortcut icon"
@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
           content="I write server-side code and design software systems. Welcome to my website!"
           key="ogdesc"
         />
-      </Head>
+      </Head> */}
       <div
         className="min-h-screen pb-8 text-black"
         style={{
