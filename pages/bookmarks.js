@@ -1,4 +1,4 @@
-import LandingContainer from "../components/Containers/LandingContainer";
+import Container from "../components/Container/Container";
 import { useState, useEffect } from "react";
 import { getRaindrops } from "../lib/raindrops";
 import { calculateTimePassed } from "../lib/time";
@@ -10,65 +10,24 @@ const Bookmarks = ({ bookmarks: bookmarkData }) => {
   }, [bookmarkData]);
 
   return (
-    <LandingContainer classnames="mt-12 space-y-16">
-      <div>
-        <h1 className="text-2xl">Bookmarks</h1>
-        <p className="mt-4 italic">
-          Useful resources for software development or anything I find
-          insighftul. Inspired by{" "}
-          <a
-            href="https://ademilter.com/bookmarks"
-            rel="noreferrer"
-            target="_blank"
-            className="text-blue-400"
-          >
-            Adem Ilter&apos;s bookmarks
-          </a>
-          .
-        </p>
-      </div>
-      <ul className="space-y-7">
+    <Container title="Bookmarks">
+      <ul className="text-white font-text">
         {bookmarks.map((bookmark, index) => (
-          <li key={index}>
-            <div className="flex space-x-2">
-              <h3 className="font-bold">
-                <a
-                  href={`${bookmark.completeUrl}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {bookmark.title}
-                </a>
-              </h3>
-              {/* <ul className="flex self-center space-x-1 text-xs">
-                {bookmark.tags.map((tag, index) => (
-                  <li className="tag" key={index}>
-                    {tag}
-                  </li>
-                ))}
-              </ul> */}
-            </div>
-
-            <div className="flex space-x-2 text-sm text-gray-500">
-              <a
-                href={`${bookmark.completeUrl}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {bookmark.shortUrl}
-              </a>
-              <span>&#8226;</span>
-              <span>
-                {calculateTimePassed(
-                  new Date().getTime(),
-                  new Date(bookmark.created).getTime()
-                )}
-              </span>
-            </div>
+          <li
+            key={index}
+            className="font-text text-sm text-stone-400 hover:text-white transition-colors ease-in duration-300 hover:cursor-pointer py-3 border-b border-b-neutral-700 hover:border-b-neutral-500"
+          >
+            <a
+              href={`${bookmark.completeUrl}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <h3 className="w-fit">{bookmark.title}</h3>
+            </a>
           </li>
         ))}
       </ul>
-    </LandingContainer>
+    </Container>
   );
 };
 

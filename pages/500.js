@@ -1,18 +1,13 @@
-import LandingContainer from "../components/Containers/LandingContainer";
-import Link from "next/link";
+import Container from "../components/Container/Container";
 
 const ServerError = () => {
   return (
-    <LandingContainer classnames="text-center mt-40 space-y-2">
-      <p>Oops, maybe someting went wrong?</p>
-      <Link href="/" passHref>
-        <p>
-          <span className="text-blue-400 hover:cursor-pointer">
-            Take me back to homepage
-          </span>
-        </p>
-      </Link>
-    </LandingContainer>
+    <Container>
+      <div className="text-center font-text space-y-3">
+        <h2 className="font-bold text-lg">Server Error</h2>
+        <h2 className="">¯\_(ツ)_/¯</h2>
+      </div>
+    </Container>
   );
 };
 

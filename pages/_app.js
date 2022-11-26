@@ -24,12 +24,7 @@ function MyApp({ Component, pageProps }) {
           key="ogdesc"
         />
       </Head>
-      <div
-        className="min-h-screen pb-8 text-black"
-        style={{
-          fontFamily: "Nanum Gothic, sans-serif",
-        }}
-      >
+      <div className="min-h-screen text-neutral-100 bg-colorstainedblack py-12">
         <Nav />
         <Component {...pageProps} />
       </div>

@@ -3,37 +3,31 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
-import LandingContainer from "../../components/Containers/LandingContainer";
+import Container from "../../components/Container/Container";
 
 const Home = ({ posts }) => {
   return (
-    <LandingContainer classnames="mt-12 space-y-16">
-      <div>
-        <h1 className="text-2xl">Writing</h1>
-        <p className="mt-4 italic">
-          I write blog posts about the software industry and systems design.
-        </p>
-      </div>
-      <ul className="space-y-10">
+    <Container title="Writing">
+      <ul className="">
         {posts.map((post, index) => (
-          <li key={index} className="block pl-2 border-l border-gray-300">
-            <div className="max-w-xl space-y-3">
-              <div>
-                <h3 className="text-lg">{post.frontMatter.title}</h3>
+          <li
+            key={index}
+            className="font-text text-sm text-stone-400 hover:text-white transition-colors ease-in duration-300 hover:cursor-pointer py-3 border-b border-b-neutral-700 hover:border-b-neutral-500"
+          >
+            <Link
+              href={`writing/${post.frontMatter.slug}`}
+              passHref
+              className="hover:cursor-pointer"
+            >
+              <div className="flex justify-between">
+                <h3 className="w-fit">{post.frontMatter.title}</h3>
+                <p>{post.frontMatter.date}</p>
               </div>
-              <p className="max-w-xl text-sm">{post.frontMatter.description}</p>
-              <div>
-                <Link href={`writing/${post.frontMatter.slug}`} passHref>
-                  <span className="text-xs border-b hover:cursor-pointer">
-                    Read more...
-                  </span>
-                </Link>
-              </div>
-            </div>
+            </Link>
           </li>
         ))}
       </ul>
-    </LandingContainer>
+    </Container>
   );
 };
 

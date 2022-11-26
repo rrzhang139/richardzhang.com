@@ -2,70 +2,34 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Nav = () => {
-  const [path, setPath] = useState("/");
+  const [selected, setSelected] = useState("/");
+
   useEffect(() => {
-    const pathString = window.location.href.split("/")[3];
-    setPath(pathString);
+    // set the selected nav option
+    setSelected(window.location.href.split("/")[3]);
   }, []);
 
+  const links = [
+    { name: "Can", url: "/" },
+    { name: "Writing", url: "/writing" },
+    { name: "Bookmarks", url: "/bookmarks" },
+    // { name: "Photography", url: "/photography" },
+  ];
+
   return (
-    <nav className="block max-w-xl pt-5 mx-auto">
-      <ul
-        className="flex justify-start p-4 space-x-3 sm:justify-end"
-        style={{
-          fontFamily: "Source Serif Pro, serif",
-        }}
-      >
-        <Link href="/" passHref>
-          <h4
-            className={`text-sm hover:cursor-pointer ${
-              path === "" && "border-b border-black"
-            }`}
-            onClick={() => setPath("")}
-          >
-            home
-          </h4>
-        </Link>
-        <Link href="/projects" passHref>
-          <h4
-            className={`text-sm hover:cursor-pointer ${
-              path === "projects" && "border-b border-black"
-            }`}
-            onClick={() => setPath("projects")}
-          >
-            projects
-          </h4>
-        </Link>
-        <Link href="/writing" passHref>
-          <h4
-            className={`text-sm hover:cursor-pointer ${
-              path === "writing" && "border-b border-black"
-            }`}
-            onClick={() => setPath("writing")}
-          >
-            writing
-          </h4>
-        </Link>
-        <Link href="/bookmarks" passHref>
-          <h4
-            className={`text-sm hover:cursor-pointer ${
-              path === "bookmarks" && "border-b border-black"
-            }`}
-            onClick={() => setPath("bookmarks")}
-          >
-            bookmarks
-          </h4>
-        </Link>
-        {/* <Link href="/photography">
-          <h4
-            className={`text-sm hover:cursor-pointer ${
-              path === "photography" && "border-b border-black"
-            }`}
-            onClick={() => setPath("photography")}
-          >
-            photography
-          </h4>
-        </Link> */}
+    <nav className="max-w-xl mx-auto block p-4">
+      <ul className="space-x-1 md:space-x-5 flex justify-center ">
+        {links.map((link) => {
+          return (
+            <li>
+              <Link href={link.url}>
+                <h4 className="text-xs tracking-wider px-4 py-2 text-neutral-300 rounded-sm hover:text-white transition-colors ease-linear hover:cursor-pointer hover:bg-stone-800">
+                  {link.name}
+                </h4>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
