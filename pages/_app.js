@@ -16,20 +16,15 @@ function MyApp({ Component, pageProps }) {
         <meta charSet="utf-8" />
         <meta
           name="description"
-          content="I write server-side code and design software systems. Welcome to my website!"
+          content="I write server-side code and design software systems."
         ></meta>
         <meta
           property="og:description"
-          content="I write server-side code and design software systems. Welcome to my website!"
+          content="I write server-side code and design software systems."
           key="ogdesc"
         />
       </Head>
-      <div
-        className="min-h-screen pb-8 text-black"
-        style={{
-          fontFamily: "Nanum Gothic, sans-serif",
-        }}
-      >
+      <div className="min-h-screen text-neutral-100 bg-colorstainedblack py-12">
         <Nav />
         <Component {...pageProps} />
       </div>
