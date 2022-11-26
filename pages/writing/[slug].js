@@ -26,13 +26,10 @@ const PostPage = ({ mdxSource, frontMatter }) => {
       <Head>
         <title>{frontMatter.title} | Can Toraman</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta
-          name="description"
-          content="Opinions on philosophical and technical aspects of the software industry."
-        ></meta>
+        <meta name="description" content={frontMatter.description}></meta>
         <meta
           property="og:description"
-          content="Opinions on philosophical and technical aspects of the software industry."
+          content={frontMatter.description}
           key="ogdesc"
         />
       </Head>
