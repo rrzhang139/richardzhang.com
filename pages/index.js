@@ -1,41 +1,18 @@
 import Head from "next/head";
-import Link from "next/link";
 import Container from "../components/Container/Container";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const projects = [
-    {
-      name: "Password Generator",
-      desc: "Lyrics based password generator",
-      url: "https://www.passwordgenerator.lol/",
-    },
-    {
-      name: "Portable Rate Limiter",
-      desc: "Rate limiter and log store that uses the sliding window log algorithm.",
-      url: "https://github.com/cantoramann/node-redis-rate-limtier",
-    },
-    {
-      name: "Lightos",
-      desc: "Extensible, production-ready skeleton for Express servers.",
-      url: "#",
-    },
-    {
-      name: "Study on USC",
-      desc: "Study group notification app for USC students.",
-      url: "https://www.studyonusc.com/",
-    },
-  ];
   return (
     <div>
       <Head></Head>
       <Container title="Can Toraman">
         <div className="font-text text-base leading-7 tracking-wider space-y-16">
           <p>
-            I write server-side code and design software systems. I'm a senior
-            studying computer science at the University of Southern California.
-            Currently, I am focused on cryptography, zero knowledge, and
-            blockchain infrastructure.
+            I write server-side code and design software systems. I&apos;m a
+            senior studying computer science at the University of Southern
+            California. Currently, I am focused on cryptography, zero knowledge,
+            and blockchain infrastructure.
           </p>
 
           <ul className="flex flex-wrap gap-2 text-xs text-neutral-100">
@@ -76,10 +53,31 @@ export default function Home() {
             <h3 className="font-mavenp text-2xl mb-4 text-stone-500 selection:bg-neutral-200">
               Projects
             </h3>
-            <div className="mt-3 grid md:grid-cols-2 gap-x-12  gap-y-8">
-              {projects.map((p) => {
+            <ul className="mt-3 grid md:grid-cols-2 gap-x-12  gap-y-8">
+              {[
+                {
+                  name: "Password Generator",
+                  desc: "Lyrics based password generator",
+                  url: "https://www.passwordgenerator.lol/",
+                },
+                {
+                  name: "Portable Rate Limiter",
+                  desc: "Rate limiter and log store that uses the sliding window log algorithm.",
+                  url: "https://github.com/cantoramann/node-redis-rate-limtier",
+                },
+                {
+                  name: "Lightos (coming soon)",
+                  desc: "Extensible, production-ready skeleton for Express servers.",
+                  url: "https://www.studyonusc.com/",
+                },
+                {
+                  name: "Study on USC",
+                  desc: "Study group notification app for USC students.",
+                  url: "https://www.studyonusc.com/",
+                },
+              ].map((p, index) => {
                 return (
-                  <div className="">
+                  <li key={index} className="">
                     <a
                       href={p.url}
                       target="_blank"
@@ -93,10 +91,10 @@ export default function Home() {
                         Lyrics based password generator.
                       </p>
                     </a>
-                  </div>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
           </div>
         </div>
       </Container>
