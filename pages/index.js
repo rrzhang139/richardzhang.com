@@ -88,7 +88,7 @@ export default function Home() {
                         {p.name}
                       </h4>
                       <p className="text-stone-400 text-sm group-hover:text-stone-600 transition-colors ease-in">
-                        Lyrics based password generator.
+                        {p.desc}
                       </p>
                     </a>
                   </li>
