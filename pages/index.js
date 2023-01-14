@@ -28,7 +28,7 @@ export default function Home() {
                 - zone infrastructure at{" "}
                 <a
                   className="underline"
-                  href="https://www.getir.com/us"
+                  href="https://techcrunch.com/2022/03/17/getir-is-now-worth-nearly-12-billion-after-raising-another-768-million/"
                   rel="noreferrer"
                   target="_blank"
                 >
