@@ -37,7 +37,7 @@ export default function Home() {
                 - youngest full-time dev.
               </li>
               <li>
-                - founding engineer at{" "}
+                - founding team at{" "}
                 <a
                   className="underline"
                   href="https://www.ethsign.xyz/"
