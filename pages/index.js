@@ -17,7 +17,7 @@ export default function Home() {
               rel="noreferrer"
               target="_blank"
             >
-              cs & usc
+              cs @ usc
             </a>
             .
           </li>
@@ -53,9 +53,9 @@ export default function Home() {
           <li>
             Open to chat about anything, and very passionate about:
             <ul className="pl-10 list-inside space-y-2 pt-2">
-              <li>- software & statistics</li>
-              <li>- design & photography</li>
-              <li>- basketball & travel</li>
+              <li>- software security</li>
+              <li>- design, photography, reading, traveling, basketball</li>
+              <li>- harry potter fan theories and movies in general</li>
             </ul>
           </li>
           <li className="gap-x-3">
