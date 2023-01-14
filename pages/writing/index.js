@@ -22,27 +22,20 @@ const Home = ({ posts }) => {
         />
       </Head>
 
-      <Container title="Writing">
-        <ul className="">
+      <div className="max-w-2xl mx-auto mt-8 tracking-wider font-text px-5 md:px-0">
+        <h1 className="pb-9">Writing</h1>
+
+        <ul className="list-inside list-disc">
           {posts.map((post, index) => (
-            <li
-              key={index}
-              className="font-text text-sm text-stone-400 hover:text-white transition-colors ease-in duration-300 hover:cursor-pointer py-3 border-b border-b-neutral-700 hover:border-b-neutral-500"
-            >
-              <Link
-                href={`writing/${post.frontMatter.slug}`}
-                passHref
-                className="hover:cursor-pointer"
-              >
-                <div className="flex justify-between">
-                  <h3 className="w-fit">{post.frontMatter.title}</h3>
-                  <p>{post.frontMatter.date}</p>
-                </div>
-              </Link>
+            <li key={index} className="font-text text-sm w-full mb-8">
+              <span className="truncate">{post.frontMatter.title}</span>
+              <span className="hidden md:inline float-right">
+                {post.frontMatter.date}
+              </span>
             </li>
           ))}
         </ul>
-      </Container>
+      </div>
     </>
   );
 };
