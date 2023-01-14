@@ -14,6 +14,7 @@ export default function Home() {
             <a
               className="underline"
               href="https://www.cs.usc.edu/"
+              rel="noreferrer"
               target="_blank"
             >
               cs & usc
@@ -28,6 +29,7 @@ export default function Home() {
                 <a
                   className="underline"
                   href="https://www.getir.com/us"
+                  rel="noreferrer"
                   target="_blank"
                 >
                   getir
@@ -39,6 +41,7 @@ export default function Home() {
                 <a
                   className="underline"
                   href="https://www.ethsign.xyz/"
+                  rel="noreferrer"
                   target="_blank"
                 >
                   ethsign
@@ -60,6 +63,7 @@ export default function Home() {
             <a
               className="underline"
               href="https://github.com/cantoramann"
+              rel="noreferrer"
               target="_blank"
             >
               github
@@ -68,6 +72,7 @@ export default function Home() {
             <a
               className="underline"
               href="https://twitter.com/cantoramann"
+              rel="noreferrer"
               target="_blank"
             >
               twitter
@@ -76,6 +81,7 @@ export default function Home() {
             <a
               className="underline"
               href="https://linkedin.com/in/cantoraman"
+              rel="noreferrer"
               target="_blank"
             >
               linkedin
