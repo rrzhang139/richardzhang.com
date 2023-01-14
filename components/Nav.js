@@ -10,18 +10,16 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="max-w-xl mx-auto block p-4">
-      <ul className="space-x-1 md:space-x-5 flex justify-center ">
+    <nav className="max-w-2xl mx-auto px-5 md:px-0">
+      <ul className="space-x-5 flex">
         {[
-          { name: "Can", url: "/" },
-          { name: "Writing", url: "/writing" },
-          { name: "Bookmarks", url: "/bookmarks" },
-          // { name: "Photography", url: "/photography" },
+          { name: "home", url: "/" },
+          { name: "writing", url: "/writing" },
         ].map((link, index) => {
           return (
             <li key={index}>
               <Link href={link.url} passHref>
-                <h4 className="text-xs tracking-wider px-4 py-2 text-neutral-300 rounded-sm hover:text-white transition-colors ease-linear hover:cursor-pointer hover:bg-stone-800">
+                <h4 className="text-xs tracking-wider py-2 text-neutral-300 rounded-sm hover:text-purple-600 ease-linear transition-colors hover:cursor-pointer hover:underline">
                   {link.name}
                 </h4>
               </Link>
