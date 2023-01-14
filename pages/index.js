@@ -8,7 +8,7 @@ export default function Home() {
       <Head></Head>
       <div className="max-w-2xl mx-auto mt-8 tracking-wider font-text px-5 md:px-0">
         <h1 className="pb-9">Can Toraman</h1>
-        <ul className="pl-10 text-xs md:text-sm list-disc list-inside space-y-10">
+        <ul className="pl-10 text-sm md:text-base list-disc list-inside space-y-10">
           <li>
             Distributed systems & cryptography. Almost done with{" "}
             <a
