@@ -8,7 +8,7 @@ export default function Home() {
       <Head></Head>
       <div className="max-w-2xl mx-auto mt-8 tracking-wider font-text px-5 md:px-0">
         <h1 className="pb-9">Can Toraman</h1>
-        <ul className="pl-10 text-sm md:text-base list-disc list-inside space-y-10">
+        <ul className="pl-10 text-sm list-disc list-inside space-y-10">
           <li>
             Distributed systems & cryptography. Almost done with{" "}
             <a
@@ -47,6 +47,35 @@ export default function Home() {
                   ethsign
                 </a>
                 , the near future of document signing.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Some fun work:
+            <ul className="pl-10 list-inside space-y-2 pt-2">
+              <li>
+                -{" "}
+                <a
+                  className="underline"
+                  href="https://chatwithsatoshi.com/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  chat with satoshi
+                </a>
+                , chat with GPT-3 powered Satoshi Nakamoto.
+              </li>
+              <li>
+                -{" "}
+                <a
+                  className="underline"
+                  href="https://www.passwordgenerator.lol/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  lyrics password generator
+                </a>
+                , generate password from songs.
               </li>
             </ul>
           </li>
