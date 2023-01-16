@@ -4,16 +4,10 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import ExternalLink from "../../components/Posts/ExternalLink";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import Quote from "../../components/Posts/Quote";
-import PostMeta from "../../components/Posts/PostMeta";
 import Head from "next/head";
 
 const components = {
   ExternalLink,
-  SyntaxHighlighter,
-  PostMeta,
-  Quote,
 };
 
 const proseClasses = () => {

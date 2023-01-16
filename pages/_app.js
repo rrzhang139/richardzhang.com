@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
           key="ogdesc"
         />
       </Head>
-      <div className="min-h-screen text-neutral-100 bg-colorstainedblack pt-12">
+      <div className="min-h-screen font-text text-neutral-100 bg-colorstainedblack pt-12">
         <Nav />
         <Component {...pageProps} />
       </div>

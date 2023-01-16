@@ -1,12 +1,10 @@
 import Head from "next/head";
-import Container from "../components/Container/Container";
-import { useEffect, useState } from "react";
 
 export default function Home() {
   return (
     <div>
       <Head></Head>
-      <div className="max-w-2xl mx-auto mt-8 tracking-wider font-text px-5 md:px-0">
+      <div className="max-w-2xl mx-auto mt-8 tracking-wider px-5 md:px-0">
         <h1 className="pb-9">Can Toraman</h1>
         <ul className="pl-10 text-sm list-disc list-inside space-y-10">
           <li>
