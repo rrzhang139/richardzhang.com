@@ -75,7 +75,7 @@ export default function Home() {
                 >
                   lyrics password generator
                 </a>
-                , generate password from songs.
+                , generate passwords from songs.
               </li>
             </ul>
           </li>
