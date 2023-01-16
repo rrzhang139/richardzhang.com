@@ -1,90 +1,122 @@
-import Link from "next/link";
-import Image from "next/image";
+import Head from "next/head";
+import Container from "../components/Container/Container";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   return (
-    <div className='mt-16 md:mt-32 px-4 md:px-0 max-w-2xl mx-auto md:mb-10'>
-      <h3
-        className='text-5xl md:text-8xl font-semibold'
-        style={{
-          fontFamily: "Redressed, cursive",
-        }}
-      >
-        Can Toraman
-      </h3>
-
-      <div className='py-6 text-sm'>
-        <div className='py-4 tracking-wider leading-9'>
-          <p className=''>
-            Backend & networks. Also basketball, photography & movies.
-          </p>
-          <p>
-            Computer science third-year @{" "}
+    <div>
+      <Head></Head>
+      <div className="max-w-2xl mx-auto mt-8 tracking-wider font-text px-5 md:px-0">
+        <h1 className="pb-9">Can Toraman</h1>
+        <ul className="pl-10 text-sm list-disc list-inside space-y-10">
+          <li>
+            Distributed systems & cryptography. Almost done with{" "}
             <a
-              href='https://www.cs.usc.edu/'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-indigo-500 font-semibold'
+              className="underline"
+              href="https://www.cs.usc.edu/"
+              rel="noreferrer"
+              target="_blank"
             >
-              University of Southern California
+              cs @ usc
             </a>
             .
-          </p>
-          <p>
-            Previosuly backend @{" "}
+          </li>
+          <li>
+            Previosuly:
+            <ul className="pl-10 list-inside space-y-2 pt-2">
+              <li>
+                - zone infrastructure at{" "}
+                <a
+                  className="underline"
+                  href="https://techcrunch.com/2022/03/17/getir-is-now-worth-nearly-12-billion-after-raising-another-768-million/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  getir
+                </a>{" "}
+                - youngest full-time dev.
+              </li>
+              <li>
+                - founding team at{" "}
+                <a
+                  className="underline"
+                  href="https://www.ethsign.xyz/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  ethsign
+                </a>
+                , the near future of document signing.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Some fun work:
+            <ul className="pl-10 list-inside space-y-2 pt-2">
+              <li>
+                -{" "}
+                <a
+                  className="underline"
+                  href="https://chatwithsatoshi.com/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  chat with satoshi
+                </a>
+                , chat with GPT-3 powered Satoshi Nakamoto.
+              </li>
+              <li>
+                -{" "}
+                <a
+                  className="underline"
+                  href="https://www.passwordgenerator.lol/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  lyrics password generator
+                </a>
+                , generate passwords from songs.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Open to chat about anything, and very passionate about:
+            <ul className="pl-10 list-inside space-y-2 pt-2">
+              <li>- software security</li>
+              <li>- design, photography, reading, traveling, basketball</li>
+              <li>- harry potter fan theories and movies in general</li>
+            </ul>
+          </li>
+          <li className="gap-x-3">
+            toraman@usc.edu,{" "}
             <a
-              href='https://www.getir.com/'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-indigo-500 font-semibold'
+              className="underline"
+              href="https://github.com/cantoramann"
+              rel="noreferrer"
+              target="_blank"
             >
-              Getir
+              github
             </a>
-          </p>
-
-          <p className='underline hover:cursor-pointer'>
+            ,{" "}
             <a
-              href='/assets/Can_Toraman_SWE_Intern_Resume.pdf'
-              download='Can_Toraman_SWE_Intern_Resume.pdf'
+              className="underline"
+              href="https://twitter.com/cantoramann"
+              rel="noreferrer"
+              target="_blank"
             >
-              Download Resume
+              twitter
             </a>
-          </p>
-        </div>
-        <div id='social' className='py-4 flex flex-col sm:flex-row text-base'>
-          <a
-            href='https://www.linkedin.com/in/cantoraman/'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='px-2 py-1 mb-2 sm:mb-0 border-b sm:border mr-3'
-          >
-            Linkedin
-          </a>
-          <a
-            href='https://github.com/cantoramann'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='px-2 py-1 mb-2 sm:mb-0 border-b sm:border mr-3'
-          >
-            GitHub
-          </a>
-          <a
-            href='https://twitter.com/cantoramann'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='px-2 py-1 mb-2 sm:mb-0 border-b sm:border mr-3'
-          >
-            Twitter
-          </a>
-          <a
-            href='https://superpeer.com/cantoramann'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='px-2 py-1 mb-2 sm:mb-0 border-b sm:border mr-3'
-          >
-            Superpeer
-          </a>
-        </div>
+            ,{" "}
+            <a
+              className="underline"
+              href="https://linkedin.com/in/cantoraman"
+              rel="noreferrer"
+              target="_blank"
+            >
+              linkedin
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   );
