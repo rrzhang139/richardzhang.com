@@ -165,7 +165,7 @@ export default function Home() {
                 >
                   chatwithsatoshi.com
                 </a>
-                , Chat with Satoshi Nakamoto
+                , Chat with Satoshi Nakamoto.
               </li>
               <li>
                 -{" "}
