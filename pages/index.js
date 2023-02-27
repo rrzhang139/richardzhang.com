@@ -185,7 +185,7 @@ export default function Home() {
             Very passionate about:
             <ul className="pl-10 list-inside space-y-2 pt-2">
               <li>- Tech & design</li>
-              <li>- Photography, reading, traveling, tracking</li>
+              <li>- Photography, reading, traveling, hiking</li>
               <li>- Harry Potter fan theories</li>
             </ul>
           </li>
