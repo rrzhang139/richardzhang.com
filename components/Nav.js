@@ -19,7 +19,7 @@ const Nav = () => {
           return (
             <li key={index}>
               <Link href={link.url} passHref>
-                <h4 className="text-xs tracking-wider py-2 text-neutral-300 rounded-sm hover:text-white ease-linear transition-colors hover:cursor-pointer hover:underline">
+                <h4 className="text-xs tracking-wider text-neutral-700 rounded-sm hover:text-white bg-white p-1 hover:bg-neutral-600 ease-linear transition-colors hover:cursor-pointer hover:underline">
                   {link.name}
                 </h4>
               </Link>

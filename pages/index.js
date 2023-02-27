@@ -4,115 +4,190 @@ export default function Home() {
   return (
     <div>
       <Head></Head>
-      <div className="max-w-2xl mx-auto mt-8 tracking-wider px-5 md:px-0">
-        <h1 className="pb-9">Can Toraman</h1>
-        <ul className="pl-10 text-sm list-disc list-inside space-y-10">
+      <div className="max-w-2xl mx-auto mt-8 px-5 md:px-0">
+        <div className="mt-20 space-y-5">
+          <h1 className="text-3xl font-black tracking-widest">Can Toraman</h1>
+          <div>
+            <h3 className="text-sm leading-loose">
+              Computer science @ University of Southern California.
+            </h3>
+          </div>
+          <ul className="text-xs flex gap-x-3 tracking-wide">
+            <li className="">
+              <p className="">toraman@usc.edu</p>
+            </li>
+            <li>
+              <p>
+                <a
+                  className="hover:text-blue-400 transition-colors"
+                  href="https://github.com/cantoramann"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  GitHub
+                </a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a
+                  className="hover:text-blue-400 transition-colors"
+                  href="https://twitter.com/cantoramann"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Twitter
+                </a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a
+                  className="hover:text-blue-400 transition-colors"
+                  href="https://linkedin.com/in/cantoraman"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Linkedin
+                </a>
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <ul className="mt-12 text-sm list-disc list-inside space-y-10 tracking-wide">
           <li>
-            Distributed systems & cryptography. Almost done with{" "}
-            <a
-              className="underline"
-              href="https://www.cs.usc.edu/"
-              rel="noreferrer"
-              target="_blank"
-            >
-              cs @ usc
-            </a>
-            .
+            Currently:
+            <ul className="pl-10 list-inside space-y-2 pt-2">
+              <li>- Developing the future of ed-tech for devs.</li>
+              <li>- Deep diving into distributed systems and cryptography.</li>
+              {/* <li>
+                - Founding engineer at{" "}
+                <a
+                  className="underline hover:text-blue-400 transition-colors"
+                  href="https://www.joinhaven.io/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Haven
+                </a>
+                , modernizing kitchen renovation (no kidding).
+              </li> */}
+            </ul>
           </li>
           <li>
             Previosuly:
             <ul className="pl-10 list-inside space-y-2 pt-2">
               <li>
-                - zone infrastructure at{" "}
+                - Full-time zone infrastructure at{" "}
                 <a
-                  className="underline"
+                  className="underline hover:text-blue-400 transition-colors"
                   href="https://techcrunch.com/2022/03/17/getir-is-now-worth-nearly-12-billion-after-raising-another-768-million/"
                   rel="noreferrer"
                   target="_blank"
                 >
-                  getir
-                </a>{" "}
-                - youngest full-time dev.
+                  Getir
+                </a>
+                .
               </li>
               <li>
-                - founding team at{" "}
+                - Founding team at{" "}
                 <a
-                  className="underline"
+                  className="underline hover:text-blue-400 transition-colors"
                   href="https://www.ethsign.xyz/"
                   rel="noreferrer"
                   target="_blank"
                 >
-                  ethsign
+                  EthSign
                 </a>
                 , the near future of document signing.
+              </li>
+              <li>
+                - Software lead at{" "}
+                <a
+                  className="underline hover:text-blue-400 transition-colors"
+                  href="https://uscauv.com/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  USC AUV
+                </a>
+                , built autonomous systems underwater.
               </li>
             </ul>
           </li>
           <li>
-            Some fun work:
+            Projects:
             <ul className="pl-10 list-inside space-y-2 pt-2">
               <li>
                 -{" "}
                 <a
-                  className="underline"
-                  href="https://chatwithsatoshi.com/"
+                  className="underline hover:text-blue-400 transition-colors"
+                  href="https://github.com/cantoramann/cli-chat-client"
                   rel="noreferrer"
                   target="_blank"
                 >
-                  chat with satoshi
+                  CLI chat
                 </a>
-                , chat with GPT-3 powered Satoshi Nakamoto.
+                , anonymous chat on the command line.
               </li>
               <li>
                 -{" "}
                 <a
-                  className="underline"
+                  className="underline hover:text-blue-400 transition-colors"
+                  href="https://github.com/cantoramann/lightos"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Lightos
+                </a>
+                , opinionated REST framework for Node.js.
+              </li>
+              <li>
+                -{" "}
+                <a
+                  className="underline hover:text-blue-400 transition-colors"
+                  href="https://www.studyonusc.com/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  studyonusc.com
+                </a>
+                , study group app for USC during Covid.
+              </li>
+              <li>
+                -{" "}
+                <a
+                  className="underline hover:text-blue-400 transition-colors"
+                  href="https://www.chatwithsatoshi.com/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  chatwithsatoshi.com
+                </a>
+                , Chat with Satoshi Nakamoto
+              </li>
+              <li>
+                -{" "}
+                <a
+                  className="underline hover:text-blue-400 transition-colors"
                   href="https://www.passwordgenerator.lol/"
                   rel="noreferrer"
                   target="_blank"
                 >
-                  lyrics password generator
+                  passwordgenerator.lol
                 </a>
-                , generate passwords from songs.
+                , lyrics based password generator.
               </li>
             </ul>
           </li>
           <li>
-            Open to chat about anything, and very passionate about:
+            Very passionate about:
             <ul className="pl-10 list-inside space-y-2 pt-2">
-              <li>- software security</li>
-              <li>- design, photography, reading, traveling, basketball</li>
-              <li>- harry potter fan theories and movies in general</li>
+              <li>- Tech & design</li>
+              <li>- Photography, reading, traveling, tracking</li>
+              <li>- Harry Potter fan theories</li>
             </ul>
-          </li>
-          <li className="gap-x-3">
-            toraman@usc.edu,{" "}
-            <a
-              className="underline"
-              href="https://github.com/cantoramann"
-              rel="noreferrer"
-              target="_blank"
-            >
-              github
-            </a>
-            ,{" "}
-            <a
-              className="underline"
-              href="https://twitter.com/cantoramann"
-              rel="noreferrer"
-              target="_blank"
-            >
-              twitter
-            </a>
-            ,{" "}
-            <a
-              className="underline"
-              href="https://linkedin.com/in/cantoraman"
-              rel="noreferrer"
-              target="_blank"
-            >
-              linkedin
-            </a>
           </li>
         </ul>
       </div>
