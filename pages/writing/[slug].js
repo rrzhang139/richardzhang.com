@@ -11,7 +11,9 @@ const components = {
 };
 
 const proseClasses = () => {
-  return ["py-20 prose prose-invert leading-9 font-mavenp"].join(" ");
+  return [
+    "py-20 prose prose-invert leading-9 font-mavenp text-neutral-700 prose-h1:text-black prose-h2:text-black prose-h3:text-neutral-900 prose-h4:text-black prose-h5:text-black prose-h6:text-black text-justify",
+  ].join(" ");
 };
 
 const PostPage = ({ mdxSource, frontMatter }) => {

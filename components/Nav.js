@@ -10,7 +10,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="max-w-2xl mx-auto px-5 md:px-0">
+    <nav className="max-w-2xl mx-auto px-5 md:px-0 my-8">
       <ul className="space-x-5 flex">
         {[
           { name: "home", url: "/" },

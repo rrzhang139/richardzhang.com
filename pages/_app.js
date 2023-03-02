@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <div className="min-h-screen pb-20 font-text text-neutral-900 bg-white">
-        {/* <Nav /> */}
+        <Nav />
         <Component {...pageProps} />
       </div>
     </>

@@ -4,8 +4,8 @@ export default function Home() {
   return (
     <div>
       <Head></Head>
-      <div className="max-w-2xl mx-auto mt-8 px-5 md:px-0">
-        <div className="mt-20 space-y-5">
+      <div className="max-w-2xl mx-auto px-5 md:px-0 mt-12">
+        <div className="space-y-5">
           <h1 className="text-3xl font-black tracking-widest">Can Toraman</h1>
           <div>
             <h3 className="text-sm leading-loose">
