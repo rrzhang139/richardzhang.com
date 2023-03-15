@@ -117,7 +117,7 @@ export default function Home() {
             </ul>
           </li>
           <li>
-            Projects:
+            Some projects:
             <ul className="pl-10 list-inside space-y-2 pt-2">
               <li>
                 -{" "}
@@ -130,6 +130,18 @@ export default function Home() {
                   CLI chat
                 </a>
                 , anonymous chat on the command line.
+              </li>
+              <li>
+                -{" "}
+                <a
+                  className="underline hover:text-blue-400 transition-colors"
+                  href="https://www.github.com/cantoramann/govecs"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  govecs
+                </a>
+                , vectorization library for Go.
               </li>
               <li>
                 -{" "}
@@ -154,30 +166,6 @@ export default function Home() {
                   studyonusc.com
                 </a>
                 , study group app for USC during Covid.
-              </li>
-              <li>
-                -{" "}
-                <a
-                  className="underline hover:text-blue-400 transition-colors"
-                  href="https://www.chatwithsatoshi.com/"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  chatwithsatoshi.com
-                </a>
-                , Chat with Satoshi Nakamoto.
-              </li>
-              <li>
-                -{" "}
-                <a
-                  className="underline hover:text-blue-400 transition-colors"
-                  href="https://www.passwordgenerator.lol/"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  passwordgenerator.lol
-                </a>
-                , lyrics based password generator.
               </li>
             </ul>
           </li>
