@@ -59,8 +59,19 @@ export default function Home() {
           <li>
             Currently:
             <ul className="pl-10 list-inside space-y-2 pt-2">
-              <li>- Developing the future of ed-tech for devs.</li>
-              <li>- Deep diving into distributed systems and cryptography.</li>
+              <li>
+                - Exploring the use of AI for home renovation at{" "}
+                <a
+                  className="underline hover:text-blue-400 transition-colors"
+                  href="https://joinhaven.io"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Haven
+                </a>
+                .
+              </li>
+              <li>- Deep diving into distributed systems.</li>
               {/* <li>
                 - Founding engineer at{" "}
                 <a
