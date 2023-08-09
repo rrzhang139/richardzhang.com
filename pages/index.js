@@ -6,21 +6,16 @@ export default function Home() {
       <Head></Head>
       <div className="max-w-2xl mx-auto px-5 md:px-0 mt-12">
         <div className="space-y-5">
-          <h1 className="text-3xl font-black tracking-widest">Can Toraman</h1>
-          <div>
-            <h3 className="text-sm leading-loose">
-              Computer science @ University of Southern California.
-            </h3>
-          </div>
+          <h1 className="text-3xl font-black tracking-widest">Richard Zhang</h1>
           <ul className="text-xs flex gap-x-3 tracking-wide">
             <li className="">
-              <p className="">toraman@usc.edu</p>
+              <p className="">rzhang139@gmail.com</p>
             </li>
             <li>
               <p>
                 <a
                   className="hover:text-blue-400 transition-colors"
-                  href="https://github.com/cantoramann"
+                  href="https://github.com/rrzhang139"
                   rel="noreferrer"
                   target="_blank"
                 >
@@ -32,7 +27,7 @@ export default function Home() {
               <p>
                 <a
                   className="hover:text-blue-400 transition-colors"
-                  href="https://twitter.com/cantoramann"
+                  href="https://twitter.com/rzhang139"
                   rel="noreferrer"
                   target="_blank"
                 >
@@ -44,7 +39,7 @@ export default function Home() {
               <p>
                 <a
                   className="hover:text-blue-400 transition-colors"
-                  href="https://linkedin.com/in/cantoraman"
+                  href="https://www.linkedin.com/in/richard-zhang139/"
                   rel="noreferrer"
                   target="_blank"
                 >
@@ -52,82 +47,77 @@ export default function Home() {
                 </a>
               </p>
             </li>
+            <li>
+              <p>
+                <a
+                  className="hover:text-blue-400 transition-colors"
+                  href="https://richord.notion.site/richord-s-Library-c1fcad85012c4d3abd26503147a1253c"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Library
+                </a>
+              </p>
+            </li>
           </ul>
+          <div>
+            <h3 className="text-sm leading-loose">
+              Hi I'm Richard Zhang, or "Richord" as my twitter reply-guys call me.
+            </h3>
+          </div>
         </div>
-
+        <hr className="my-5"></hr>
         <ul className="mt-12 text-sm list-disc list-inside space-y-10 tracking-wide">
           <li>
-            Currently:
+             What I&apos;m up to:
             <ul className="pl-10 list-inside space-y-2 pt-2">
-              <li>
-                - Exploring the use of AI for home renovation at{" "}
-                <a
-                  className="underline hover:text-blue-400 transition-colors"
-                  href="https://joinhaven.io"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Haven
-                </a>
-                .
-              </li>
-              <li>- Deep diving into distributed systems.</li>
-              {/* <li>
-                - Founding engineer at{" "}
-                <a
-                  className="underline hover:text-blue-400 transition-colors"
-                  href="https://www.joinhaven.io/"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Haven
-                </a>
-                , modernizing kitchen renovation (no kidding).
-              </li> */}
+              <li>- cryptography</li>
+              <li>- p2p/distributed protocols</li>
+              <li>- exploring AI alignment and interpretability </li>
             </ul>
           </li>
           <li>
-            Previosuly:
+            Previously:
             <ul className="pl-10 list-inside space-y-2 pt-2">
               <li>
-                - Full-time zone infrastructure at{" "}
+                📜 Engineering/Infrastructure at {" "} 
                 <a
                   className="underline hover:text-blue-400 transition-colors"
-                  href="https://techcrunch.com/2022/03/17/getir-is-now-worth-nearly-12-billion-after-raising-another-768-million/"
+                  href="https://scroll.io/"
                   rel="noreferrer"
                   target="_blank"
                 >
-                  Getir
+                  Scroll
                 </a>
-                .
+                , building distributed infrastructure and protocols.
               </li>
               <li>
-                - Founding team at{" "}
+                🌱 Developer/co-founder for {" "}
                 <a
                   className="underline hover:text-blue-400 transition-colors"
-                  href="https://www.ethsign.xyz/"
+                  href="https://www.carbonlink.io/"
                   rel="noreferrer"
                   target="_blank"
                 >
-                  EthSign
+                  Carbonlink. 
                 </a>
-                , the near future of document signing.
+                , a carbon offsetting platform for consumers.
               </li>
               <li>
-                - Software lead at{" "}
+                🧿 Software Engineer Intern at {" "}
                 <a
                   className="underline hover:text-blue-400 transition-colors"
                   href="https://uscauv.com/"
                   rel="noreferrer"
                   target="_blank"
                 >
-                  USC AUV
+                  Coinbase
                 </a>
-                , built autonomous systems underwater.
+                , building scalable services for the crypto economy.
               </li>
             </ul>
           </li>
-          <li>
+          {/* <li>
             Some projects:
             <ul className="pl-10 list-inside space-y-2 pt-2">
               <li>
@@ -179,15 +169,7 @@ export default function Home() {
                 , study group app for USC during Covid.
               </li>
             </ul>
-          </li>
-          <li>
-            Very passionate about:
-            <ul className="pl-10 list-inside space-y-2 pt-2">
-              <li>- Tech & design</li>
-              <li>- Photography, reading, traveling, hiking</li>
-              <li>- Harry Potter fan theories</li>
-            </ul>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>

@@ -20,7 +20,7 @@ const PostPage = ({ mdxSource, frontMatter }) => {
   return (
     <>
       <Head>
-        <title>{frontMatter.title} | Can Toraman</title>
+        <title>{frontMatter.title} | Richard Zhang</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content={frontMatter.description}></meta>
         <meta

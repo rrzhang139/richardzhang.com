@@ -9,7 +9,7 @@ module.exports = {
         colorstainedblack: "#0a0a0a",
       },
       fontFamily: {
-        text: ["'M PLUS 1p', sans-serif"],
+        text: ["Helvetica", "sans-serif"],
         title: ["Crimson Text", "serif"],
         mavenp: ["Maven Pro", "sans-serif"],
       },

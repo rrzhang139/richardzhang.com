@@ -15,6 +15,7 @@ const Nav = () => {
         {[
           { name: "home", url: "/" },
           { name: "writing", url: "/writing" },
+          { name: "learning artifacts", url: "/artifacts" },
         ].map((link, index) => {
           return (
             <li key={index}>

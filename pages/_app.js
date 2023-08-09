@@ -7,10 +7,10 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Can Toraman</title>
+        <title>Richard Zhang</title>
         <link
           rel="shortcut icon"
-          href="https://img.icons8.com/color/48/000000/gandalf.png"
+          href="https://icons8.com/icon/BXHn8-pxp97I/man-with-chinese-cap"
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta charSet="utf-8" />
