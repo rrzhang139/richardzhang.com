@@ -64,7 +64,7 @@ export default function Home() {
             <h3 style={{ fontSize: '16px', color: 'gray' }}>
               Hey, I&apos;m Richard. 
             </h3>
-            <h3 className="my-2" style={{ fontSize: '14px', color: 'gray' }}> &gt; my dream is to mend and bridge trust in the digital world and amongst our human (and non-human) peers </h3>
+            <h3 className="my-2" style={{ fontSize: '14px', color: 'gray' }}> &gt; I like to think a lot. My biggest hope: mend and bridge trust in the digital world and among our human (and non-human) peers </h3>
             <h3 style={{ fontSize: '14px', color: 'gray' }}> &gt; currently based in New York.</h3>
           </div>
         </div>
