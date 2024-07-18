@@ -14,6 +14,7 @@ const Nav = () => {
       <ul className="space-x-5 flex">
         {[
           { name: "home", url: "/" },
+           { name: "projects", url: "/projects" },
           { name: "writing", url: "/writing" },
           { name: "learning journey", url: "/learning" },
           { name: "learning artifacts", url: "/artifacts" },
