@@ -130,7 +130,7 @@ export default function Home() {
                 🧿 Software Engineer Intern at {" "}
                 <a
                   className="underline hover:text-blue-400 transition-colors"
-                  href="https://uscauv.com/"
+                  href="https://coinbase.com/"
                   rel="noreferrer"
                   target="_blank"
                 >
