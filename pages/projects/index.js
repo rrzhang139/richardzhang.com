@@ -87,13 +87,13 @@ const Projects = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="Richard Zhang's projects and portfolio"
+          content="Richard Zhang&apos;s projects and portfolio"
         />
       </Head>
       <div className="max-w-4xl mx-auto px-5 md:px-0 mt-12">
         <h1 className="text-3xl font-black tracking-widest mb-6">Projects</h1>
         <p className="text-sm mb-8">
-          Here are some of the projects I've worked on. Click on a project to learn more.
+          Here are some of the projects I&apos;ve worked on. Click on a project to learn more.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
