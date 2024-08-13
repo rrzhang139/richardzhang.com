@@ -59,6 +59,18 @@ export default function Home() {
                 </a>
               </p>
             </li>
+            <li>
+              <p>
+                <a
+                  className="hover:text-blue-400 transition-colors"
+                  href="https://drive.google.com/file/d/1a3tajUTjmvdBg7upQYLYmg-DujNysZPC/view?usp=sharing"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Resume
+                </a>
+              </p>
+            </li>
           </ul>
           <div>
             <h3 style={{ fontSize: '16px', color: 'gray' }}>
