@@ -43,6 +43,13 @@ const ProjectCard = ({ name, date, description, link, source, imageUrl }) => (
 const Projects = () => {
   const projects = [
     {
+      name: "Detection/Manipulation robot",
+      date: "Aug 2024",
+      description: "Object detection and manipulation robot using NVIDIA Jetson Xavier NX GPU. My first experience in robotics :)",
+      source: "https://github.com/rrzhang139/object-detect-robot",
+      imageUrl: "/manipulation.gif"
+    },
+    {
       name: "NumpyViz",
       date: "July 2024",
       description: "Code visualizer that renders dynamic visualizations for Numpy operations.",
@@ -76,7 +83,6 @@ const Projects = () => {
       date: "Nov 2023",
       description: "Real-time chat interface for users to engage in a debate with an AI agent. It allows users to submit debate topics to two autonomous agents taking each side.",
       source: "https://github.com/rrzhang139/Debate-AI",
-
     },
   ];
 
