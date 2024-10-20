@@ -79,10 +79,11 @@ const Projects = () => {
       imageUrl: "/material.png"
     },
     {
-      name: "Debate-AI",
-      date: "Nov 2023",
-      description: "Real-time chat interface for users to engage in a debate with an AI agent. It allows users to submit debate topics to two autonomous agents taking each side.",
-      source: "https://github.com/rrzhang139/Debate-AI",
+      name: "EmberEvac",
+      date: "Oct 2024",
+      description: "Ember Evac is an intelligent evacuation assistance system that provides real-time, personalized guidance to residents during wildfire emergencies. Website description: https://devpost.com/software/n-7ljt9u",
+      source: "https://github.com/AkashWudali12/CalHacks11.0",
+      imageUrl: "/evac.png"
     },
   ];
 
