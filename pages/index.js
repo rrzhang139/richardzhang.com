@@ -76,7 +76,7 @@ export default function Home() {
             <h3 style={{ fontSize: '16px', color: 'gray' }}>
               Hey, I&apos;m Richard. 
             </h3>
-            <h3 className="my-2" style={{ fontSize: '14px', color: 'gray' }}> &gt; I like to think a lot. My biggest hope: mend and bridge trust in the digital world and among our human (and non-human) peers </h3>
+            <h3 className="my-2" style={{ fontSize: '14px', color: 'gray' }}> &gt; I like to think a lot. My biggest hope: mend connections in the digital world and among our human (and non-human) peers </h3>
           </div>
         </div>
         <hr className="my-5"></hr>
@@ -84,13 +84,13 @@ export default function Home() {
           <li>
              What I&apos;m up to:
             <ul className="pl-10 list-inside space-y-2 pt-2">
-              <li>- hacking on 
+              <li>- simulating softbodies at 
                 <a
                   className="underline hover:text-blue-400 transition-colors"
-                  href="https://github.com/rrzhang139/numpyviz"
+                  href="https://xiaolonw.github.io/index.html"
                   rel="noreferrer"
                   target="_blank"
-                  > visualization/education projects</a></li>
+                  > Wang Lab</a></li>
               <li>- 
                  <a
                   className="underline hover:text-blue-400 transition-colors"
@@ -98,13 +98,13 @@ export default function Home() {
                   rel="noreferrer"
                   target="_blank"
                 > math-maxxing</a></li>
-              <li>- exploring lower 
+              <li>- building 
                 <a
                   className="underline hover:text-blue-400 transition-colors"
-                  href="https://github.com/rrzhang139/fromthetransistor"
+                  href="https://github.com/rrzhang139/object-detect-robot"
                   rel="noreferrer"
                   target="_blank"
-                > abstraction layers</a></li>
+                > robots</a></li>
             </ul>
           </li>
           <li>

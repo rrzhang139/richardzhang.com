@@ -43,6 +43,13 @@ const ProjectCard = ({ name, date, description, link, source, imageUrl }) => (
 const Projects = () => {
   const projects = [
     {
+      name: "Posebot",
+      date: "Aug 2024",
+      description: "Pose and depth estimation for a 13-DoF open-source humanoid robot (https://zeroth.bot/). ",
+      source: "https://github.com/theswerd/basedbot/",
+      imageUrl: "/posebot.gif"
+    },
+    {
       name: "Detection/Manipulation robot",
       date: "Aug 2024",
       description: "Object detection and manipulation robot using NVIDIA Jetson Xavier NX GPU. My first experience in robotics :)",
