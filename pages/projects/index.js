@@ -5,6 +5,28 @@ import Head from "next/head";
 import Image from "next/image";
 import { Globe, Github } from 'lucide-react';
 
+const createMarkup = (text) => {
+  // Basic URL regex pattern
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  
+  return text.split(urlRegex).map((part, i) => {
+    if (part.match(urlRegex)) {
+      return (
+        <a
+          key={i}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-800 underline"
+        >
+          {part}
+        </a>
+      );
+    }
+    return part;
+  });
+};
+
 const LinkButton = ({ href, icon, text }) => (
   <a
     href={href}
@@ -27,7 +49,7 @@ const ProjectCard = ({ name, date, description, link, source, imageUrl }) => (
     <div className="p-4">
       <h3 className="text-xl font-semibold mb-2">{name}</h3>
       <p className="text-gray-600 text-sm mb-2">{date}</p>
-      <p className="text-gray-700 mb-4">{description}</p>
+      <p className="text-gray-700 mb-4">{createMarkup(description)}</p>
       <div className="flex space-x-4">
         {link && (
           <LinkButton href={link} icon={<Globe size={18} />} text="Website" />
@@ -44,8 +66,8 @@ const Projects = () => {
   const projects = [
     {
       name: "Posebot",
-      date: "Aug 2024",
-      description: "Pose and depth estimation for a 13-DoF open-source humanoid robot (https://zeroth.bot/). ",
+      date: "Dec 2024",
+      description: "Pose and depth estimation for a 13-DoF open-source humanoid robot (https://zeroth.bot/). 1st Place at K-Hacks 0.2",
       source: "https://github.com/theswerd/basedbot/",
       imageUrl: "/posebot.gif"
     },
