@@ -65,6 +65,21 @@ const ProjectCard = ({ name, date, description, link, source, imageUrl }) => (
 const Projects = () => {
   const projects = [
     {
+      name: "Soft Body Simulation",
+      date: "Feb 2025",
+      description: "Built differentiable physics simulator tasks for predicting soft body interactions using Nvidia Warp",
+      source: "https://gist.github.com/rrzhang139/dd588820882f6351a2a906cef4a8b677",
+      imageUrl: "https://imgur.com/zdish0y.gif"
+    },
+    {
+      name: "Control Dynamics Simulator",
+      date: "Mar 2025",
+      description: "Basic simulation environment for popular control tasks",
+      link: "https://control-dynamics-simulator.vercel.app/",
+      source: "https://github.com/rrzhang139/control_dynamics_simulator",
+      imageUrl: "https://imgur.com/npGp9HM.gif"
+    },
+    {
       name: "Posebot",
       date: "Dec 2024",
       description: "Pose and depth estimation for a 13-DoF open-source humanoid robot (https://zeroth.bot/). 1st Place at K-Hacks 0.2",

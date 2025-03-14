@@ -111,6 +111,15 @@ export default function Home() {
             Previously:
             <ul className="pl-10 list-inside space-y-2 pt-2">
               <li>
+                🐹 Machine Learning Intern at {" "} 
+                <a
+                  className="underline hover:text-blue-400 transition-colors"
+                  href="https://pika.art/"
+                  rel="noreferrer"
+                  target="_blank"
+                >Pika</a>
+              </li>
+              <li>
                 🧪 Research Assistant at UC Berkeley under Prof Yi Ma
                 , diffusion models, multi-modalities
               </li>
