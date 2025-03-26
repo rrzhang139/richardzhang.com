@@ -161,59 +161,6 @@ export default function Home() {
               </li>
             </ul>
           </li>
-          {/* <li>
-            Some projects:
-            <ul className="pl-10 list-inside space-y-2 pt-2">
-              <li>
-                -{" "}
-                <a
-                  className="underline hover:text-blue-400 transition-colors"
-                  href="https://github.com/cantoramann/cli-chat-client"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  CLI chat
-                </a>
-                , anonymous chat on the command line.
-              </li>
-              <li>
-                -{" "}
-                <a
-                  className="underline hover:text-blue-400 transition-colors"
-                  href="https://www.github.com/cantoramann/govecs"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  govecs
-                </a>
-                , vectorization library for Go.
-              </li>
-              <li>
-                -{" "}
-                <a
-                  className="underline hover:text-blue-400 transition-colors"
-                  href="https://github.com/cantoramann/lightos"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Lightos
-                </a>
-                , opinionated REST framework for Node.js.
-              </li>
-              <li>
-                -{" "}
-                <a
-                  className="underline hover:text-blue-400 transition-colors"
-                  href="https://www.studyonusc.com/"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  studyonusc.com
-                </a>
-                , study group app for USC during Covid.
-              </li>
-            </ul>
-          </li> */}
         </ul>
       </div>
     </div>

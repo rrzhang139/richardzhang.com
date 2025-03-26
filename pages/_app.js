@@ -2,10 +2,21 @@ import "../styles/globals.css";
 import "../styles/fonts.css";
 import Head from "next/head";
 import Nav from "../components/Nav";
+import { ThemeProvider } from "../components/ThemeContext";
+import { useEffect, useState } from "react";
 
 function MyApp({ Component, pageProps }) {
+  // Track client-side rendering
+  const [mounted, setMounted] = useState(false);
+  
+  // Mark as mounted after component is rendered client-side
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  
   return (
-    <>
+    <ThemeProvider>
+      
       <Head>
         <title>Richard Zhang</title>
         <link
@@ -24,11 +35,15 @@ function MyApp({ Component, pageProps }) {
           key="ogdesc"
         />
       </Head>
-      <div className="min-h-screen pb-20 font-text text-neutral-900 bg-white">
+      <div className="theme-sync min-h-screen pb-20 font-text text-neutral-900 dark:text-neutral-100 bg-eggshell dark:bg-midnight">
         <Nav />
-        <Component {...pageProps} />
+        
+        {/* Simple approach to prevent hydration issues: hide content until mounted */}
+        <div className="theme-sync" style={{ visibility: mounted ? 'visible' : 'hidden' }}>
+          <Component {...pageProps} />
+        </div>
       </div>
-    </>
+    </ThemeProvider>
   );
 }
 

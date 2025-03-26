@@ -32,7 +32,7 @@ const LinkButton = ({ href, icon, text }) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-700 transition-colors duration-300"
+    className="inline-flex items-center px-4 py-2 bg-gray-900 dark:bg-gray-800 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600 transition-colors duration-300"
   >
     {icon}
     <span className="ml-2">{text}</span>
@@ -40,17 +40,17 @@ const LinkButton = ({ href, icon, text }) => (
 );
 
 const ProjectCard = ({ name, date, description, link, source, imageUrl }) => (
-  <div className="bg-white rounded-lg shadow-md overflow-hidden transition-shadow duration-300 hover:shadow-xl">
+  <div className="theme-sync bg-eggshell dark:bg-darkNavy rounded-lg shadow-md overflow-hidden transition-shadow duration-300 hover:shadow-xl">
     {imageUrl && (
       <div className="relative h-48">
         <Image src={imageUrl} alt={name} layout="fill" objectFit="cover" />
       </div>
     )}
-    <div className="p-4">
-      <h3 className="text-xl font-semibold mb-2">{name}</h3>
-      <p className="text-gray-600 text-sm mb-2">{date}</p>
-      <p className="text-gray-700 mb-4">{createMarkup(description)}</p>
-      <div className="flex space-x-4">
+    <div className="theme-sync p-4 bg-eggshell dark:bg-darkNavy">
+      <h3 className="theme-sync-text text-xl font-semibold mb-2 dark:text-neutral-100">{name}</h3>
+      <p className="theme-sync-text text-gray-600 dark:text-gray-400 text-sm mb-2">{date}</p>
+      <p className="theme-sync-text text-gray-700 dark:text-gray-300 mb-4">{createMarkup(description)}</p>
+      <div className="theme-sync flex space-x-4 bg-eggshell dark:bg-darkNavy">
         {link && (
           <LinkButton href={link} icon={<Globe size={18} />} text="Website" />
         )}
@@ -142,8 +142,8 @@ const Projects = () => {
         />
       </Head>
       <div className="max-w-4xl mx-auto px-5 md:px-0 mt-12">
-        <h1 className="text-3xl font-black tracking-widest mb-6">Projects</h1>
-        <p className="text-sm mb-8">
+        <h1 className="text-3xl font-black tracking-widest mb-6 dark:text-neutral-100">Projects</h1>
+        <p className="text-sm mb-8 dark:text-neutral-300">
           Here are some of the projects I&apos;ve worked on. Click on a project to learn more.
         </p>
 
@@ -154,7 +154,7 @@ const Projects = () => {
         </div>
 
         {projects.length === 0 && (
-          <p className="text-gray-600 italic">No projects to display at the moment. Check back soon!</p>
+          <p className="text-gray-600 dark:text-gray-400 italic">No projects to display at the moment. Check back soon!</p>
         )}
       </div>
     </div>

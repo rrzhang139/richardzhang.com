@@ -4,19 +4,42 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import ExternalLink from "../../components/Posts/ExternalLink";
+import Figure from "../../components/Posts/Figure";
+import Callout from "../../components/Posts/Callout";
+import Math from "../../components/Posts/Math";
 import Head from "next/head";
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex';
+import ImageRow from "../../components/Posts/ImageRow";
+import { Bold, Italic, Underline } from "../../components/Posts/TextFormatting";
+import { useTheme } from "../../components/ThemeContext";
 
-const components = {
-  ExternalLink,
-};
 
-const proseClasses = () => {
+const proseClasses = (theme) => {
   return [
-    "py-20 prose prose-invert leading-9 font-mavenp text-neutral-700 prose-headings:text-black prose-a:text-neutral-600 prose-h1:text-black prose-h2:text-black prose-h3:text-neutral-900 prose-h4:text-black prose-h5:text-black prose-h6:text-black text-justify prose-*:text-black ul:text-black ol:text-black li:text-black",
+    "py-20 prose leading-9 font-mavenp",
+    theme === "dark" 
+      ? "text-neutral-200 prose-headings:text-white prose-a:text-neutral-300 prose-h1:text-white prose-h2:text-white prose-h3:text-neutral-100 prose-h4:text-white prose-h5:text-white prose-h6:text-white prose-*:text-white ul:text-white ol:text-white li:text-white" 
+      : "text-neutral-700 prose-headings:text-black prose-a:text-neutral-600 prose-h1:text-black prose-h2:text-black prose-h3:text-neutral-900 prose-h4:text-black prose-h5:text-black prose-h6:text-black prose-*:text-black ul:text-black ol:text-black li:text-black",
+    "text-justify prose-invert"
   ].join(" ");
 };
 
 const PostPage = ({ mdxSource, frontMatter }) => {
+  const { theme } = useTheme();
+  
+  // Pass theme to Callout component
+  const components = {
+    ExternalLink,
+    Figure,
+    Callout: (props) => <Callout {...props} theme={theme} />,
+    Math,
+    ImageRow,
+    Bold,
+    Italic,
+    Underline,
+  };
+  
   return (
     <>
       <Head>
@@ -31,7 +54,7 @@ const PostPage = ({ mdxSource, frontMatter }) => {
       </Head>
       <section className="space-y-10">
         <section className="max-w-xl px-12 mx-auto lg:px-0">
-          <article className={proseClasses()}>
+          <article className={proseClasses(theme)}>
             <MDXRemote {...mdxSource} components={components} />
           </article>
           {/* </div> */}
@@ -63,7 +86,13 @@ const getStaticProps = async ({ params: { slug } }) => {
   );
 
   const { data: frontMatter, content } = matter(markdownWithMeta);
-  const mdxSource = await serialize(content);
+  const mdxSource = await serialize(content, {
+    mdxOptions: {
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex],
+    },
+    scope: frontMatter,
+  });
 
   return {
     props: {

@@ -1,0 +1,435 @@
+---
+title: The Beauty and Intuition of Reinforcement Learning (Part I)
+slug: the-beauty-and-intuition-of-RL-part-I
+description: An exploration of the fundamental concepts and techniques in Reinforcement Learning, starting with numerical optimization methods.
+date: Mar 2025
+---
+
+# The Beauty and Intuition of Reinforcement Learning (Part I)
+
+<ImageRow
+  images={[
+    { src: "/partI/d76128eb-4da7-4a5c-bce2-f3143233ad9f.png", alt: "First image" },
+    { src: "/partI/image.png", alt: "Second image" },
+  ]}
+/>
+
+<ImageRow
+  images={[
+    { src: "/partI/image%201.png", alt: "First image" },
+    { src: "/partI/f14b4d32-57e8-4a9c-8b8f-11254a21af3a.png", alt: "Second image" },
+  ]}
+/>
+
+Over the past several years we've seen an explosion in the theory and applications of artificial intelligence with the rise of the transformer. It produces incredible capabilities to perform very complicated tasks like generating languages, videos, or making robots intelligent. 
+
+Yet, at its core, it's simply processing billions of tokens through intricate architectures composed of matrix multiplications streaming out another set of tokens. It might feel as if we could just <Italic>tokenize</Italic> the entire world, doesn't it? 
+
+Turns out the world is an exponentially large space, and in order to make sense of this complexity we need to use the right tools. 
+
+Reinforcement Learning (RL) is one such powerful tool, designed specifically for the search and discovery of solutions within vast spaces. RL doesn't exist in isolation; rather, it rests upon the foundational bedrock of classical numerical and stochastic optimization techniques, as well as connections to other rich domains, such as games.
+
+In this series of posts, my goal is to carefully peel back the layers of this foundation, guiding you step-by-step through the evolution of search techniques. Our journey will be deliberately chronological and linear, with each topic intentionally chosen to illuminate the gradual progression toward advanced methods.
+
+In Part I, I will cover numerical optimization techniques like <Bold>Gradient Descent</Bold> and <Bold>Newton's Method</Bold>. Part II will then motivate games as a form of search requiring the adaptability and flexibility that RL provides. 
+
+I want to thank my professor, Sicun Gao. Learning RL from multiple perspectives is difficult. I tried and failed 3 times. Never had I learned RL in such a chronological, coherent, linear way that can thread all of this content deeply together. His class was a big inspiration for writing these posts.
+
+Throughout this journey, I'll assume you have a basic background in math and probability. If not, pull out ChatGPT and ask it questions during the read. 
+
+# Numerical Optimization
+
+## Searching for the Best: The Drive to Minimize
+
+Imagine you're looking for the <Bold>best</Bold> solution to a problem – perhaps the least error in a prediction, the lowest cost route on a map, or the dimmest pixel in an image. In optimization terms, "best" often means the <Bold>minimum</Bold> value of some objective function. We want to search through all possible inputs to discover where the output of our function is minimal. The big question is: <Bold>which way do we go?</Bold> How do we move through the space of possibilities to get closer to the coveted minimum?
+
+The key lies in recognizing that our function's output <Bold>changes</Bold> as we adjust the input. If the output didn't change at all, there would be nothing to search for – every point would be equally good like the constant function:
+
+<Figure 
+  src="/partI/image%202.png" 
+  alt="Constant function graph" 
+  caption="f(x)=c"
+/>
+
+But most functions <Italic>do</Italic> vary: some inputs give higher output, some lower. This variation is what makes search necessary—from the edge contours of a pixelated image to the clouds blending into the sky. 
+
+<Figure
+  src="/partI/Grassy_Hill_Image_Mar_25_2025.png"
+  alt="Grassy Hill Image Mar 25 2025.png"
+/>
+
+For a <Bold>concrete analogy</Bold>, think of a hiking landscape: you stand somewhere on a hilly terrain and want to find the lowest valley (minimum). The ground slopes upward in some directions and downward in others. To decide where to step, you naturally look for the direction where the ground slopes downward.
+
+Congratulations! You've derived the first search tool called the gradient. 
+
+<Callout>
+
+Gradient: the direction in the domain space that leads to steepest ascent in the function (highest growth in the function value)
+
+</Callout>
+
+## Level Sets and the Emergence of the Gradient
+
+An intuitive way to see why the gradient naturally arises is by thinking in terms of <Bold>level sets</Bold>. A level set of a function is like a contour line on a map: it's the set of points where the function has the same value. 
+
+<Figure 
+  src="/partI/image%203.png" 
+  alt="image.png" 
+/>
+
+In a general function $f(x,y)$, a <Bold>level set</Bold> might be all points $(x,y)$ such that $f(x,y) = c$ for some constant $c$. If you walk along one of those contour lines in the real world, you neither gain nor lose elevation; you stay at the same height. 
+
+Now, ask yourself: if you're on the side of a hill, which direction will make you climb fastest? It's not along the contour line (that would keep you level), but <Bold>straight uphill</Bold>, perpendicular to the contour. So if you want to change $f$ the fastest, you have to leave the level set in the most drastic way – i.e. go orthogonal to it.
+
+<Figure 
+  src="/partI/image%204.png" 
+  alt="image.png" 
+/>
+
+In mathematical optimization, we use this idea by looking at $-\nabla f$, the negative gradient, as the direction of steepest <Bold>descent</Bold>. With this insight, we're ready to use gradients as a tool for hunting the minima.
+
+## First-Order Optimization
+
+Knowing which way is downhill is incredibly useful. <Bold>First-order optimization</Bold> methods are those that use the first derivative information – i.e. the gradient – to find minima. One of the most straightforward algorithms that uses gradients is the famous <Bold>gradient descent (hence its name)</Bold>. Imagine you're blindfolded on our hilly landscape and can only sense the slope of the ground beneath your feet. Gradient descent is like taking a cautious step <Bold>in the direction your feet feel the ground is sloping downward.</Bold> 
+
+<Figure 
+  src="/partI/image%205.png" 
+  alt="image.png" 
+/>
+
+Then you reassess (feel the new slope at the new position) and take another step. Step by step, you move <Bold>downward</Bold>, always locally choosing the steepest descent direction given by the negative gradient. 
+
+It's a bit <Bold>naïve</Bold> in that you only look at what's happening <Italic>right where you stand</Italic> (you don't survey the whole landscape), but it's amazingly effective at steadily decreasing the function value. Many optimization problems, big and small, are solved exactly this way – for example, training a neural network is essentially a high-dimensional gradient descent, taking one small downhill step at a time to reduce error.
+
+Let's derive where this "gradient descent" idea comes from in a slightly more formal way. The <Bold>first-order condition</Bold> for optimality is a mathematical statement of what we hinted earlier: at a <Italic>local minimum</Italic> (or maximum), the gradient must be zero. 
+
+<Figure 
+  src="/partI/image%206.png" 
+  alt="image.png" 
+/>
+
+If there were any slope (positive or negative) at that point, you could move a tiny bit in that direction and go lower (or higher), so it wouldn't truly be optimal. Thus, a necessary condition for $x^*$ to minimize $f(x)$ is $\nabla f(x^*) = 0$. 
+
+$$
+\nabla f\left(x^*\right)=0
+$$
+
+In reality this offers a natural stopping condition. We take itsy bitsy steps until the gradient is 0! 
+
+However, as effective as it is, gradient descent has its limitations. If the landscape is tricky – say a narrow valley where the path zigzags – the method can be slow. 
+
+<Figure 
+  src="/partI/image%207.png" 
+  alt="image.png" 
+/>
+
+Think of walking down a winding staircase: gradient descent takes the safe staircase, one step at a time. 
+
+To get to the bottom faster, we might crave a bit more information about the terrain than just "slope here, slope there." This is where we turn to the next level of understanding: <Bold>second-order information</Bold>.
+
+## Second-Order Insights
+
+While first-order methods only feel the slope of the ground at your current point, <Bold>second-order optimization</Bold> methods also feel how the slope itself is changing. This is analogous to not just feeling the incline, but sensing whether the ground is curving or flattening out as you move. 
+
+Let's return to our landscape analogy, but now imagine you also have a special pair of glasses that let you see how <Bold>curved or flat</Bold> the ground is in different directions. At some points, the ground might form a <Bold>curved bowl</Bold> shape around you, bending upward steeply in all directions; at other points, it might form a <Bold>saddle</Bold>, curving up in one direction and down in another. 
+
+<Figure 
+  src="/partI/image%208.png" 
+  alt="image.png" 
+/>
+
+Why is curvature important for optimization? Because it lets us gauge whether we should <Bold>accelerate or decelerate our descent</Bold> in different directions. Our purple arrows in the image indicate foresighted caution: if there's strong curvature then anticipate reducing your steps. After all, "second-order" means we get a more sophisticated form of information that allows us to anticipate what's ahead. Is the valley wide and shallow? Rest assured, you can take large, stress-free steps—slope isn't going to suddenly change under your feet. Is the valley narrow and steep? I'd tread carefully. 
+
+Let's start with a simple example. To start, let's stretch this valley into a 2-dimensional space, like this
+
+<Figure 
+  src="/partI/image%209.png" 
+  alt="image.png" 
+/>
+
+Ok, now let's move our perspective to a birds-eye-view. 
+
+<Figure 
+  src="/partI/image%2010.png" 
+  alt="image.png" 
+/>
+
+Now, what are these oval-like shapes? They are the level sets! Meaning any point on a oval will evaluate to the same function value. And this makes sense. Because we know the minimum is at the center, and as we expand to outer layers, we reach function evaluations of larger values. 
+
+<Figure 
+  src="/partI/image%2011.png" 
+  alt="The intensity of the colors represent higher values of f" 
+/>
+
+The intensity of the colors represent higher values of f
+
+Now, what are these arrows? They are the sort of principal directions that represent the 2D space. For now, they seem mysterious, but only when we place a random initial point and are asked to find the minimum are we going to see the value of these directions. 
+
+<Figure 
+  src="/partI/image%2012.png" 
+  alt="The black point is our initial starting point. The gradient is the black arrow." 
+/>
+
+The black point is our initial starting point. The gradient is the black arrow.
+
+The green arrow—the long axis of the ellipse—tells us this direction is gentle. You can take <Bold>larger steps here</Bold> without overshooting. 
+
+<Figure 
+  src="/partI/image%2013.png" 
+  alt="Notice how we are not making great progress to the minimum…" 
+/>
+
+Notice how we are not making great progress to the minimum…
+
+<Figure 
+  src="/partI/image%2014.png" 
+  alt="That's more like it!" 
+/>
+
+That's more like it! 
+
+Now if we start at the blue arrow, we would be in a steep landscape. 
+
+<Figure 
+  src="/partI/image%2015.png" 
+  alt="This is too steep!" 
+/>
+
+This is too steep! 
+
+<Figure 
+  src="/partI/image%2016.png" 
+  alt="That's more like it!" 
+/>
+
+That's more like it! 
+
+<Callout>
+
+In mathematical terms, second-order information comes from the <Bold>Hessian</Bold>, which is the matrix of all second partial derivatives. The Hessian matrix encodes exactly this kind of information for a multivariate function. It ["describes the local curvature of a function"](https://en.wikipedia.org/wiki/Hessian_matrix#:~:text=In%20mathematics%20%2C%20the%20Hessian,by%20H%20or%2C%20%20202)** in all directions around a point. In a two-dimensional case ($f(x,y)$), the Hessian is a $2\times2$ matrix involving $\frac{\partial^2 f}{\partial x^2}$, $\frac{\partial^2 f}{\partial x \partial y}$, and $\frac{\partial^2 f}{\partial y^2}$. These second derivatives tell us how quickly the slope in $x$ or $y$ changes as we move along $x$ or $y$. More intuitively, they tell us if the function is <Bold>curving upward</Bold> (becoming steeper uphill, like a bowl) or <Bold>curving downward</Bold> (like an upside-down bowl) or a mix of both (like a saddle) in each direction.
+
+<Figure 
+  src="/partI/image%2017.png" 
+  alt="image.png" 
+/>
+
+The visuals can be deceiving, but the longer the arrow means the smaller the eigenvalue. This makes sense because eigenvalues are a metric of how much the function value changes in this direction. 
+
+</Callout>
+
+With curvature information, our path to the minimum can be more direct and confident, avoiding the tedious zigzagging that pure gradient descent might produce in some scenarios.
+
+## Newton's Method: Using Curvature for a Smarter Descent
+
+The prime example of a second-order method is <Bold>Newton's method</Bold> for optimization. If gradient descent is like walking blindfolded, Newton's method is like a bobsled track that shoots you right to the bottom of the valley.
+
+<Figure 
+  src="/partI/image%2018.png" 
+  alt="image.png" 
+/>
+
+How does it achieve this? It builds a simple <Bold>quadratic model</Bold> of the function at your current point using a second-order Taylor expansion. Let's start with the one dimensional case. If you have a twice-differentiable function, you can approximate it near a point $x$ by a parabola:
+
+$$
+f(x+\Delta x) \approx f(x)+f^{\prime}(x) \Delta x+\frac{1}{2} f^{\prime \prime}(x)(\Delta x)^2
+$$
+
+This parabola (given by the first and second derivatives $f'(x)$ and $f''(x)$) is an estimate of the function's shape locally. The minimum of that parabola can be found by setting its derivative to zero: $f'(x) + f''(x),\Delta x = 0$, so the optimal step would be $\Delta x = -\frac{f'(x)}{f''(x)}$. This is the one-dimensional Newton step. It says: take the slope (first derivative) and divide by the curvature (second derivative) to decide how far to move. If the slope is large but the curvature is also very steep, you shouldn't go too far (since $f''(x)$ in the denominator is large); if the slope is large and the curvature is gentle, you can take a larger step.
+
+<Figure 
+  src="/partI/image%2019.png" 
+  alt="image.png" 
+/>
+
+In multiple dimensions, Newton's method does the analogous thing: it uses the <Bold>Hessian matrix</Bold> $H(x)$ (which contains all the second derivatives) to scale and rotate the step taken in the direction of the gradient. The Newton update for a multivariate function is:
+
+$$
+x_{\text {new }}=x_{\text {current }}-H\left(x_{\text {current }}\right)^{-1} \nabla f\left(x_{\text {current }}\right)
+$$
+
+Here $H^{-1} \nabla f$ plays the role of that slope-over-curvature division from one dimension (with the matrix inverse generalizing the division). What this means is Newton's method looks at the local bowl-shaped approximation of $f$ at $x_{current}$ and jumps <Bold>directly to the bottom of that bowl</Bold>. If the function really were a perfect quadratic bowl, Newton's step would land you exactly at the minimum in one shot. 
+
+It's important to mention that Newton's method, for all its speed and elegance, isn't without caveats. Computing the Hessian for complex problems can be expensive, and if the function's Hessian is not positive-definite (e.g. at a saddle point or maximum), the method can misbehave. There are modifications and precautions to handle these issues (like adding damping or using quasi-Newton methods that approximate the Hessian). But conceptually, Newton's method shines as the pinnacle of using local information: it combines <Bold>first-order slope</Bold> and <Bold>second-order curvature</Bold> to navigate the space of solutions as efficiently as possible.
+
+<Callout>
+
+You may be asking: why not third or fourth order? As we increase the order, the methods are typically not used because the computational complexity significantly outweighs marginal improvements in convergence speed. Newton's method optimally balances efficiency and accuracy by using first-order slope and second-order curvature
+
+</Callout>
+
+### Wrapping up Numerical Optimization
+
+We've looked at only a few examples of how gradient-based information helps us navigate the minimization problem. However, amidst even the individual algorithmic shortcomings in Newton's method and the like, we've only solved part of the puzzle. For one, these techniques assume global solutions for only <a href="https://en.wikipedia.org/wiki/Convex_function"><Bold>convex functions</Bold></a>. If this assumption was removed, we'd only be guaranteed local minima solutions. If we start in a local valley, how can we look past that? 
+
+<Figure 
+  src="/partI/image%2020.png" 
+  alt="image.png" 
+/>
+
+Also, we have made big assumptions on the function itself—specifically that it is continuously differentiable and smooth. Without these guarantees, we could be dealing with some crazy functions, in which other methods are better suited (like the stupidly simple <a href="https://web.stanford.edu/group/sisl/k12/optimization/MO-unit2-pdfs/2.2threepointinterval.pdf"><Bold>three-point method</Bold></a>). 
+
+# Stochastic Search
+
+<Callout>
+
+"Chance favors the prepared mind." —Louis Pasteur
+
+</Callout>
+
+In numerical optimization so far, we mainly used <Bold>local search</Bold> methods (like gradient descent) that greedily follow the slope to find a nearby minimum. This works well when the problem has a nice unimodal shape or when we only need a <Bold>local</Bold> minimum. However, many real landscapes are rugged with <Bold>exponentially many local minima</Bold>. To find the true <Bold>global optimum,</Bold> you might need to climb out of a smaller valley and explore other regions. In optimization, this means <Bold>introducing randomness</Bold> into the search. By occasionally allowing moves that <Italic>don't</Italic> immediately improve the objective, we give the algorithm a chance to explore. Randomness provides a way to <Italic>escape local traps</Italic> and search the whole landscape for a better solution.
+
+<Figure 
+  src="/partI/image%2021.png" 
+  alt="Examples of tricky function spaces" 
+/>
+
+## Cross-Entropy Method (CEM)
+
+The <Bold>Cross-Entropy Method (CEM)</Bold> takes randomness by working with a <Italic>whole <Bold>distribution</Bold> of solutions</Italic> at once. 
+
+<Callout type="info">
+
+Assuming the reader has a basic background in probability theory, I'd like to provide a deeper, intuitive motivation for why distributions are used. 
+
+Before, we started our search process by starting at a fixed, deterministic value x in the domain. We can use this to evaluate the function $f(x)$ and we can obtain a gradient if we know where the level sets are etc. Now the appearance of input $x$ will be <Italic>probablistic,</Italic> defined by the parameters of the distribution (such as the mean and covariance of a Gaussian). What this means is that we can represent possibly infinite samples by just a handful of parameters. Information-theoretically, I find this transition fascinating, because you can generate limitless amounts of stochastic data conditioned on these parameters that give us sort of implicit <Italic>flexibility</Italic>. Whereas before we'd only have a single $x$ and output $f(x)$, we can sample from a distribution at time $t$ and get $x_1$, and at time $t+1$ get $x_2$, and so on all from the same parameters! 
+
+</Callout>
+
+Ok back to CEM. Instead of having one hiker exploring the landscape, imagine we release a <Bold>swarm of explorers</Bold> or sample many random points across the terrain. 
+
+<Figure 
+  src="/partI/image%2022.png" 
+  alt="image.png" 
+/>
+
+With CEM, we maintain a probability distribution over the solution space and iteratively update this distribution to focus in on the best regions. Although we can use any distribution, we will use Gaussians for it's simplicity and intuitive parameters. Gaussians contain two parameters: the mean $\mu$ and covariance $\Sigma$. 
+
+<Figure 
+  src="/partI/image%2023.png" 
+  alt="image.png" 
+/>
+
+You can think of $\mu$ almost like the lead hiker. He knows the terrain the best because he sits in the center of all the hikers, who feed information to him at the top. He can allow any hiker to explore any area within a certain radius defined by $\Sigma$. And as a lost wanderer, you may stumble upon any of the hikers and sample their location (in red). 
+
+<Figure 
+  src="/partI/image%2024.png" 
+  alt="image.png" 
+/>
+
+We don't rely on local gradient information at all; CEM is a <Italic>derivative-free</Italic> global optimizer. This means it can handle "black-box" functions where gradients are unavailable or the landscape is extremely rugged. This helps us with our conundrum back in the Numerical Optimization section. 
+
+CEM repeatedly performs two phases – <Bold>sampling</Bold> and <Bold>updating</Bold>.
+
+We also choose a fraction of "elite" samples to guide the update. Here's a basic outline of the CEM algorithm
+
+- <Bold>1. Sample a population:</Bold> Draw $N$ random candidate solutions from the current probability distribution. Evaluate each candidate's objective function value.
+- <Bold>2. Select elites:</Bold> Rank the $N$ samples by performance (say we are minimizing the cost, so rank from lowest cost to highest). Take the top $M$ samples (the best $M$, where $M = \rho N$ for some chosen elite proportion $\rho$, e.g. $\rho=0.2$ for the top 20%) as the <Bold>elite set</Bold>. These are like the fittest individuals in an evolutionary sense – the ones with highest performance.
+- <Bold>3. Update the distribution:</Bold> Adjust the parameters of the sampling distribution to <Bold>get closer to these elite samples</Bold>. Concretely, we use the elite set to compute a new <Bold>mean</Bold> and <Bold>covariance</Bold> for the Gaussian. In fact, this step can be seen as finding the <Bold>maximum likelihood estimate</Bold> of the distribution given the elite data. For a Gaussian, the new mean might be the average of the elite solutions, and the new covariance reflects how spread-out or concentrated those elite solutions are in each direction.
+- <Bold>4. Repeat:</Bold> Using the updated distribution, go back to step 1 and generate a new batch of samples, iteratively refining the search distribution. Stop when the distribution converges (e.g. very small covariance, meaning it has focused on a narrow region) or after a fixed number of iterations.
+
+This procedure gradually <Bold>focuses</Bold> the search. Over iterations, the distribution "homes in" on what looks like the best part of the landscape.
+
+<Figure 
+  src="/partI/cem.png" 
+  alt="image.png" 
+/>
+
+CEM's distribution-driven approach is powerful because it <Bold>learns the shape of the search space</Bold> from samples. We are not following gradients at a point, but rather using statistics of many points to infer where to search next.
+
+## Search Gradient
+
+Up to now, we have been optimizing the original function $f(x)$ directly with respect to $x$. This meant we were deterministically evaluating the function at specific points x to inform our direction within the domain..Instead, why don't we optimize the <Italic>parameters of a probability distribution</Italic> that generates candidate $x$'s?
+
+As we've discussed earlier, deterministic methods limited you to evaluating only $f(x)$ itself, meaning you could only take small, cautious steps around $x$ to carefully sense your direction. But with a search gradient, we gain the freedom to sample many points within the domain simultaneously.
+
+Remember this because it's very important: <Bold>probabilities give us flexibility</Bold>. We can now elegantly express the quantity we aim to minimize as an expectation:
+
+$$
+\mathbb{E}_{x \sim p(x ; \theta)}[f(x)]
+$$
+
+Don't panic—let's take a moment to digest this. Essentially, all we've introduced is the expectation operator, symbolized by "E". Practically, we can approximate this expectation by simply computing a sample mean using Monte Carlo sampling (we'll explore this further soon):
+
+$$
+\sum_{i=1}^N f\left(x_i\right) p\left(x_i ; \theta\right)
+$$
+
+In other words, this expected value is essentially just a weighted sum of two fundamental components multiplied together:
+
+1. The function evaluations themselves, $f(x)$, exactly what we had before
+2. The probability associated with each function evaluation.
+
+Recall that $f(x)$ provides a pure, focused signal indicating exactly what we're minimizing. The introduction of probabilities, however, complicates matters slightly: it diffuses this clean signal across numerous other points, including those potentially worse than our current choice!
+
+While this pessimistic mindset is totally reasonable, we can also think optimistically. Think of the probabilities are there to be more optimistic and explorative—to never prematurely settle on a candidate unless we're truly confident it's an excellent minimum. It's akin to an indecisive child hesitant to choose just one flavor of ice cream, always holding out for a better option.
+
+How do we start? The only static pieces of information that help guide us to the optimum are the parameters like the mean and covariance, so let's define some randomly initialized values for them. 
+
+$$
+\mu_0, \Sigma_0
+$$
+
+With these initialized parameters, we can start to sample from them! Below are a few iterations side by side
+
+1. Sample candidate solutions $x_i$ from the current distribution:
+    
+    $$
+    x_i \sim p\left(x ; \theta_t\right), \quad i=1,2, \ldots, N
+    $$
+    
+2. Evaluate $f\left(x_i\right)$ for each candidate solution $x_i$.
+
+<ImageRow
+  images={[
+    { src: "/partI/image%2027.png", alt: "image.png" },
+    { src: "/partI/image%2029.png", alt: "image.png" },
+  ]}
+/>
+
+<ImageRow
+  images={[
+    { src: "/partI/image%2028.png", alt: "image.png" },
+    { src: "/partI/image%2030.png", alt: "image.png" },
+  ]}
+/>
+
+3. Evaluate the log probability
+
+What we have done with Gradient Descent, we chose the direction of maximum descent, which meant going in the orthogonal direction of the level set. But this time, we take the gradient with respect to theta, our distribution parameters! So it's like we're sliding down a different landscape. We therefore add another symbol that represents this gradient, $\nabla_\theta$:
+
+$$
+\nabla_\theta \mathbb{E}_{x \sim p(x ; \theta)}[f(x)]
+$$
+
+Ok let's move the gradient symbol inside the expectation:
+
+$$
+\sum_{i=1}^N f\left(x_i\right) \nabla_\theta p\left(x_i ; \theta\right)
+$$
+
+Ok don't panic, but now we have to compute something particularly nasty. We do something called the "log trick" for mathematical reasons (If more curious ask an LLM!). But this will turn out to be a very nice property when we use it later. 
+
+$$
+\frac{1}{N} \sum_{i=1}^N f\left(x_i\right) \nabla_\theta \log p\left(x_i ; \theta\right)
+$$
+
+Ok! We finally have the direction we can go in our parameterized space. Now we can take the update, just like we did in GD:
+
+$$
+\theta_{t+1}=\theta_t-\eta \frac{1}{N} \sum_{i=1}^N f\left(x_i\right) \nabla_\theta \log p\left(x_i ; \theta\right)
+$$
+
+Intuitively speaking, we can interpret the magnitude of our update direction as a balancing act: it robustly nudges the distribution's parameters toward regions of higher probability in the $\theta$-space. Within those promising regions, we naturally take smaller, more cautious steps when $f(x)$ is low, ensuring we remain close to good solutions. Conversely, larger values of $f(x)$ propel us away more aggressively, steering us clear of poorer regions.
+
+<Callout>
+Here's another elegant insight about Search Gradient: While the three-point method globally explores your solution space through randomness (compared to gradient descent's local evaluation requiring well-behaved functions), similarly, CEM globally samples your neighborhood randomly while Search Gradient evaluates locally. The key difference? With Search Gradient, you gain unprecedented control over the gradient's behavior by selecting an appropriate distribution function. This represents a significant advancement in optimization capability.
+</Callout>
+
+### Conclusion
+
+Through engaging analogies and mathematical insight, we built intuition for these stochastic search methods. <Bold>Randomness is the thread</Bold> that ties them together: it allows exploring the unknown and avoidance of local optima. In the next section, we are going to use this tool of randomness to construct higher abstract landscapes, often through the lens of games. 
+
+
+### Acknowledgements
+
+I'd like to thank friends who have proofread my writing and contributed essential feedback to make this work happen: Ryan Lavin.

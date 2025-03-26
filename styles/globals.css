@@ -1,3 +1,122 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Base theme styles */
+:root {
+  --eggshell: #f5f5f0;
+  /* --eggshell: #fef7c1; */
+  --midnight: #121f30;
+  --dark-navy: #0a1525;
+  
+  /* 
+  === THEME TRANSITION SPEED SETTINGS ===
+  Adjust these values to change theme transition speed:
+  - Smaller values = faster transitions (e.g., 0.1s for quick transitions)
+  - Larger values = slower transitions (e.g., 1s for gradual transitions)
+  - Use different values for each property if desired
+  */
+  /* Define durations separately so they can be referenced for calculations */
+  --bg-transition-duration: 0.3s;
+  --color-transition-duration: 0.3s;
+  --border-transition-duration: 0.3s;
+  
+  /* Complete transition definitions */
+  --bg-transition: background-color var(--bg-transition-duration) ease-out;         /* Background transition */
+  --color-transition: color var(--color-transition-duration) ease-out;              /* Text color transition */
+  --border-transition: border-color var(--border-transition-duration) ease-out;     /* Border transition */
+}
+
+/* Set default background colors */
+html {
+  background-color: var(--eggshell);
+}
+
+html.dark {
+  background-color: var(--midnight);
+  color-scheme: dark;
+}
+
+/* Disable all transitions when theme is changing to ensure sync */
+html:not(.theme-transition-ready) * {
+  transition: none !important;
+}
+
+/* Apply selective transitions to improve performance */
+.theme-transition-ready {
+  /* Text elements - optimize color transitions */
+  & h1, & h2, & h3, & h4, & h5, & h6, & p, & span, & a, & li {
+    transition: var(--color-transition);
+    will-change: color; /* Hint to browser to use GPU */
+  }
+  
+  /* Container elements - optimize background transitions */
+  & div, & nav, & section, & article, & main, & footer, & header {
+    transition: var(--bg-transition);
+  }
+  
+  /* Interactive elements - optimize all transitions */
+  & button, & input, & textarea, & select {
+    transition: var(--bg-transition), var(--color-transition), var(--border-transition);
+  }
+  
+  /* Fast-track critical elements for even quicker transitions */
+  & nav h4, & h1, & .nav-item, & .theme-toggle {
+    transition-duration: calc(var(--color-transition-duration, 0.3s) * 0.7) !important; /* Faster than regular transitions */
+  }
+}
+
+/* Special handling for elements that need perfect synchronization */
+.theme-sync {
+  will-change: background-color, color;
+}
+
+.theme-sync-text {
+  will-change: color;
+}
+
+/* Base background styles */
+body {
+  background-color: var(--eggshell);
+  min-height: 100vh;
+}
+
+html.dark body {
+  background-color: var(--midnight);
+}
+
+/* Override for any potential white background elements */
+html.dark div, 
+html.dark nav, 
+html.dark header, 
+html.dark footer, 
+html.dark main,
+html.dark section {
+  background-color: var(--midnight);
+}
+
+html.dark .bg-white {
+  background-color: var(--midnight) !important;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--eggshell);
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: var(--midnight);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}

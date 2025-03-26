@@ -64,10 +64,16 @@ export const getStaticProps = async () => {
       slug: filename.split(".")[0],
     };
   });
+  
+  const sortedPosts = posts.sort((a, b) => {
+    const dateA = new Date(a.frontMatter.date);
+    const dateB = new Date(b.frontMatter.date);
+    return dateB - dateA; // Sort descending (newest first)
+  });
 
   return {
     props: {
-      posts,
+      posts: sortedPosts,
     },
   };
 };

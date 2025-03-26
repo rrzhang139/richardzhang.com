@@ -1,0 +1,14 @@
+also add Figure tags for images. like so: 
+<Figure 
+  src="/partI/image%202.png" 
+  alt="Constant function graph" 
+  caption="Optional caption here"
+/>
+
+replace every md bold or italic or underline with tags. Use like <Bold> or <Italic> or <Underline>
+
+change the image folder path to "/../imageFolderName/abc.png"
+
+If there is a tag called <aside>, replace with <Callout style= ... > 
+
+

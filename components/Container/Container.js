@@ -4,7 +4,7 @@ const Container = ({ title, children, classnames = "" }) => {
   }
   return (
     <section className={`max-w-2xl p-4 mx-auto mt-14 ${classnames}`}>
-      <h2 className="text-3xl font-title text-colortitle font-semibold">
+      <h2 className="text-3xl font-title dark:text-neutral-100 font-semibold">
         {title}
       </h2>
       {children}
