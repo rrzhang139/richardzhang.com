@@ -1,6 +1,13 @@
 import Image from 'next/image';
 
-const Figure = ({ src, alt, caption, width = 2048, height = 1170 }) => {
+const Figure = ({ src, alt, caption, width = 2048, height = 0 }) => {
+
+  const imageStyle = {
+    height: height ? `${height}px` : 'auto',
+    width: '100%',
+    objectFit: 'contain'
+  };
+
   return (
     <figure className="my-8">
       <div className="overflow-hidden rounded-lg">
@@ -9,7 +16,7 @@ const Figure = ({ src, alt, caption, width = 2048, height = 1170 }) => {
           alt={alt || caption || "Image"} 
           width={width} 
           height={height}
-          className="w-full h-auto"
+          style={imageStyle}
         />
       </div>
       {caption && (

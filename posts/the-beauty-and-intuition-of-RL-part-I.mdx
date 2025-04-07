@@ -21,13 +21,13 @@ date: Mar 2025
   ]}
 />
 
-Over the past several years we've seen an explosion in the theory and applications of artificial intelligence with the rise of the transformer. It produces incredible capabilities to perform very complicated tasks like generating languages, videos, or making robots intelligent. 
+Over the past several years we've seen an explosion in AI with the rise of the transformer. It has the ability to perform very complicated tasks like generating text, videos, or actions for robots to take.
 
 Yet, at its core, it's simply processing billions of tokens through intricate architectures composed of matrix multiplications streaming out another set of tokens. It might feel as if we could just <Italic>tokenize</Italic> the entire world, doesn't it? 
 
 Turns out the world is an exponentially large space, and in order to make sense of this complexity we need to use the right tools. 
 
-Reinforcement Learning (RL) is one such powerful tool, designed specifically for the search and discovery of solutions within vast spaces. RL doesn't exist in isolation; rather, it rests upon the foundational bedrock of classical numerical and stochastic optimization techniques, as well as connections to other rich domains, such as games.
+Reinforcement Learning (RL) is one such powerful tool, designed specifically for the search and discovery of solutions within vast spaces. RL doesn't exist in isolation; rather, it rests upon the foundational bedrock of classical numerical and stochastic optimization techniques, as well as connections to other rich domains, such as game theory.
 
 In this series of posts, my goal is to carefully peel back the layers of this foundation, guiding you step-by-step through the evolution of search techniques. Our journey will be deliberately chronological and linear, with each topic intentionally chosen to illuminate the gradual progression toward advanced methods.
 
@@ -35,27 +35,26 @@ In Part I, I will cover numerical optimization techniques like <Bold>Gradient De
 
 I want to thank my professor, Sicun Gao. Learning RL from multiple perspectives is difficult. I tried and failed 3 times. Never had I learned RL in such a chronological, coherent, linear way that can thread all of this content deeply together. His class was a big inspiration for writing these posts.
 
-Throughout this journey, I'll assume you have a basic background in math and probability. If not, pull out ChatGPT and ask it questions during the read. 
+Throughout this journey, I'll assume you have a basic background in math and probability. If not, pull out ChatGPT and ask questions during the read. 
 
 # Numerical Optimization
 
 ## Searching for the Best: The Drive to Minimize
 
-Imagine you're looking for the <Bold>best</Bold> solution to a problem – perhaps the least error in a prediction, the lowest cost route on a map, or the dimmest pixel in an image. In optimization terms, "best" often means the <Bold>minimum</Bold> value of some objective function. We want to search through all possible inputs to discover where the output of our function is minimal. The big question is: <Bold>which way do we go?</Bold> How do we move through the space of possibilities to get closer to the coveted minimum?
+Imagine you're looking for the <Bold>best</Bold> solution to a problem – perhaps the least error in a prediction, the fastest route on a map, or the brightest pixel in an image. In optimization terms, "best" often means the <Bold>minimum or maximum</Bold> value of some objective function. We want to search through all possible inputs to discover where the output of our function is minimal. The big question is: <Bold>which way do we go?</Bold> How do we move through the space of possibilities to get closer to the coveted minimum?
 
-The key lies in recognizing that our function's output <Bold>changes</Bold> as we adjust the input. If the output didn't change at all, there would be nothing to search for – every point would be equally good like the constant function:
+Our function's output <Bold>changes</Bold> as we adjust the input. If the output didn't change at all, there would be nothing to search for – every point would be equally good like the constant function.
 
-<Figure 
-  src="/partI/image%202.png" 
-  alt="Constant function graph" 
-  caption="f(x)=c"
-/>
+$$
+f(x) = c, \text{for some constant c} 
+$$
 
 But most functions <Italic>do</Italic> vary: some inputs give higher output, some lower. This variation is what makes search necessary—from the edge contours of a pixelated image to the clouds blending into the sky. 
 
 <Figure
   src="/partI/Grassy_Hill_Image_Mar_25_2025.png"
   alt="Grassy Hill Image Mar 25 2025.png"
+  height={300}
 />
 
 For a <Bold>concrete analogy</Bold>, think of a hiking landscape: you stand somewhere on a hilly terrain and want to find the lowest valley (minimum). The ground slopes upward in some directions and downward in others. To decide where to step, you naturally look for the direction where the ground slopes downward.
@@ -86,7 +85,11 @@ Now, ask yourself: if you're on the side of a hill, which direction will make yo
   alt="image.png" 
 />
 
-In mathematical optimization, we use this idea by looking at $-\nabla f$, the negative gradient, as the direction of steepest <Bold>descent</Bold>. With this insight, we're ready to use gradients as a tool for hunting the minima.
+In mathematical optimization, we use a symbol $\nabla$ to indicate the direction that is orthogonal to the level set of f.
+
+Then we can take  the negative gradient ($-\nabla f$) as the direction of steepest <Bold>descent</Bold>, as opposed to <Bold>ascent</Bold> ($\nabla f$).
+
+With this insight, we're ready to use gradients as a tool for hunting the minima.
 
 ## First-Order Optimization
 
@@ -234,7 +237,7 @@ $$
 f(x+\Delta x) \approx f(x)+f^{\prime}(x) \Delta x+\frac{1}{2} f^{\prime \prime}(x)(\Delta x)^2
 $$
 
-This parabola (given by the first and second derivatives $f'(x)$ and $f''(x)$) is an estimate of the function's shape locally. The minimum of that parabola can be found by setting its derivative to zero: $f'(x) + f''(x),\Delta x = 0$, so the optimal step would be $\Delta x = -\frac{f'(x)}{f''(x)}$. This is the one-dimensional Newton step. It says: take the slope (first derivative) and divide by the curvature (second derivative) to decide how far to move. If the slope is large but the curvature is also very steep, you shouldn't go too far (since $f''(x)$ in the denominator is large); if the slope is large and the curvature is gentle, you can take a larger step.
+This parabola (given by the first and second derivatives $f'(x)$ and $f''(x)$) is an estimate of the function's shape locally. The minimum of that parabola can be found by setting its derivative to zero: $f'(x) + f''(x)\Delta x = 0$, so the optimal step would be $\Delta x = -\frac{f'(x)}{f''(x)}$. This is the one-dimensional Newton step. It says: take the slope (first derivative) and divide by the curvature (second derivative) to decide how far to move. If the slope is large but the curvature is also very steep, you shouldn't go too far (since $f''(x)$ in the denominator is large); if the slope is large and the curvature is gentle, you can take a larger step.
 
 <Figure 
   src="/partI/image%2019.png" 
@@ -433,4 +436,4 @@ Through engaging analogies and mathematical insight, we built intuition for thes
 
 ### Acknowledgements
 
-I'd like to thank friends who have proofread my writing and contributed essential feedback to make this work happen: Ryan Lavin.
+I'd like to thank friends who have proofread my writing and contributed essential feedback to make this work happen: Ryan Lavin, Abinaya Dinesh.
