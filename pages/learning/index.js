@@ -30,7 +30,7 @@ const LearningJourney = () => {
     { id: 23, track: 2, content: 'CSE257: Search and Optimization', start: '2025-01-08', end: '2024-03-16', link: 'https://scungao.github.io/ucsd-w24/index.html' },
     { id: 24, track: 2, content: 'Convex Optimization', start: '2025-01-08', end: '2025-03-16', link: 'https://cseweb.ucsd.edu/classes/wi24/cse203B-a/' },
     { id: 25, track: 3, content: 'Underactuated Robotics', start: '2025-02-28', end: '2025-03-16', link: 'https://underactuated.csail.mit.edu/index.html' },
-
+    { id: 26, track: 4, content: 'Special Relativity', start: '2025-04-20', end: '2025-04-21', link: 'https://www.notion.so/richord/Special-Relativity-1e3cb8784d148001b9b1cd045a568b48?pvs=4' },
   ];
 
   return (

@@ -14,6 +14,7 @@ const CustomTimeline = ({ subjects, theme }) => {
       case 1: return 'bg-blue-600';
       case 2: return 'bg-blue-400';
       case 3: return 'bg-teal-500';
+      case 4: return 'bg-teal-300';
       default: return 'bg-gray-500';
     }
   };
@@ -44,6 +45,12 @@ const CustomTimeline = ({ subjects, theme }) => {
           onClick={() => setHighlightedTrack(highlightedTrack === 3 ? null : 3)}
         >
           Applied Math
+        </button>
+        <button
+          className={`px-4 py-2 text-white rounded hover:bg-gray-600 ${highlightedTrack === 4 ? 'bg-teal-300' : 'bg-gray-500'}`}
+          onClick={() => setHighlightedTrack(highlightedTrack === 4 ? null : 4)}
+        >
+          Other
         </button>
       </div>
 

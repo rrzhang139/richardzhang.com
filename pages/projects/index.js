@@ -72,6 +72,13 @@ const Projects = () => {
       imageUrl: "https://imgur.com/zdish0y.gif"
     },
     {
+      name: "Visuotactile Sensor",
+      date: "Apr 2025",
+      description: "Simple low-cost, DIY visual-based tactile sensor from scratch. Credits to Binghao for creating this!",
+      link: "https://binghao-huang.github.io/3D-ViTac/",
+      imageUrl: "/tactile.png"
+    },
+    {
       name: "Control Dynamics Simulator",
       date: "Mar 2025",
       description: "Basic simulation environment for popular control tasks",
