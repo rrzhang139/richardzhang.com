@@ -30,6 +30,7 @@
 /* Set default background colors */
 html {
   background-color: var(--eggshell);
+  font-size: 150%;
 }
 
 html.dark {

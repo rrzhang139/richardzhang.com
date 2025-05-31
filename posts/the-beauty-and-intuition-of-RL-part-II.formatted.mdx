@@ -1,0 +1,473 @@
+# The Beauty and Intuition of RL Part II
+
+This is a series of posts. my goal is to carefully peel back the layers of this foundation, guiding you step-by-step through the evolution of search techniques. 
+
+In Part I, we covered numerical optimization techniques like Gradient Descent, as well as stochastic search algorithms like Gradient Search. We will now motivate games as a form of search requiring the adaptability and flexibility that RL provides. 
+
+# RL
+
+In many real-world scenarios—think chess, poker, or even negotiating business deals—we’re not optimizing a fixed function like in Gradient Descent. We're interacting with an environment or an opponent actively working against us.
+
+**Minimax** elegantly encapsulates the tension between two players locked in a **zero-sum game**, where one's gain equals the other's loss. To systematically analyze moves, Minimax uses a **game tree** representation. 
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image.png" alt="image.png" />
+
+<Callout emoji="💡">
+
+What is a Game Tree?
+
+A game tree is a tree data structure where each node represents a game state (configuration of the board, whose turn it is, etc.), and each outgoing edge represents a possible move leading to a new state
+
+- At the **leaf nodes** of this tree, we've reached **end states**, where the game’s outcome is decided: win, lose, or draw. These leaves hold scores—a numeric representation of how good or bad this outcome is.
+- At every **internal node** (states of the game before it concludes), players face a clear mission:
+    - The **maximizing player** (often illustrated as "White" in chess) seeks the **highest** score possible.
+    - The **minimizing player** (often "Black") seeks precisely the opposite—to drive the score as **low** as possible.
+
+</Callout>
+
+But not every scenario pits us against an intelligent opponent. Sometimes the unknown comes from randomness itself. In these situations, we adapt Minimax into something softer: **Expectimax**, where random chance replaces the opponent.
+
+Where Minimax assumes the worst-case scenario (the opponent’s best play), Expectimax factors in the **expected value** of random events. It calculates the **average outcomes** of randomness instead of bracing for the foe’s blows. The game tree thus transforms as follows:
+
+- **Maximizing nodes** remain the same, choosing moves with the highest value.
+- **Chance nodes** replace minimizing nodes: these nodes represent the average (expected) outcome over all possible random events.
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%201.png" alt="image.png" />
+
+It acknowledges that not every consequence is under an adversary’s control. Some are due to luck. This changes our approach: we no longer assume the opponent will always choose the worst for us, but we do assume random events will on average follow their probabilities.
+
+The introduction of chance leads naturally into the domain of **reinforcement learning**, where an agent must make optimal decisions in an environment that is not only uncertain but often initially unknown. In RL, the environment’s responses can be probabilistic and the agent typically doesn’t have a complete game tree in advance. 
+
+<Callout emoji="💡">
+
+See now why games are a good motivating starting point? It’s a nice structure and framework to think about an expanding space to search from, but the only thing we can do now is succumb to randomness.
+
+</Callout>
+
+Ok, we’ve set the stage for understanding how an intelligent agent can make decisions even when outcomes involve randomness or unknowns. Time to dive into the basics of RL! 
+
+## Markov Decision Processes
+
+How can we understand this probabilistic world? Instead of the back-and-forth decisions in games, we are entangled in a fascinating dance with the environment. We need to formalize it with a Markov Decision Process (MDP).
+
+A Markov Decision Process is defined by five key components:
+
+1. **States (S):** All possible situations or configurations the agent can be in.
+2. **Actions (A):** The set of choices available to the agent in each state.
+3. **Transition Probabilities (P):** The dynamics of the environment, given by $P(s' \mid s, a)$. This is the probability of landing in state $s'$ when the agent takes action $a$ in state $s$.
+4. **Rewards (R):** The immediate payoff (or cost) received after transitioning from one state to another due to an action. We often denote $R(s, a, s')$ as the reward for going from state $s$ to $s'$ with action $a$.
+5. **Discount Factor (γ):** A number between 0 and 1 that balances immediate and future rewards. A factor $\gamma$ close to 0 makes the agent short-sighted (only caring about immediate rewards), while a $\gamma$ near 1 encourages planning for long-term rewards.
+
+State and Action seem intuitive enough. The rest not so much. 
+
+Don’t fret. We will be able to pick them out one by one as we go deeper. 
+
+To stick with our hiking analogy, you are a hiker, standing at the trailhead (state s) of a vast, beautiful national park. Your goal is simple: Reaching the end of the trail while collecting as many reward-ing experiences along the way. 
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/Gradient_on_Grassy_Hill_Mar_25_2025.png" alt="Gradient on Grassy Hill Mar 25 2025.png" />
+
+Now, the MDP gives us the **rules of the world**, but **doesn’t tell us what to do (because of the probabilistic transitions)**. We need some way to **compare different states** to make good decisions.
+
+To decide which states are "good," the agent evaluates a state based on the stream of future rewards it expects to gain from that state onward, called the **Value function**. 
+
+Mathematically, the **value function** of a state $s$ (under a given policy) is defined as the expected sum of discounted future rewards starting from $s$:
+
+$$
+V(s)=\mathbb{E}\left[\sum_{t=0}^{\infty} \gamma^t R\left(s_t, a_t, s_{t+1}\right)\right]
+$$
+
+Ah! Another scary equation. Let’s break it down slowly and clearly, piece by piece.
+
+Remember the expectation symbol in the search gradient (SG)? 
+
+$$
+V(s)=\underbrace{\mathbb{E}[\cdots]}_{\text {expected value }}
+$$
+
+This just means V(s) will involve looking at different possible outcomes, multiplying each by their probability, then summing them up.
+
+Next, we are summing all rewards from time t=0 to t=infinity. 
+
+$$
+V(s)=\mathbb{E}\left[\sum_{t=0}^{\infty} \gamma^t R\left(s_t\right)\right]
+$$
+
+The discount factor $\gamma$ means future rewards become slightly less valuable each step further away. And at every step of the way, we can pick up a nice chunk of reward at state $s_t$.
+
+This essentially entails following a trail of rewards, picking them up one by one as their value is discounted, then going back to your starting point s, and repeating many times and averaging your loot. There is actually a name for this dumb method. It’s called **Monte Carlo**. 
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%202.png" alt="image.png" />
+
+[can you draw this scenario of the same style and hiker on a trail with symbols of discount reward values getting progressively multipliedl ike gamma, gamma^2, gamma^3 ... .]
+
+## Recursive Computation of Value: The Bellman Equation
+
+However, the world is exponential in complexity. We don't want to recompute every time we look at a state. Wouldn’t it be nice if we could **compress all future information** into a single recursive relationship?
+
+If your hiking buddies have journeyed through these trails, why not defer our painstaking decision-making to their experience? 
+
+“Oh Jimmy was mauled by a bear if I turn right from this state?”
+
+[keep this theme, can you show the same hiker getting the symbol V(s') from another hiker who is on a trail also running from a bear. ]
+
+We can represent this in mathematical form, called the famous Bellman Equation:
+
+$$
+V(s)=\mathbb{E}_{s^{\prime} \sim P(\cdot|s,a), a \sim \pi(s)}\left[R\left(s, a, s^{\prime}\right)+\gamma V\left(s^{\prime}\right)\right]
+$$
+
+$\gamma V\left(s^{\prime}\right)$ compresses all future rewards from the next state $s^{\prime}$ onward into a single, trusted value that our hiking buddies like Jimmy have generously left for us. 
+
+- `SIDE NOTE: This deferrence or "laziness" is sort of reflecting the Markov assumption--which assures the probabilities and values dont change when computing the values.`
+
+The **Bellman equation** provides a clever recursive way to compute values without enumerating endless trajectories. It breaks the value into two parts: the immediate reward and the discounted value of the next state. 
+
+$$
+V(s)=\mathbb{E}_{\underbrace{a \sim \pi(s)}_{\text {actions chosen by policy }}, \underbrace{s^{\prime} \sim P(\cdot \mid s, a)}_{\text {next states chosen by environment }}}[\underbrace{R\left(s, a, s^{\prime}\right)}_{\text {immediate reward }}+\underbrace{\gamma}_{\text {discount factor }} \underbrace{V(s')}_{\text{future value}}]
+$$
+
+<Callout emoji="💡">
+
+The scary looking subscript of the expectation operator is just a way of telling us HOW we got the action $a$ and next state $s’$.
+
+</Callout>
+
+First, you choose an action $a$ according to your policy $\pi(s)$. Ignore the policy for now as we’ll get into it later.
+Then, the environment picks the next state $s^{\prime}$ based on the probabilities given by $P\left(s^{\prime} \mid s, a\right)$.
+
+Who in the hell gave us $P\left(s^{\prime} \mid s, a\right)$? Whether it was God or some higher divine being, this is a privileged piece of information to know because **it tells us the stochastic nature of transitioning from one state to another.** 
+
+This also injects the good ole’ randomness that we preach so highly about. Once you choose a path, nature (the environment, or designer of the world) decides randomly (with probabilities $P\left(s^{\prime} \mid s, a\right)$) exactly what you'll encounter next!
+
+Ok, let’s take a step back again. We just discovered this incredibly useful thing called the Value function. **We want to find the best estimates of the values at each state s.** It takes on two forms:
+
+1. Monte Carlo (dimwittingly charge through a whole path and then collect the discounted rewards along the way)
+    
+    $$
+    V(s)=\mathbb{E}\left[\sum_{t=0}^{\infty} \gamma^t R\left(s_t\right)\right]
+    $$
+    
+2. Bellman Equation (Recursive Formulation)
+
+$$
+V(s)=\mathbb{E}_{s^{\prime} \sim P(\cdot \mid s, a), a \sim \pi(s)}\left[R\left(s, a, s^{\prime}\right)+\gamma V\left(s^{\prime}\right)\right]
+$$
+
+Cool! Onward with our journey. You lug your heavy pack on your back, and suddenly get swarmed by all your hiking buddies sending you values on the trails ahead. 
+
+
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%203.png" alt="image.png" />
+
+These courier hikers venture out ahead of you, each exploring a different path. In their backpacks, they carry notebooks to record the "value" of each spot (state) they visit—a measure of how rewarding each location is, based on what they experience down the trail.
+
+At first, your couriers write down initial estimates—perhaps random guesses or simply zeros.
+
+Each courier hikes out to their assigned spot and immediately collects a reward there. Rather than continuing blindly, they pause and wait to receive messages from other couriers stationed just one step ahead. These messages contain valuable insight—telling them how promising (or dangerous) each immediate next location is.
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%204.png" alt="image.png" />
+
+Using these messages, each courier updates their notebook, refining the accuracy of the value they've written down at their current location.
+
+By repeatedly exchanging messages, continually improving their estimates based only on immediate next locations, the entire team gradually forms an accurate, collective mental map (the value function) of the entire hiking trail system—without anyone ever needing to explore every single path individually.
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%205.png" alt="image.png" />
+
+Imagine you're a courier who just arrived at a spot labeled **S1**. Immediately, you pick up a nice reward there. Great—but that's just one piece of information, not enough to confidently judge the true value of this location.
+
+To improve your estimate, you pause and check your notebook. You notice you have couriers positioned in adjacent spots on the trail, who have sent messages describing their experiences. You read these messages, updating your belief about **S1** based on what they report. You jot down this improved estimate **V'(S1)** in your notebook and tuck it safely back into your backpack.
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%206.png" alt="image.png" />
+
+
+
+Next, you move on to another spot, **S2**. You find out that from **S2**, there’s a smooth trail leading directly to **S1**. Conveniently, you now have a more accurate estimate **V'(S1)** stored from earlier. So rather than relying on your previous guess (or random initial estimate **V(S1)**), you use this updated information. Because **V'(S1)** already incorporates the immediate reward and nearby messages, it's clearly more reliable.
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%207.png" alt="image.png" />
+
+This repeated "communication" between states is actually an important algorithm, so much that it deserves a name. It is called Value Iteration. 
+
+Each location's true value depends on neighboring locations, whose values themselves depend on their neighbors, and so forth. By repeatedly cycling through these updates, values become consistent and stable. Eventually, all hikers end up holding identical, optimized notebooks—perfectly reflecting the true long-term rewards.
+
+[show the same paper map of S1, S2 having perfect values on them]
+
+Now that we've neatly polished the optimal values for each state and tucked them safely into our backpack, what's next?
+
+It's time to introduce something incredibly important—our **policy**! A policy, denoted as $\pi(s)$, is essentially your decision-making strategy. It tells you precisely what action to take whenever you're at any given state. Optimizing this policy is the entire point of our hiking adventure; **we're aiming for the best possible strategy to navigate through the trails to maximize rewards.**
+
+And so, the finale. We have our polished values lined up, now we can just find the action that maximizes the value function!
+
+$$
+\pi^*(s)=\arg \max _a \sum_{s^{\prime}} P\left(s^{\prime} \mid s, a\right)\left[R\left(s, a, s^{\prime}\right)+\gamma V^*\left(s^{\prime}\right)\right]
+$$
+
+Did you realize what you just did there? we have just extracted the BEST action for each state by 
+
+1. Value Iteration on all states
+2. Finding the max value for each state and 
+
+This is our first idea of finding an optimal function that takes any state and outputs the next optimal action to take that will maximize your reward! This is an amazing accomplishment because of the generality you can do with this. 
+
+<Callout>
+
+I won’t go over contraction analysis to prove that Value Iteration converges. There are lots of other good resources about that if you’re interested.
+
+</Callout>
+
+# No Prob Model, No Problem
+
+But what if we don’t have access to a transition model? How can we hope to explore what is a good path to take? 
+
+Remember we have the Monte Carlo method. 
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%208.png" alt="In Monte Carlo, we start at s1 and follow a path to the terminal node, collecting rewards along the way. Then repeat and average." />
+
+In Monte Carlo, we start at s1 and follow a path to the terminal node, collecting rewards along the way. Then repeat and average.
+
+I equate sampling to “Taking a Leap of Faith” (LOF) because it’s kind of like sampling with no guardrails, as opposed to using a probability/transition function in our Bellman Equation. 
+
+Ok, so that’s it right? Well, Monte Carlo doesn’t come with no downsides. First of all, we assume a finite trajectory length, because the algorithm does depth first search traversal to a terminal state. This will computationally take a long time.
+
+Let’s think of some other ideas.
+
+Let’s go back to the idea of recursion in Bellman. The bellman equation tells us if we are at some state $s$, there probably is some other neighboring state $s’$ that can give you some information about how good $s$ is. This idea of laziness, deferring our computation to some other process to handle at some earlier point in time so you can conveniently have an accurate answer of the neighboring state value, is really nice. 
+
+Let’s hold on to this conceptual idea and give it a new name. We will describe the differences from Bellman very soon.
+
+Let’s call it Temporal Difference learning (TD).
+
+TD ***perfomance-wise*** is not a better option to Monte Carlo. You can just create an extremely long MDP that will make Monte Carlo more efficient. 
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%209.png" alt="Efficient for TD because you can just hop to the terminal nodes in one step and obtain a good estimate of the value" />
+
+Efficient for TD because you can just hop to the terminal nodes in one step and obtain a good estimate of the value
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%2010.png" alt="Not efficient for TD because you’re good estimate is relying on the next state which is relying on the next and the next and the next…" />
+
+Not efficient for TD because you’re good estimate is relying on the next state which is relying on the next and the next and the next…
+
+But really TD is a conceptual tool to get us thinking about how we can do this in a non-modeled way. TD standalone will not get us what we want: a self-sufficient policy making optimal actions from states.
+
+To motivate TD, let’s start with information we have now at state $s$. Let’s suppose magically, we have a very rugged average of the value at this state (probably sparsely sampled by a few Monte Carlo trajectories but the details don’t matter). Let’s call this $\mu_k$, $k$ being the number of samples/trajectories that make up this average. 
+
+$$
+\mu_k=\frac{1}{k} \sum_{i=1}^k x_i
+$$
+
+Let’s say a new sample arrives, $x_{k+1}$. Unless $u_k = x_{k+1}$, our new average will move in the direction of $x_{k+1}$:
+
+$$
+\frac{1}{k+1}\left(x_{k+1}+\sum_{i=1}^{k} x_i\right)
+$$
+
+It’s like we allocated equal weight $\frac{1}{k}$ to each of the samples. With some algebraic manipulation, we can convert it to this form:
+
+$$
+\mu_{k+1}=\underbrace{\mu_k}_{\text {old average }}+\underbrace{\frac{1}{k+1}}_{\text {step size }} \underbrace{\left(x_{k+1}-\mu_k\right)}_{\text {new sample - old average }}
+$$
+
+$\mu_{k}$ is your current belief. $x_{k+1}$ is your new sample.
+
+Look familiar? This is a form of the gradient descent update rule! $\frac{1}{k}$ is in fact **the rate that we slowly inch away from the old sample toward the new sample.** 
+
+Basically we are updating the estimated values based on the next sampled state **WITHOUT** waiting for the final outcome or subsequent values that Monte Carlo gives us. 
+
+$$
+V^\pi(s) \leftarrow \underbrace{V^\pi(s)}_{\text {old estimate }}+\underbrace{\alpha}_{\text {step size }} \underbrace{\left(R(s)+\gamma V^\pi\left(s^{\prime}\right)-V^\pi(s)\right)}_{\text {TD error (new sample - old estimate) }}
+$$
+
+<Callout>
+
+$\alpha$ is called the “step size” or “learning rate” which controls how much movement toward the new sample we should take.
+
+</Callout>
+
+Instead of considering every possible future transition, Temporal Difference (TD) learning simplifies this: at state $s$, we pick just one next state $s^{\prime}$ by sampling a single action. Crucially, this isn't guided by a known transition model—it's like blindly reaching into a bag, pulling out a random action, and accepting whichever new state the environment hands us. TD then immediately uses the reward and estimated value at that next state $s^{\prime}$ to update our current state's value estimate—**without waiting for complete trajectories or final outcomes.**
+
+<Callout>
+
+Why isn’t this the same as Bellman? 
+
+This is very important I have to emphasize it again. In the Bellman we had a nice transition model of how likely actions come across, and take the expectation. Here we don’t! We are taking a huge leap of faith in the environment’s hands so we can take some feasible action that is allowable at this state. We are only selecting one next state s’, not all next states. AKA this is a sampling-based version of Bellman!
+
+</Callout>
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%2011.png" alt="With a transition model" />
+
+With a transition model
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%2012.png" alt="without a transition model" />
+
+without a transition model
+
+In this example, the value at $s_4$ (in green) $V(s_4)$ tells only part of the story, because sampling requires inch by inch effort. You don’t get the true value right away! 
+
+If you’re still confused, let’s look at an example. Let’s say you found a terminal state, $s_4$. 
+
+1. Just like in value iteration, we initialize some arbitrary value $V^\pi\left(s_4\right)=0$. 
+    1. $\alpha=0.1$, $R\left(s_4\right)=1$
+    2. Discounted value of next state: $\gamma V^\pi\left(s^{\prime}\right)=0$, since we're already at a terminal state.
+2. Let’s apply the TD update:
+    
+    $$
+    V^\pi\left(s_4\right) \leftarrow \underbrace{0}_{\text {old value }}+\underbrace{0.1}_{\text {step size }}(\underbrace{1}_{R(s)}+\underbrace{0}_{\gamma V^\pi\left(s^{\prime}\right)}-\underbrace{0}_{V^\pi(s)})
+    $$
+    
+
+$$
+=0+0.1 \cdot(1+0-0)=0.1
+$$
+
+After one visit, we’ve moved from **0 to 0.1** — just a small step toward the actual reward of 1.
+
+1. Now, $V^\pi\left(s_4\right)=0.1$. Let's update again:
+
+$$
+V^\pi\left(s_4\right) \leftarrow \underbrace{0.1}_{\text {old value }}+\underbrace{0.1}_{\text {step size }}(\underbrace{1}_{R(s)}+\underbrace{0}_{\gamma V^{\approx}\left(s^{\prime}\right)}-\underbrace{0.1}_{\text {current estimate }})
+$$
+
+$$
+=0.1+0.1 \cdot(1-0.1)=0.1+0.1 \cdot 0.9=0.1+0.09=0.19
+$$
+
+We’re closer to 1! We’ve slowly nudged the estimate toward the true value — without ever waiting for the end of an episode or re-running a full trajectory.
+
+Like I said before, TD learning on its own isn’t a complete solution — it doesn’t improve the policy. It simply observes, updates, and estimates value based on sampled experiences. Think of it like a passive critic: it watches actions unfold and makes judgments about how good they were, but **it never chooses** the action itself.
+
+It’s only when we combine this value estimation with action selection — as in **Q-learning** — that we start to take control. So let’s now look at how TD becomes the foundation for learning optimal behavior.
+
+## Q-learning
+
+Ok, so far we are at the state $s_1$ and take our leap of faith (LOF) to obtain partial information (green) sampled from one of neighboring states $s_4$ to update our value at $s_1$. 
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%2013.png" alt="image.png" />
+
+Our TD update function looks like this:
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%2014.png" alt="image.png" />
+
+Now, why don’t we just **pick the action that gives us the highest partial information**? Assume we have multiple states, $s_5$ and $s_4$ feeding back into $s_1$.
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%2015.png" alt="image.png" />
+
+Now our equation is finding the action that maximizes the returned partial value. 
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%2016.png" alt="image.png" />
+
+This is great but with one problem. Where did this $”a”$ come from? We should pass it into the next state’s value function to signal which action was taken that led to this future state. But should this action $“a”$ belong to $s_1$’s set of actions or it’s neighbors $s_4$ and $s_5$? 
+
+We realize it should belong to the neighbors. What we’ve essentially done is created a way to compare ALL actions of ALL the next neighbors. 
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%2017.png" alt="image.png" />
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%2018.png" alt="image.png" />
+
+Noticed how I sneakily inserted a “Q” instead of “V”. This is the grand reveal…. Q-learning! What we have essentially done is massaged our Q-learning equation’s *“action”* to be parameterized by the value function itself. More intuitively, the red bars signifying the action selection has been "pushed" onto next best action into the Q-value update without needing an explicit action model. This essentially let’s us find our greedy maximum while preserving the TD equation! Neat! 
+
+<Callout>
+
+Sidenote: notice how I inserted the $a’$ in the Q-value for $s_1$. This just indicates that since we have this recursive formulation, the arguments must be consistent with other Q-values.
+
+</Callout>
+
+Here is our final formal equation:
+
+$$
+Q(s, a) \leftarrow Q(s, a)+\alpha\left(R(s)+\gamma \max _{a^{\prime}} Q\left(s^{\prime}, a^{\prime}\right)-Q(s, a)\right)
+$$
+
+### Epsilon Greedy
+
+Powerful, indeed. But I can find a scenario that can break this! I’m going to omit the discount factor for simplicity, set our learning rate to 1, and all rewards and initial values are 0.
+
+The resulting equation will look like this:
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%2019.png" alt="image.png" />
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%2020.png" alt="image.png" />
+
+We will essentially pick the purple action because the $“10”$ is larger than the $8$. However, the purple action has higher variance, and while the $10$ looks good, we could have chosen a path after that action that gives a value of $-1000$. Yikes.
+
+So how can we prevent this from happening? We will allocate some random probability, say epsilon ($\epsilon$), where we will deviate from our optimal strategy of choosing the largest Q-value, and instead pick a random action. This way, we will hope to explore some of the more humble actions that have good expected returns. 
+
+Here is the final algorithm called $\varepsilon$-Greedy Q-Learning:
+
+<Callout>
+
+```
+    while s is not terminal:
+        # Action selection (ε-greedy)
+        with probability ε:
+            a ← random action
+        else:
+            a ← argmax_a Q(s, a)
+
+        # Take action, observe reward and next state
+        s', r ← step(s, a)
+
+        # Q-value update
+        Q(s, a) ← Q(s, a) + α * [r + γ * max_a' Q(s', a') − Q(s, a)]
+
+        # Move to next state
+        s ← s'
+```
+
+</Callout>
+
+# Policy Gradient
+
+Either we had a probability model (Bellman) or used TD learning (Q-learning) to reach some stable convergence of values. 
+
+Here is the bottom line: we want to keep seeing the better trajectories over time. But that only happens when we have a good policy that outputs good actions and increases our values. Holistically, its not about the best action for a given state but **all best actions over all states.** 
+
+And for a moment…. forget individual actions and states. Forget even value and Q-value functions! 
+
+Just think about the policy and the rewards we get when following our Monte Carlo sampling trajectories to the end. At the end of the day, trajectories are the truth of our interaction with the environment.
+
+<Callout>
+
+TLDR; A trajectory $\tau$ is a full sequence of states $s_t$, actions $a_t$, and rewards $r_t$. They are defined as $\tau=\left(s_0, a_0, r_0, s_1, a_1, r_1, \ldots, s_T, a_T, r_T\right)$
+
+</Callout>
+
+Remember we talked about Search Gradient from [Part I](https://www.richardzhang.site/writing/the-beauty-and-intuition-of-RL-part-I)? Just like how we shifted from deterministic to probabilistic $x$ in the domain, **we can shift to probabilities of trajectories**. Policies are literally just probability distributions over the action space. If we stop thinking of policies as just “input state and sample action”, we can extend this to sampling entire trajectories!
+
+<Figure src="The%20Beauty%20and%20Intuition%20of%20RL%20Part%20II%201c5cb8784d148041ab7cd40c950d3219/image%2021.png" alt="image.png" />
+
+Look back at the Search Gradient equation. If we want to maximize the function $f$ by optimizing the probability distribution that generates $x$:
+
+$$
+\max _\theta \mathbb{E}_{x \sim p(x ; \theta)}[f(x)]
+$$
+
+We can evaluate the value function (which concretely is a reward metric $R(\tau)$ that obtains the total reward in a full trajectory $\tau$) by optimizing the policy that generates the trajectory:
+
+$$
+\max _\theta \mathbb{E}_{\tau \sim \pi_\theta}[R(\tau)]
+$$
+
+The expectation $\mathbb{E}{\tau \sim \pi \theta}[\cdot]$ means we are computing an average over all possible trajectories $\tau$ that could be sampled when following the policy $\pi_\theta$.
+
+The trajectory overshadows the significance of states and actions. We only care about the policy now—the expected trajectories it generates, which outputs a reward signal worth maximizing. 
+
+Now like how we derived the log gradient in Search Gradient:
+
+$$
+\nabla_\theta \mathbb{E}[f(x)]=\mathbb{E}\left[f(x) \nabla_\theta \log p(x ; \theta)\right]
+$$
+
+We can do the same for what we now call the **Policy Gradient:**
+
+$$
+\nabla_\theta \mathbb{E}[R(\tau)]=\mathbb{E}\left[R(\tau) \nabla_\theta \log \pi_\theta(\tau)\right]
+$$
+
+And finally we can do our update step! 
+
+$$
+\theta_{t+1}=\theta_t-\eta \frac{1}{N} \sum_{i=1}^N R\left(\tau\right) \nabla_\theta \log \pi_\theta\left(\tau\right)
+$$
+
+The Policy Gradient is probably the most important concept in Reinforcement Learning because it is the bedrock of many of the Deep RL algorithms used throughout history, like Actor-Critic or REINFORCE. From here you can probably read any state-of-the-art RL literature with considerable ease. 
+
+There are many other concepts I didn’t cover, most notably in “Deep Reinforcement Learning”. This, again, is a pretty simple concept as it just replaces value functions with neural network approximators. Hopefully I can share more on that later.
