@@ -59,7 +59,7 @@ A Markov Decision Process is defined by five key components:
 1. **States (S):** All possible situations or configurations the agent can be in.
 2. **Actions (A):** The set of choices available to the agent in each state.
 3. **Transition Probabilities (P):** The dynamics of the environment, given by $P(s' \mid s, a)$. This is the probability of landing in state $s'$ when the agent takes action $a$ in state $s$.
-4. **Rewards (R):** The immediate payoff (or cost) received after transitioning from one state to another due to an action. We often denote $R(s, a, s')$ as the reward for going from state $s$ to $s'$ with action $a$.
+4. **Rewards (R):** The immediate payoff **given by the environment** after transitioning from one state to another due to an action. We often denote $R(s, a, s')$ as the reward for going from state $s$ to $s'$ with action $a$.
 5. **Discount Factor (γ):** A number between 0 and 1 that balances immediate and future rewards. A factor $\gamma$ close to 0 makes the agent short-sighted (only caring about immediate rewards), while a $\gamma$ near 1 encourages planning for long-term rewards.
 
 State and Action seem intuitive enough. The rest not so much. 
@@ -102,8 +102,6 @@ This essentially entails following a trail of rewards, picking them up one by on
 
 <Figure src="/part2/image 2.png" alt="image 2.png" />
 
-[can you draw this scenario of the same style and hiker on a trail with symbols of discount reward values getting progressively multipliedl ike gamma, gamma^2, gamma^3 ... .]
-
 ## Recursive Computation of Value: The Bellman Equation
 
 However, the world is exponential in complexity. We don't want to recompute every time we look at a state. Wouldn’t it be nice if we could **compress all future information** into a single recursive relationship?
@@ -111,8 +109,6 @@ However, the world is exponential in complexity. We don't want to recompute ever
 If your hiking buddies have journeyed through these trails, why not defer our painstaking decision-making to their experience? 
 
 “Oh Jimmy was mauled by a bear if I turn right from this state?”
-
-[keep this theme, can you show the same hiker getting the symbol V(s') from another hiker who is on a trail also running from a bear. ]
 
 We can represent this in mathematical form, called the famous Bellman Equation:
 
@@ -122,7 +118,9 @@ $$
 
 $\gamma V\left(s^{\prime}\right)$ compresses all future rewards from the next state $s^{\prime}$ onward into a single, trusted value that our hiking buddies like Jimmy have generously left for us. 
 
-- `SIDE NOTE: This deferrence or "laziness" is sort of reflecting the Markov assumption--which assures the probabilities and values dont change when computing the values.`
+<Callout>
+This deferrence or "laziness" is sort of reflecting the Markov assumption--which assures the probabilities and values dont change when computing the values.
+</Callout>
 
 The **Bellman equation** provides a clever recursive way to compute values without enumerating endless trajectories. It breaks the value into two parts: the immediate reward and the discounted value of the next state. 
 
@@ -141,7 +139,7 @@ Then, the environment picks the next state $s^{\prime}$ based on the probabiliti
 
 Who in the hell gave us $P\left(s^{\prime} \mid s, a\right)$? Whether it was God or some higher divine being, this is a privileged piece of information to know because **it tells us the stochastic nature of transitioning from one state to another.** 
 
-This also injects the good ole’ randomness that we preach so highly about. Once you choose a path, nature (the environment, or designer of the world) decides randomly (with probabilities $P\left(s^{\prime} \mid s, a\right)$) exactly what you'll encounter next!
+This also injects the good ol’ randomness that we preach so highly about. Once you choose a path, nature (the environment, or designer of the world) decides randomly (with probabilities $P\left(s^{\prime} \mid s, a\right)$) exactly what you'll encounter next!
 
 Ok, let’s take a step back again. We just discovered this incredibly useful thing called the Value function. **We want to find the best estimates of the values at each state s.** It takes on two forms:
 
@@ -188,8 +186,6 @@ Next, you move on to another spot, **S2**. You find out that from **S2**, there�
 This repeated "communication" between states is actually an important algorithm, so much that it deserves a name. It is called **Value Iteration**. 
 
 Each location's true value depends on neighboring locations, whose values themselves depend on their neighbors, and so forth. By repeatedly cycling through these updates, values become consistent and stable. Eventually, all hikers end up holding identical, optimized notebooks—perfectly reflecting the true long-term rewards.
-
-[show the same paper map of S1, S2 having perfect values on them]
 
 Now that we've neatly polished the optimal values for each state and tucked them safely into our backpack, what's next?
 
