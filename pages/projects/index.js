@@ -65,6 +65,14 @@ const ProjectCard = ({ name, date, description, link, source, imageUrl }) => (
 const Projects = () => {
   const projects = [
     {
+      name: "Peg Hit Ball Task in Maniskill using PPO",
+      date: "June 2025",
+      description: "",
+      source: "https://github.com/rrzhang139/peg-hit-ball-task-ppo",
+      link: "https://drive.google.com/file/d/1unKt4zSwKc119IFUXaVg6tXwC3QwywYf/view?usp=sharing",
+      imageUrl: "https://imgur.com/MMZEsTh.gif"
+    },
+    {
       name: "Soft Body Simulation",
       date: "Feb 2025",
       description: "Built differentiable physics simulator tasks for predicting soft body interactions using Nvidia Warp",
