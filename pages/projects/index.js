@@ -65,6 +65,13 @@ const ProjectCard = ({ name, date, description, link, source, imageUrl }) => (
 const Projects = () => {
   const projects = [
     {
+      name: "Real2Sim Manipulation",
+      date: "June 2025",
+      description: "Reproduced Real2sim project on so100 arm for lerobot hackathon. Achieved 80% success rate in sim, and successful demos in real. Kudos to Stone Tao for making this!",
+      source: "https://github.com/rrzhang139/lerobot-sim2real/tree/main",
+      imageUrl: "https://imgur.com/CcI2tZh.gif"
+    },
+    {
       name: "Peg Hit Ball Task in Maniskill using PPO",
       date: "June 2025",
       description: "",
