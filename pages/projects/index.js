@@ -80,6 +80,13 @@ const Projects = () => {
       imageUrl: "https://imgur.com/MMZEsTh.gif"
     },
     {
+      name: "Past-Token Prediction Simulation",
+      date: "May 2025",
+      description: "Implemented past-token prediction that improves the performance of long-context diffusion policies. Used Maniskill for simulation.",
+      source: "https://github.com/rrzhang139/ptp_simulation",
+      imageUrl: "/ptp.gif"
+    },
+    {
       name: "Soft Body Simulation",
       date: "Feb 2025",
       description: "Built differentiable physics simulator tasks for predicting soft body interactions using Nvidia Warp",
