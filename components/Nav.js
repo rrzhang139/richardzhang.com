@@ -22,6 +22,7 @@ const Nav = () => {
             { name: "projects", url: "/projects" },
             { name: "writing", url: "/writing" },
             { name: "learning journey", url: "/learning" },
+            { name: "teaching", url: "/teaching" },
             { name: "learning artifacts", url: "/artifacts" },
           ].map((link, index) => {
             return (

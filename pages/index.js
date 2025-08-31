@@ -63,7 +63,7 @@ export default function Home() {
               <p>
                 <a
                   className="hover:text-blue-400 transition-colors"
-                  href="https://drive.google.com/file/d/17X9uwHjgCfKy9aiccMQ3WtmzpiiviAlu/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1CHG0O9iZbSvy2SjFh8R42liJ0Y_31rby/view?usp=sharing"
                   rel="noreferrer"
                   target="_blank"
                 >
@@ -84,32 +84,28 @@ export default function Home() {
           <li>
              What I&apos;m up to:
             <ul className="pl-10 list-inside space-y-2 pt-2">
-              <li>- simulating softbodies at 
+              <li>- building VR teleoperation systems at 
                 <a
                   className="underline hover:text-blue-400 transition-colors"
-                  href="https://xiaolonw.github.io/index.html"
+                  href="https://www.dexmate.ai/"
                   rel="noreferrer"
                   target="_blank"
-                  > Wang Lab</a></li>
+                  > Dexmate</a></li>
               <li>- 
                  <a
                   className="underline hover:text-blue-400 transition-colors"
-                  href="https://www.richardzhang.site/learning"
+                  href="https://www.richardzhang.site/teaching"
                   rel="noreferrer"
                   target="_blank"
-                > math-maxxing</a></li>
-              <li>- building 
-                <a
-                  className="underline hover:text-blue-400 transition-colors"
-                  href="https://github.com/rrzhang139/object-detect-robot"
-                  rel="noreferrer"
-                  target="_blank"
-                > robots</a></li>
+                > lecturing on random topics</a></li>
             </ul>
           </li>
           <li>
             Previously:
             <ul className="pl-10 list-inside space-y-2 pt-2">
+              <li>
+                 🤖 Research Assistant at UCSD
+              </li>
               <li>
                 🐹 Machine Learning Intern at {" "} 
                 <a
