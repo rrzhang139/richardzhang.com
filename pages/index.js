@@ -84,25 +84,36 @@ export default function Home() {
           <li>
              What I&apos;m up to:
             <ul className="pl-10 list-inside space-y-2 pt-2">
-              <li>- building VR teleoperation systems at 
+              <li>- Machine Learning Engineer at Zoom (Hit me up if you're in Seattle!)</li>
+              <li>- Learning {" "}
                 <a
                   className="underline hover:text-blue-400 transition-colors"
-                  href="https://www.dexmate.ai/"
+                  href="https://github.com/rrzhang139/neuro-learning"
                   rel="noreferrer"
                   target="_blank"
-                  > Dexmate</a></li>
-              <li>- 
+                  >Neuroscience</a> {" "}  (specifically motor learning)
+              </li>
+              <li>- {" "}
                  <a
                   className="underline hover:text-blue-400 transition-colors"
                   href="https://www.richardzhang.site/teaching"
                   rel="noreferrer"
                   target="_blank"
-                > lecturing on random topics</a></li>
+                >lecturing on random topics</a></li>
             </ul>
           </li>
           <li>
             Previously:
             <ul className="pl-10 list-inside space-y-2 pt-2">
+              <li>
+                 🤖 Research/Controls Engineer at {" "} 
+                <a
+                  className="underline hover:text-blue-400 transition-colors"
+                  href="https://www.dexmate.ai/"
+                  rel="noreferrer"
+                  target="_blank"
+                >Dexmate</a>
+              </li>
               <li>
                  🤖 Research Assistant at UCSD
               </li>
