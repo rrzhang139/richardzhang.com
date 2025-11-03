@@ -84,7 +84,7 @@ export default function Home() {
           <li>
              What I&apos;m up to:
             <ul className="pl-10 list-inside space-y-2 pt-2">
-              <li>- Machine Learning Engineer at Zoom (Hit me up if you're in Seattle!)</li>
+              <li>- Machine Learning Engineer at Zoom (Hit me up if you&apos;re in Seattle!)</li>
               <li>- Learning {" "}
                 <a
                   className="underline hover:text-blue-400 transition-colors"

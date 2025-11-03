@@ -7,9 +7,11 @@ const ImageRow = ({ images, caption }) => {
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         {images.map((image, index) => (
           <div key={index} className="flex-1 min-w-0">
-            <img
+            <Image
               src={image.src}
               alt={image.alt || `Image ${index + 1}`}
+              layout="fill"
+              objectFit="contain"
               className="w-full h-auto object-contain"
             />
           </div>
