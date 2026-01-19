@@ -84,7 +84,7 @@ export default function Home() {
           <li>
              What I&apos;m up to:
             <ul className="pl-10 list-inside space-y-2 pt-2">
-              <li>- Machine Learning Engineer at Zoom (Hit me up if you&apos;re in Seattle!)</li>
+              <li>- Building AI agents at Zoom</li>
               <li>- Learning {" "}
                 <a
                   className="underline hover:text-blue-400 transition-colors"
@@ -96,10 +96,10 @@ export default function Home() {
               <li>- {" "}
                  <a
                   className="underline hover:text-blue-400 transition-colors"
-                  href="https://www.richardzhang.site/teaching"
+                  href="https://www.notion.so/richord/Vibecoding-the-Physical-World-2edcb8784d14802b8e2eea19e0d45d64?source=copy_link"
                   rel="noreferrer"
                   target="_blank"
-                >lecturing on random topics</a></li>
+                >Challenging Moravec's Paradox</a></li>
             </ul>
           </li>
           <li>

@@ -3,7 +3,7 @@
 // ./pages/projects/index.js
 import Head from "next/head";
 import Image from "next/image";
-import { Globe, Github } from 'lucide-react';
+import { Globe, Github, BookOpen } from 'lucide-react';
 
 const createMarkup = (text) => {
   // Basic URL regex pattern
@@ -39,7 +39,7 @@ const LinkButton = ({ href, icon, text }) => (
   </a>
 );
 
-const ProjectCard = ({ name, date, description, link, source, imageUrl }) => (
+const ProjectCard = ({ name, date, description, link, source, blog, imageUrl }) => (
   <div className="theme-sync bg-eggshell dark:bg-darkNavy rounded-lg shadow-md overflow-hidden transition-shadow duration-300 hover:shadow-xl">
     {imageUrl && (
       <div className="relative h-48">
@@ -49,13 +49,18 @@ const ProjectCard = ({ name, date, description, link, source, imageUrl }) => (
     <div className="theme-sync p-4 bg-eggshell dark:bg-darkNavy">
       <h3 className="theme-sync-text text-xl font-semibold mb-2 dark:text-neutral-100">{name}</h3>
       <p className="theme-sync-text text-gray-600 dark:text-gray-400 text-sm mb-2">{date}</p>
-      <p className="theme-sync-text text-gray-700 dark:text-gray-300 mb-4">{createMarkup(description)}</p>
+      {description && (
+        <p className="theme-sync-text text-gray-700 dark:text-gray-300 mb-4">{createMarkup(description)}</p>
+      )}
       <div className="theme-sync flex space-x-4 bg-eggshell dark:bg-darkNavy">
         {link && (
           <LinkButton href={link} icon={<Globe size={18} />} text="Website" />
         )}
         {source && (
           <LinkButton href={source} icon={<Github size={18} />} text="Source" />
+        )}
+        {blog && (
+          <LinkButton href={blog} icon={<BookOpen size={18} />} text="Blog" />
         )}
       </div>
     </div>
@@ -64,6 +69,13 @@ const ProjectCard = ({ name, date, description, link, source, imageUrl }) => (
 
 const Projects = () => {
   const projects = [
+    {
+      name: "Homemade brushed DC electric motor",
+      date: "Oct 2025",
+      description: "",
+      blog: "https://www.notion.so/richord/Vibecoding-the-Physical-World-2edcb8784d14802b8e2eea19e0d45d64?source=copy_link",
+      imageUrl: "/electric-motor/main.png"
+    },
     {
       name: "Real2Sim Manipulation",
       date: "June 2025",
