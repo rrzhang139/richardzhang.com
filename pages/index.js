@@ -99,7 +99,7 @@ export default function Home() {
                   href="https://www.notion.so/richord/Vibecoding-the-Physical-World-2edcb8784d14802b8e2eea19e0d45d64?source=copy_link"
                   rel="noreferrer"
                   target="_blank"
-                >Challenging Moravec's Paradox</a></li>
+                >Challenging Moravec&apos;s Paradox</a></li>
             </ul>
           </li>
           <li>
