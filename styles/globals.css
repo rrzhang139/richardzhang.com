@@ -30,7 +30,7 @@
 /* Set default background colors */
 html {
   background-color: var(--eggshell);
-  font-size: 150%;
+  font-size: 140.5%; /* 18px base — readable without breaking mobile scaling */
 }
 
 html.dark {

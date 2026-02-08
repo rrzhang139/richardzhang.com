@@ -17,11 +17,10 @@ import { useTheme } from "../../components/ThemeContext";
 
 const proseClasses = (theme) => {
   return [
-    "py-20 prose leading-9 font-mavenp",
-    theme === "dark" 
-      ? "text-neutral-200 prose-headings:text-white prose-a:text-neutral-300 prose-h1:text-white prose-h2:text-white prose-h3:text-neutral-100 prose-h4:text-white prose-h5:text-white prose-h6:text-white prose-*:text-white ul:text-white ol:text-white li:text-white" 
+    "py-10 prose leading-7 font-mavenp prose-base",
+    theme === "dark"
+      ? "prose-invert text-neutral-200 prose-headings:text-white prose-a:text-neutral-300 prose-h1:text-white prose-h2:text-white prose-h3:text-neutral-100 prose-h4:text-white prose-h5:text-white prose-h6:text-white prose-*:text-white ul:text-white ol:text-white li:text-white"
       : "text-neutral-700 prose-headings:text-black prose-a:text-neutral-600 prose-h1:text-black prose-h2:text-black prose-h3:text-neutral-900 prose-h4:text-black prose-h5:text-black prose-h6:text-black prose-*:text-black ul:text-black ol:text-black li:text-black",
-    "text-justify prose-invert"
   ].join(" ");
 };
 
@@ -53,11 +52,10 @@ const PostPage = ({ mdxSource, frontMatter }) => {
         />
       </Head>
       <section className="space-y-10">
-        <section className="max-w-xl px-12 mx-auto lg:px-0">
+        <section className="max-w-xl px-5 sm:px-8 mx-auto lg:px-0">
           <article className={proseClasses(theme)}>
             <MDXRemote {...mdxSource} components={components} />
           </article>
-          {/* </div> */}
         </section>
       </section>
     </>
