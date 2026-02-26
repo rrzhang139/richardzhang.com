@@ -90,6 +90,7 @@ const getStaticProps = async ({ params: { slug } }) => {
       rehypePlugins: [rehypeKatex],
     },
     scope: frontMatter,
+    blockJS: false,
   });
 
   return {
