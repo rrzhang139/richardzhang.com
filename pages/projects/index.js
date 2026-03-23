@@ -70,9 +70,9 @@ const ProjectCard = ({ name, date, description, link, source, blog, imageUrl }) 
 const Projects = () => {
   const projects = [
     {
-      name: "Arduino Self-Balancing Robot [WIP]",
+      name: "Arduino Self-Balancing Robot",
       date: "Mar 2026",
-      description: "Two-wheeled self-balancing robot built from scratch with Arduino, MPU6050 IMU, and PID control.",
+      description: "Two-wheeled self-balancing robot built from scratch. learned soldering, PID control tuning.",
       source: "https://github.com/rrzhang139/arduino-self-balancing-robot",
       imageUrl: "/self-balancing-robot.gif"
     },
