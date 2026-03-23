@@ -85,21 +85,21 @@ export default function Home() {
              What I&apos;m up to:
             <ul className="pl-10 list-inside space-y-2 pt-2">
               <li>- Building AI agents at Zoom</li>
-              <li>- Learning {" "}
+              <li>-  {" "}
                 <a
                   className="underline hover:text-blue-400 transition-colors"
-                  href="https://github.com/rrzhang139/neuro-learning"
+                  href="https://github.com/rrzhang139/personal-research"
                   rel="noreferrer"
                   target="_blank"
-                  >Neuroscience</a> {" "}  (specifically motor learning)
+                  >Viberesearching</a> {" "}
               </li>
               <li>- {" "}
                  <a
                   className="underline hover:text-blue-400 transition-colors"
-                  href="https://www.notion.so/richord/Vibecoding-the-Physical-World-2edcb8784d14802b8e2eea19e0d45d64?source=copy_link"
+                  href="https://github.com/rrzhang139/arduino-self-balancing-robot"
                   rel="noreferrer"
                   target="_blank"
-                >Challenging Moravec&apos;s Paradox</a></li>
+                >Zero shotting hardware projects</a></li>
             </ul>
           </li>
           <li>
