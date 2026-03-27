@@ -63,7 +63,7 @@ export default function Home() {
               <p>
                 <a
                   className="hover:text-blue-400 transition-colors"
-                  href="https://docs.google.com/document/d/1Axgeq5umitmdBl0ZuIFPDsHwZuaRzY0QXA5nT2VZQSU/edit?usp=sharing"
+                  href="https://docs.google.com/document/d/1POGFOOXlLjm4okAXGzvyrcdU106_sM16d5GZrx10muo/edit?usp=sharing"
                   rel="noreferrer"
                   target="_blank"
                 >
