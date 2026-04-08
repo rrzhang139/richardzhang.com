@@ -70,6 +70,13 @@ const ProjectCard = ({ name, date, description, link, source, blog, imageUrl }) 
 const Projects = () => {
   const projects = [
     {
+      name: "Haptic Motor Controller PCB",
+      date: "Apr 2026",
+      description: "Custom PCB driving 8 haptic motors via I2C. First PCB designed in KiCad! Nerdsniped by https://www.abinaya-dinesh.com/projects/eagelmann-vest-pcb",
+      source: "https://github.com/rrzhang139/pcb-project",
+      imageUrl: "/pcb.png"
+    },
+    {
       name: "Arduino Self-Balancing Robot",
       date: "Mar 2026",
       description: "Two-wheeled self-balancing robot built from scratch. learned soldering, PID control tuning.",
