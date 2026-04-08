@@ -73,7 +73,7 @@ const Projects = () => {
       name: "Haptic Motor Controller PCB",
       date: "Apr 2026",
       description: "Custom PCB driving 8 haptic motors via I2C. First PCB designed in KiCad! Nerdsniped by https://www.abinaya-dinesh.com/projects/eagelmann-vest-pcb",
-      source: "https://github.com/rrzhang139/pcb-project",
+      source: "https://github.com/rrzhang139/haptic-controller-pcb",
       imageUrl: "/pcb.png"
     },
     {
