@@ -34,9 +34,15 @@ const Home = ({ posts }) => {
           {posts.map((post, index) => (
             <li key={index} className="font-text text-sm w-full mb-8">
               <span className="truncate hover:underline">
-                <Link href={`/writing/${post.slug}`}>
-                  {post.frontMatter.title}
-                </Link>
+                {post.frontMatter.externalUrl ? (
+                  <a href={post.frontMatter.externalUrl} target="_blank" rel="noopener noreferrer">
+                    {post.frontMatter.title}
+                  </a>
+                ) : (
+                  <Link href={`/writing/${post.slug}`}>
+                    {post.frontMatter.title}
+                  </Link>
+                )}
               </span>
               <span className="hidden md:inline float-right">
                 {post.frontMatter.date}
