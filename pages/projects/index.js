@@ -70,6 +70,14 @@ const ProjectCard = ({ name, date, description, link, source, blog, imageUrl }) 
 const Projects = () => {
   const projects = [
     {
+      name: "Computer Viz Animations",
+      date: "May 2026",
+      description: "Interactive animations visualizing computer science and systems concepts.",
+      link: "https://computer-viz-animations.vercel.app/",
+      source: "https://github.com/rrzhang139/computer-viz",
+      imageUrl: "/computer-viz.png",
+    },
+    {
       name: "Haptic Motor Controller PCB",
       date: "Apr 2026",
       description: "Custom PCB driving 8 haptic motors via I2C. First PCB designed in KiCad! Nerdsniped by https://www.abinaya-dinesh.com/projects/eagelmann-vest-pcb",
