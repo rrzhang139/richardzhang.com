@@ -4,15 +4,16 @@ import Image from 'next/image';
 const ImageRow = ({ images, caption }) => {
   return (
     <figure className="my-8">
-      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
         {images.map((image, index) => (
           <div key={index} className="flex-1 min-w-0">
             <Image
               src={image.src}
               alt={image.alt || `Image ${index + 1}`}
-              layout="fill"
-              objectFit="contain"
-              className="w-full h-auto object-contain"
+              width={2048}
+              height={1152}
+              style={{ width: '100%', height: 'auto' }}
+              className="object-contain"
             />
           </div>
         ))}
@@ -26,4 +27,4 @@ const ImageRow = ({ images, caption }) => {
   );
 };
 
-export default ImageRow; 
+export default ImageRow;
