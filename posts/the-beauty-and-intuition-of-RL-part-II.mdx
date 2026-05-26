@@ -234,13 +234,9 @@ Let’s call it Temporal Difference learning (TD).
 
 TD ***perfomance-wise*** is not a better option to Monte Carlo. You can just create an extremely long MDP that will make Monte Carlo more efficient. 
 
-<Figure src="/part2/image 9.png" alt="Efficient for TD because you can just hop to the terminal nodes in one step and obtain a good estimate of the value" />
+<Figure src="/part2/image 9.png" alt="Efficient for TD because you can just hop to the terminal nodes in one step and obtain a good estimate of the value" caption="Efficient for TD because you can just hop to the terminal nodes in one step and obtain a good estimate of the value"/>
 
-Efficient for TD because you can just hop to the terminal nodes in one step and obtain a good estimate of the value
-
-<Figure src="/part2/image 10.png" alt="Not efficient for TD because you’re good estimate is relying on the next state which is relying on the next and the next and the next…" />
-
-Not efficient for TD because you’re good estimate is relying on the next state which is relying on the next and the next and the next…
+<Figure src="/part2/image 10.png" alt="Not efficient for TD because you’re good estimate is relying on the next state which is relying on the next and the next and the next…" caption="Not efficient for TD because you’re good estimate is relying on the next state which is relying on the next and the next and the next…"/>
 
 But really TD is a conceptual tool to get us thinking about how we can do this in a non-modeled way. TD standalone will not get us what we want: a self-sufficient policy making optimal actions from states.
 
@@ -288,13 +284,9 @@ This is very important I have to emphasize it again. In the Bellman we had a nic
 
 </Callout>
 
-<Figure src="/part2/image 11.png" alt="With a transition model" />
+<Figure src="/part2/image 11.png" alt="With a transition model" caption="With a transition model"/>
 
-With a transition model
-
-<Figure src="/part2/image 12.png" alt="without a transition model" />
-
-without a transition model
+<Figure src="/part2/image 12.png" alt="without a transition model" caption="without a transition model"/>
 
 In this example, the value at $s_4$ (in green) $V(s_4)$ tells only part of the story, because sampling requires inch by inch effort. You don’t get the true value right away! 
 
@@ -437,7 +429,7 @@ the domain, **we can shift to probabilities of trajectories**. Policies are lite
 distributions over the action space. If we stop thinking of policies as just “input state and sample action”, 
 we can extend this to sampling entire trajectories!
 
-<Figure src="/part2/image 20.png" alt="image 20.png" />
+<Figure src="/part2/image 21.png" alt="image 21.png" />
 
 Look back at the Search Gradient equation. If we want to maximize the function $f$ by optimizing the 
 probability distribution that generates $x$:
